@@ -43,7 +43,7 @@ public class ChoiceEvent : MonoBehaviour
         }
         else if(_result == 0 && check == 1)
         {
-            gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
         }
     }
 }

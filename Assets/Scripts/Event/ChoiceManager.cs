@@ -184,7 +184,7 @@ public class ChoiceManager : MonoBehaviour
                 }
                 else
                 {
-                    theChoiceEvent.Action(result);
+                    npcGameObject.GetComponent<ChoiceEvent>().Action(result);
                     ExitChoice();
                 }
                 
