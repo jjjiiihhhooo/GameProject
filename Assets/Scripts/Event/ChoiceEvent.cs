@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Build.Content;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChoiceEvent : MonoBehaviour
 {
     public Choice choice;
     [SerializeField] private ChoiceManager theChoiceManager;
+    [SerializeField] private QuestManager theQuestManager;
     [SerializeField] private GameObject player;
     [SerializeField] private Transform mapTransform;
+    [SerializeField] private Sprite quest_image;
+    [SerializeField] private string quest_item;
     [SerializeField] private int check = 0; //0이면 맵 이동 하는 NPC , 1이면 상호작용 아이템(액자, 침대, 등등)
-    
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {        
@@ -43,6 +47,10 @@ public class ChoiceEvent : MonoBehaviour
         }
         else if(_result == 0 && check == 1)
         {
+            if(quest_image != null)
+            {
+                theQuestManager.ChangeItem(quest_item, quest_image);
+            }
             this.gameObject.SetActive(false);
         }
     }
