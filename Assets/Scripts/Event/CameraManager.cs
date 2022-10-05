@@ -10,11 +10,11 @@ public class CameraManager : MonoBehaviour
 
     void Update()
     {
-        if(target_obj.gameObject != null)
-        {
-            targetPosition.Set(target_obj.transform.position.x, target_obj.transform.position.y, this.transform.position.z);
+        //if(target_obj.gameObject != null)
+        //{
+        //    targetPosition.Set(target_obj.transform.position.x, target_obj.transform.position.y, this.transform.position.z);
 
-            this.transform.position = targetPosition;
-        }
+        //    this.transform.position = targetPosition;
+        //}
     }
 }

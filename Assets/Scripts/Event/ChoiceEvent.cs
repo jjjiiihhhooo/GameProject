@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ChoiceEvent : MonoBehaviour
 {
     public Choice choice;
+    public bool isTrigger = true;
     [SerializeField] private ChoiceManager theChoiceManager;
     [SerializeField] private QuestManager theQuestManager;
     [SerializeField] private GameObject player;

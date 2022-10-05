@@ -33,15 +33,6 @@ public class PlayerMove : MoveManager
                 StartCoroutine(MoveCoroutine());
             }
         }
-
-        if(theChatManager.isChat)
-        {
-            if(Input.GetKeyDown(KeyCode.Space))
-            {
-                theTestChat.OpenChat();
-                theChatManager.isChat = false;
-            }
-        }
     }
 
     private IEnumerator MoveCoroutine()

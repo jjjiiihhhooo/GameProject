@@ -192,8 +192,12 @@ public class ChoiceManager : MonoBehaviour
         }
         else if (isChoice == true && Input.GetKeyDown(KeyCode.Space))
         {
-            npcGameObject.GetComponent<ChoiceEvent>().StartCoroutine();
-            isChoice2 = true;
+            if(npcGameObject.GetComponent<ChoiceEvent>().isTrigger == true)
+            {
+                npcGameObject.GetComponent<ChoiceEvent>().StartCoroutine();
+                isChoice2 = true;
+            }
+            
         }
 
     }

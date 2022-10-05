@@ -7,6 +7,9 @@ public class TestChat : MonoBehaviour
     private ChatManager theChatManager;
     public Chat chat;
 
+    public bool isTrigger = false;
+    public bool isTarget = true;
+
     void Start()
     {
         theChatManager = FindObjectOfType<ChatManager>();   
@@ -14,21 +17,31 @@ public class TestChat : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.name == "Player")
+        if(other.tag == "Player")
         {
-            theChatManager.isChat = true;
+            isTrigger = true;   
+        }
+    }
+
+    private void Update()
+    {
+        if(isTarget && isTrigger && Input.GetKeyDown(KeyCode.Space))
+        {
+            Chat();
+            isTrigger = false;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(other.gameObject.name == "Player")
+        if(other.tag == "Player")
         {
-            theChatManager.isChat = false;
+            isTrigger = false;
         }
     }
 
-    public void OpenChat()
+
+    private void Chat()
     {
         theChatManager.ShowChat(chat);
     }

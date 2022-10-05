@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Table
+  - Trigger
+  - Frame
+  - frame
+  - Piece
   layers:
   - Default
   - TransparentFX
