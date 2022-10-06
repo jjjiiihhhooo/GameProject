@@ -6,6 +6,7 @@ public class PuzzlePiece : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Puzzle puzzle;
+    [SerializeField] private PuzzleMove puzzleMove;
 
     public Vector3 LoadedPos;
     private float startPosx;
@@ -29,6 +30,10 @@ public class PuzzlePiece : MonoBehaviour
 
             this.gameObject.transform.position = new Vector2(mousePos.x - startPosx, mousePos.y - startPosY);
         }
+        if(isInLine)
+        {
+            LoadedPosSet();
+        }
     }
 
     private void OnMouseDown()
@@ -46,15 +51,23 @@ public class PuzzlePiece : MonoBehaviour
         }
     }
 
+    public void LoadedPosSet()
+    {
+        LoadedPos = this.transform.position;
+    }
+
     private void OnMouseUp()
     {
         spriteRenderer.color = new Color(0.2f, 0.2f, 0.2f, 1f);
         isBeingHeld = false;
 
         if (isInLine)
+        {
+            puzzleMove.PuzzleMoving();
             this.gameObject.transform.position = new Vector3(this.gameObject.transform.localPosition.x, timeLinePosY, 0);
+        }
         else
-            this.gameObject.transform.position = LoadedPos;
+            this.gameObject.transform.position = this.LoadedPos;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
