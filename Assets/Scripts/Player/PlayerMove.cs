@@ -9,7 +9,7 @@ public class PlayerMove : MoveManager
     [SerializeField] private float vertical;
     [SerializeField] private float horizontal;
     [SerializeField] private float runSpeed;
-    private bool isMove = true;
+    public bool isMove = true;
 
 
     [SerializeField] private TestChat theTestChat;
