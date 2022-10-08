@@ -60,4 +60,14 @@ public class ChoiceEvent : MonoBehaviour
             goEvent = true;
         }
     }
+
+    public void SetIsChoice2(bool _bool)
+    {
+        theChoiceManager.isChoice2 = _bool;
+    }
+
+    public bool GetIsChoice2()
+    {
+        return theChoiceManager.isChoice2;
+    }
 }

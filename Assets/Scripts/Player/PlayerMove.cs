@@ -9,8 +9,7 @@ public class PlayerMove : MoveManager
     [SerializeField] private float vertical;
     [SerializeField] private float horizontal;
     [SerializeField] private float runSpeed;
-    public bool isMove = true;
-
+    [SerializeField] private bool isMove = true;
 
     [SerializeField] private TestChat theTestChat;
     private ChatManager theChatManager;
@@ -48,7 +47,7 @@ public class PlayerMove : MoveManager
             moveVector.x = horizontal;
             moveVector.y = vertical;
 
-            vector = moveVector;
+            vector = moveVector; // (1, 0)
 
             if (vector.x != 0)
                 vector.y = 0;
@@ -61,9 +60,9 @@ public class PlayerMove : MoveManager
 
             while (walkCount < walkCheck)
             {
-                transform.Translate(vector * speed * Time.deltaTime);
+                transform.Translate(vector * speed * Time.deltaTime); // speed/1s
                 walkCount++;
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(Time.deltaTime);
             }
             walkCount = 0;
         }
@@ -72,4 +71,8 @@ public class PlayerMove : MoveManager
         isMove = true;
     }
 
+    public void SetIsMove(bool _bool)
+    {
+        isMove = _bool;
+    }
 }

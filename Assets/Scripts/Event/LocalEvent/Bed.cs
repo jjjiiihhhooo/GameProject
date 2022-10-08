@@ -20,9 +20,9 @@ public class Bed : MonoBehaviour
     {
         if (theChoiceEvent.goEvent == true)
         {
-            Debug.Log("true");
             theChoiceEvent.goEvent = false;
             player.transform.position = bed.position;
+            thePlayerMove.SetIsMove(false);
             fadeout.SetActive(true);
 
             StartCoroutine(WakeUp());
@@ -31,9 +31,8 @@ public class Bed : MonoBehaviour
 
     IEnumerator WakeUp()
     {
-        thePlayerMove.isMove = false;
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitUntil(() => fadeout.activeSelf == false);
         player.transform.position = two.position;
-        thePlayerMove.isMove = true;
+        thePlayerMove.SetIsMove(true);
     }
 }

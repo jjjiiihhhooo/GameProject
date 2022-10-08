@@ -33,7 +33,6 @@ public class FadeOut : MonoBehaviour
     {
         if (time > 0)
         {
-            StopCoroutine(FadeOUt());
             time = 0;
             gameObject.SetActive(false);
         }
