@@ -178,7 +178,7 @@ public class ChoiceManager : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Space))
             {
                 keyInput = false;
-                if(result == count)
+                if(result == count) // 마지막은 항상 부정형인듯ㄴ
                 {
                     ExitChoice();
                 }
@@ -187,12 +187,11 @@ public class ChoiceManager : MonoBehaviour
                     npcGameObject.GetComponent<ChoiceEvent>().Action(result);
                     ExitChoice();
                 }
-                
             }
         }
-        else if (isChoice == true && Input.GetKeyDown(KeyCode.Space))
+        else if (isChoice == true && Input.GetKeyDown(KeyCode.Space)) // 선택창 실행
         {
-            if(npcGameObject.GetComponent<ChoiceEvent>().isTrigger == true)
+            if (npcGameObject.GetComponent<ChoiceEvent>().isTrigger == true)
             {
                 npcGameObject.GetComponent<ChoiceEvent>().StartCoroutine();
                 isChoice2 = true;
