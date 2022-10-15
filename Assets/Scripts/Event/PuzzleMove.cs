@@ -6,6 +6,10 @@ public class PuzzleMove : MonoBehaviour
 {
     [SerializeField] private GameObject[] books;
     [SerializeField] private GameObject[] piece;
+    [SerializeField] private GameObject fade;
+    [SerializeField] private GameObject fade2;
+    [SerializeField] private GameObject npc_idle_obj2;
+    [SerializeField] private GameObject npc_idle_obj;
     [SerializeField] private Table table;
     [SerializeField] TestChat testChat;
     private int count;
@@ -30,7 +34,11 @@ public class PuzzleMove : MonoBehaviour
                 table.rigid.mass = 1;
                 table.sketchbook.SetActive(false);
 
-                testChat.ImageUpdate();
+                //testChat.ImageUpdate();
+                npc_idle_obj.SetActive(false);
+                npc_idle_obj2.SetActive(true);
+                fade.SetActive(true);
+                fade2.SetActive(true);
             }
         }
         

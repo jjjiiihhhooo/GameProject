@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3518254617647497039
 Transform:
   m_ObjectHideFlags: 0
@@ -41,7 +41,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3518254617647497043}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -98,9 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7112bb4c29c3b4e88885ad70f647ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1517170844041911015, guid: fa02a029f32e07f409b03136e9663080, type: 3}
-  mapTransform: {fileID: 8172978351329983026, guid: bc36e7817b48ea64da2fc92cb776fdad, type: 3}
-  fade: {fileID: 6704923989237419815, guid: a28e2bf8e11a1f14d81c902c7989652c, type: 3}
+  player: {fileID: 0}
+  mapTransform: {fileID: 0}
+  fade: {fileID: 0}
+  mainCamera: {fileID: 0}
 --- !u!61 &3518254617647497040
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -114,7 +115,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.08445382, y: 0.28955626}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -125,5 +126,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.1689076, y: 0.517406}
   m_EdgeRadius: 0

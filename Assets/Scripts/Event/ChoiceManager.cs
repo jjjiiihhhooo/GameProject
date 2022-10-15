@@ -189,7 +189,7 @@ public class ChoiceManager : MonoBehaviour
                 }
             }
         }
-        else if (isChoice == true && Input.GetKeyDown(KeyCode.Space)) // 선택창 실행
+        else if (isChoice && Input.GetKeyDown(KeyCode.Space)) // 선택창 실행
         {
             if (npcGameObject.GetComponent<ChoiceEvent>().isTrigger == true)
             {

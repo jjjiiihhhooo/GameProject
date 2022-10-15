@@ -8,6 +8,8 @@ public class Fade : MonoBehaviour
 {
     public Image image;
     [SerializeField] private float fadeCheck = 1;
+    [SerializeField] private float fadeSecond;
+    [SerializeField] private float fadeCount;
 
     private void OnEnable()
     {
@@ -18,12 +20,38 @@ public class Fade : MonoBehaviour
     private IEnumerator FadeINOUT()
     {
 
-        while(fadeCheck > 0)
+        if(fadeCount > 0)
         {
-            fadeCheck -= 0.01f;
-            yield return new WaitForSeconds(0.01f);
-            image.color = new Color(0, 0, 0, fadeCheck);
+            while (fadeCheck > 0)
+            {
+                fadeCheck -= 0.01f;
+                yield return new WaitForSeconds(fadeSecond);
+                image.color = new Color(0, 0, 0, fadeCheck);
+            }
+            while (fadeCheck < 1)
+            {
+                fadeCheck += 0.01f;
+                yield return new WaitForSeconds(fadeSecond);
+                image.color = new Color(0, 0, 0, fadeCheck);
+            }
+            while(fadeCheck > 0)
+            {
+                fadeCheck -= 0.01f;
+                yield return new WaitForSeconds(fadeSecond);
+                image.color = new Color(0, 0, 0, fadeCheck);
+            }
         }
+        else
+        {
+            while(fadeCheck > 0)
+            {
+                fadeCheck -= 0.01f;
+                yield return new WaitForSeconds(fadeSecond);
+                image.color = new Color(0, 0, 0, fadeCheck);
+            }
+        }
+            
+        
         FadeReset();
     }
 

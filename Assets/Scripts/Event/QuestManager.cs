@@ -8,6 +8,7 @@ public class QuestManager : MonoBehaviour
 {
     [SerializeField] private string questItem;
     [SerializeField] private Table table;
+    [SerializeField] GameObject field_book;
     [SerializeField] private Sprite qusetImage;
     [SerializeField] private QuestInventory theQuestInventory;
 
@@ -21,6 +22,7 @@ public class QuestManager : MonoBehaviour
         if(table.pieceCount >=4)
         {
             table.AcitveBook();
+            field_book.SetActive(false);
         }
     }
 

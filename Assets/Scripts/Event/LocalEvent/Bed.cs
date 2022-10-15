@@ -1,38 +1,80 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bed : MonoBehaviour
 {
+    public bool isBed;
+    [SerializeField] private bool isBed2;
+    [SerializeField] private bool isSleep = false;
+    [SerializeField] private int check;
     [SerializeField] private GameObject player;
-    [SerializeField] private Transform bed;
-    [SerializeField] private Transform two;
-    [SerializeField] private GameObject fadeout;
-    private ChoiceEvent theChoiceEvent;
-    private PlayerMove thePlayerMove;
+    [SerializeField] private GameObject bed_box;
+    [SerializeField] private GameObject bed_box2;
+    [SerializeField] private Transform room_transform;
+    private TestChat chat;
+    public Rigidbody2D rigid;
+    public BoxCollider2D box;
+    
 
-    void Start()
+    private void Awake()
     {
-        theChoiceEvent = GetComponent<ChoiceEvent>();
-        thePlayerMove = FindObjectOfType<PlayerMove>();
+        chat = GetComponent<TestChat>();
     }
-    void Update()
-    {
-        if (theChoiceEvent.goEvent == true)
-        {
-            theChoiceEvent.goEvent = false;
-            player.transform.position = bed.position;
-            thePlayerMove.SetIsMove(false);
-            fadeout.SetActive(true);
 
-            StartCoroutine(WakeUp());
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            isSleep = true;
+        }
+    }
+    
+    private void Update()
+    {
+        if(this.isBed && Input.GetKeyDown(KeyCode.Space))
+        {
+            if(check == 1)
+            {
+                player.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                isBed = false;
+                player.GetComponent<PlayerMove>().isMove = true;
+                chat.isTarget = false;
+                player.transform.position = room_transform.position;
+            }
+        }
+
+    }
+
+    public void BedTransform()
+    {
+        isBed = true;
+        isBed2 = true;
+        rigid.mass = 1000;
+        box.isTrigger = true;
+        player.transform.position = new Vector2(-5.7f, -3.5f);
+        player.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
+        player.GetComponent<PlayerMove>().isMove = false;
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            if(check == 1)
+            {
+                isBed = false;
+                box.isTrigger = false;
+                bed_box.GetComponent<ChoiceEvent>().isTrigger = true;
+            }
+            else if(check == 2)
+            {
+                isBed = false;
+            }
         }
     }
 
-    IEnumerator WakeUp()
-    {
-        yield return new WaitUntil(() => fadeout.activeSelf == false);
-        player.transform.position = two.position;
-        thePlayerMove.SetIsMove(true);
-    }
+    
+   
 }

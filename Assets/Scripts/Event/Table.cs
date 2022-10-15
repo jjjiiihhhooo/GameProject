@@ -10,6 +10,8 @@ public class Table : MonoBehaviour
     public GameObject sketchbook;
     [SerializeField] private BoxCollider2D box;
     [SerializeField] private GameObject trigger;
+    [SerializeField] private GameObject bed;
+    [SerializeField] private TestChat npc2_testChat;
     public Rigidbody2D rigid;
 
     private void Start()
@@ -24,7 +26,9 @@ public class Table : MonoBehaviour
         {
             isTable = true;
             box.isTrigger = true;
-            trigger.GetComponent<TestChat>().isTarget = true;
+            npc2_testChat.isTarget = true;
+            player.GetComponent<PlayerMove>().BedActive();
+            bed.SetActive(true);
         }
     }
 

@@ -9,9 +9,10 @@ public class PlayerMove : MoveManager
     [SerializeField] private float vertical;
     [SerializeField] private float horizontal;
     [SerializeField] private float runSpeed;
-    [SerializeField] private bool isMove = true;
+    public bool isMove = true;
 
     [SerializeField] private TestChat theTestChat;
+    [SerializeField] private Bed bed;
     private ChatManager theChatManager;
     private ChoiceManager theChoiceManager;
 
@@ -20,6 +21,12 @@ public class PlayerMove : MoveManager
         animator = GetComponent<Animator>();
         theChatManager = FindObjectOfType<ChatManager>();
         theChoiceManager = FindObjectOfType<ChoiceManager>();
+        bed.BedTransform();
+    }
+
+    public void BedActive()
+    {
+        bed.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -33,7 +40,6 @@ public class PlayerMove : MoveManager
             }
         }
     }
-
     private IEnumerator MoveCoroutine()
     {
         while(Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
