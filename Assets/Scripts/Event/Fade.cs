@@ -10,6 +10,9 @@ public class Fade : MonoBehaviour
     [SerializeField] private float fadeCheck = 1;
     [SerializeField] private float fadeSecond;
     [SerializeField] private float fadeCount;
+    [SerializeField] private float color_r;
+    [SerializeField] private float color_g;
+    [SerializeField] private float color_b;
 
     private void OnEnable()
     {
@@ -26,19 +29,19 @@ public class Fade : MonoBehaviour
             {
                 fadeCheck -= 0.01f;
                 yield return new WaitForSeconds(fadeSecond);
-                image.color = new Color(0, 0, 0, fadeCheck);
+                image.color = new Color(color_r, color_g, color_b, fadeCheck);
             }
             while (fadeCheck < 1)
             {
                 fadeCheck += 0.01f;
                 yield return new WaitForSeconds(fadeSecond);
-                image.color = new Color(0, 0, 0, fadeCheck);
+                image.color = new Color(color_r, color_g, color_b, fadeCheck);
             }
             while(fadeCheck > 0)
             {
                 fadeCheck -= 0.01f;
                 yield return new WaitForSeconds(fadeSecond);
-                image.color = new Color(0, 0, 0, fadeCheck);
+                image.color = new Color(color_r, color_g, color_b, fadeCheck);
             }
         }
         else
@@ -47,7 +50,7 @@ public class Fade : MonoBehaviour
             {
                 fadeCheck -= 0.01f;
                 yield return new WaitForSeconds(fadeSecond);
-                image.color = new Color(0, 0, 0, fadeCheck);
+                image.color = new Color(color_r, color_g, color_b, fadeCheck);
             }
         }
             

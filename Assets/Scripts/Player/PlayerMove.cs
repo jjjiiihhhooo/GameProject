@@ -10,8 +10,6 @@ public class PlayerMove : MoveManager
     [SerializeField] private float horizontal;
     [SerializeField] private float runSpeed;
     public bool isMove = true;
-
-    [SerializeField] private TestChat theTestChat;
     [SerializeField] private Bed bed;
     private ChatManager theChatManager;
     private ChoiceManager theChoiceManager;

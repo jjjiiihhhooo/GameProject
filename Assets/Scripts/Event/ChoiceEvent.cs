@@ -17,6 +17,8 @@ public class ChoiceEvent : MonoBehaviour
     [SerializeField] private GameObject start_fade;
     [SerializeField] private GameObject npc;
     [SerializeField] private GameObject npc2;
+    [SerializeField] private GameObject test;
+    [SerializeField] private TestChat testChat;
     [SerializeField] private Sprite quest_image;
     [SerializeField] private string quest_item;
     [SerializeField] private int check = 0; //0이면 맵 이동 하는 NPC , 1이면 상호작용 아이템(액자, 침대, 등등)
@@ -31,6 +33,8 @@ public class ChoiceEvent : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (test != null)
+            isTrigger = true;
         theChoiceManager.isChoice = false;
         StopCoroutine(ACoroutine());
     }
@@ -79,6 +83,15 @@ public class ChoiceEvent : MonoBehaviour
             npc.GetComponent<NPC>().Active();
             bed.SetActive(false);
             npc2.SetActive(false);
+        }
+        else if(check == 4)
+        {
+            if (quest_image != null)
+            {
+                theQuestManager.ChangeItem(quest_item, quest_image);
+                //testChat.Chat();
+            }
+            this.gameObject.SetActive(false);
         }
     }
 

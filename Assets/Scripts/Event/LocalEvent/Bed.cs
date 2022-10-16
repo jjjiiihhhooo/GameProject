@@ -40,7 +40,8 @@ public class Bed : MonoBehaviour
                 player.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
                 isBed = false;
                 player.GetComponent<PlayerMove>().isMove = true;
-                chat.isTarget = false;
+                //chat.isTarget = false;
+                
                 player.transform.position = room_transform.position;
             }
         }

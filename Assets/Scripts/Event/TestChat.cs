@@ -8,7 +8,7 @@ public class TestChat : MonoBehaviour
     public GameObject npc_image;
     private ChatManager theChatManager;
     public Chat chat;
-
+    public int check;
 
     public bool isTrigger = false;
     public bool isTarget = true;
@@ -22,7 +22,8 @@ public class TestChat : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            isTrigger = true;   
+            if(check <= 0)
+                isTrigger = true;   
         }
     }
 
@@ -52,7 +53,7 @@ public class TestChat : MonoBehaviour
     }
 
 
-    private void Chat()
+    public void Chat()
     {
         theChatManager.ShowChat(chat);
     }

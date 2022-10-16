@@ -25,7 +25,8 @@ public class NPC : MonoBehaviour
         {
             if(testChat.isTarget)
             {
-                potal.SetActive(true);
+                if(potal != null)
+                    potal.SetActive(true);
             }
 
         }
