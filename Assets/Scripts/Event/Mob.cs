@@ -9,6 +9,7 @@ public class Mob : MonoBehaviour
     public int count;
     [SerializeField] private bool isStart;
     [SerializeField] private TestChat testChat;
+    [SerializeField] private GameObject blackMob;
 
     public void Bool()
     {
@@ -37,13 +38,19 @@ public class Mob : MonoBehaviour
         {
             isTrigger = true;
             other.GetComponent<MobPar>().Chat();
+            Invoke("MobStart", 4f);
         }
             
     }
 
+    private void MobStart()
+    {
+        blackMob.SetActive(true);
+    }
+
     private void Moving()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y - speed * Time.deltaTime, transform.position.z);
+        transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, transform.position.z);
     }
         
 }

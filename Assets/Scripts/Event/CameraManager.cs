@@ -27,4 +27,9 @@ public class CameraManager : MonoBehaviour
     {
         isCamera = true;
     }
+
+    public void Transform(Transform _transform)
+    {
+        this.gameObject.transform.position = new Vector3(_transform.position.x, _transform.position.y, this.transform.position.z);
+    }
 }

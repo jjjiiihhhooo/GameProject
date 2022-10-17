@@ -28,7 +28,7 @@ public class Table : MonoBehaviour
             box.isTrigger = true;
             npc2_testChat.isTarget = true;
             player.GetComponent<PlayerMove>().BedActive();
-            bed.SetActive(true);
+            //bed.SetActive(true);
         }
     }
 
