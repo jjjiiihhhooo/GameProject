@@ -32,7 +32,10 @@ public class ChatManager : MonoBehaviour
     private List<Sprite> listSprite;
     private List<Sprite> listChatWindows;
 
-    [SerializeField] private int count;
+    [SerializeField] private int[] sprite_count;
+    [SerializeField] private TestChat testChat;
+
+    public int count;
 
     public Animator animSprite;
     public Animator animChatWindow;
@@ -47,18 +50,28 @@ public class ChatManager : MonoBehaviour
         listChatWindows = new List<Sprite>();
     }
 
-    public void ShowChat(Chat chat)
+    public void ShowChat(Chat chat, int[] _count)
     {
         for(int i = 0; i < chat.sentences.Length; i++)
         {
             listSentences.Add(chat.sentences[i]);
             listSprite.Add(chat.sprites[i]);
             listChatWindows.Add(chat.chatWindows[i]);
+            sprite_count[i] = _count[i];
         }
-
-        animSprite.SetBool("Appear", true);
-        animChatWindow.SetBool("Appear", true);
-        StartCoroutine(ChatOpenCoroutine());
+        if (sprite_count[0] != 0)
+        {
+            animSprite.SetBool("Appear_jiyeon", true);
+            animChatWindow.SetBool("Appear", true);
+            StartCoroutine(ChatOpenCoroutine());
+        }
+        else
+        {
+            animSprite.SetBool("Appear", true);
+            animChatWindow.SetBool("Appear", true);
+            StartCoroutine(ChatOpenCoroutine());
+        }
+        
     }
 
     public void ExitChat()
@@ -69,7 +82,9 @@ public class ChatManager : MonoBehaviour
         listSprite.Clear();
         listChatWindows.Clear();
         animSprite.SetBool("Appear", false);
+        animSprite.SetBool("Appear_jiyeon", false);
         animSprite.SetBool("Change", true);
+        animSprite.SetBool("Change_jiyeon", true);
         animChatWindow.SetBool("Appear", false);
     }
 
@@ -79,22 +94,57 @@ public class ChatManager : MonoBehaviour
         {
             if (listChatWindows[count] != listChatWindows[count - 1])
             {
-                animSprite.SetBool("Change", true);
-                animChatWindow.SetBool("Appear", false);
-                yield return new WaitForSeconds(0.2f);
-                rendererChatWindow.GetComponent<SpriteRenderer>().sprite = listChatWindows[count];
-                rendererSprite.GetComponent<SpriteRenderer>().sprite = listSprite[count];
-                animChatWindow.SetBool("Appear", true);
-                animSprite.SetBool("Change", false);
+                if (sprite_count[count] != 0)
+                {
+                    animSprite.SetBool("Change", true);
+                    animSprite.SetBool("Appear", false);
+                    animSprite.SetBool("Appear_jiyeon", true);
+                    animSprite.SetBool("Change_jiyeon", true);
+                    animChatWindow.SetBool("Appear", false);
+                    yield return new WaitForSeconds(0.2f);
+                    rendererChatWindow.GetComponent<SpriteRenderer>().sprite = listChatWindows[count];
+                    rendererSprite.GetComponent<SpriteRenderer>().sprite = listSprite[count];
+                    animChatWindow.SetBool("Appear", true);
+                    animSprite.SetBool("Change_jiyeon", false);
+                }
+                else
+                {
+                    animSprite.SetBool("Change_jiyeon", true);
+                    animSprite.SetBool("Appear_jiyeon", false);
+                    animSprite.SetBool("Appear", true);
+                    animSprite.SetBool("Change", true);
+                    animChatWindow.SetBool("Appear", false);
+                    yield return new WaitForSeconds(0.2f);
+                    rendererChatWindow.GetComponent<SpriteRenderer>().sprite = listChatWindows[count];
+                    rendererSprite.GetComponent<SpriteRenderer>().sprite = listSprite[count];
+                    animChatWindow.SetBool("Appear", true);
+                    animSprite.SetBool("Change", false);
+                }
             }
             else
             {
                 if (listSprite[count] != listSprite[count - 1])
                 {
-                    animSprite.SetBool("Change", true);
-                    yield return new WaitForSeconds(0.1f);
-                    rendererSprite.GetComponent<SpriteRenderer>().sprite = listSprite[count];
-                    animSprite.SetBool("Change", false);
+                    if (sprite_count[count] != 0)
+                    {
+                        animSprite.SetBool("Change", true);
+                        animSprite.SetBool("Appear", false);
+                        animSprite.SetBool("Appear_jiyeon", true);
+                        animSprite.SetBool("Change_jiyeon", true);
+                        yield return new WaitForSeconds(0.1f);
+                        rendererSprite.GetComponent<SpriteRenderer>().sprite = listSprite[count];
+                        animSprite.SetBool("Change_jiyeon", false);
+                    }
+                    else
+                    {
+                        animSprite.SetBool("Change_jiyeon", true);
+                        animSprite.SetBool("Appear_jiyeon", false);
+                        animSprite.SetBool("Appear", true);
+                        animSprite.SetBool("Change", true);
+                        yield return new WaitForSeconds(0.1f);
+                        rendererSprite.GetComponent<SpriteRenderer>().sprite = listSprite[count];
+                        animSprite.SetBool("Change", false);
+                    }
                 }
                 else
                 {
@@ -127,6 +177,10 @@ public class ChatManager : MonoBehaviour
 
             if(count == listSentences.Count)
             {
+                if(count > 13)
+                {
+                    testChat.MapChange();
+                }
                 StopAllCoroutines();
                 ExitChat();
                 isChat2 = false;

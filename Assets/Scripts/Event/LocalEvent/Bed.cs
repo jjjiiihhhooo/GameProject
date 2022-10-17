@@ -1,38 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bed : MonoBehaviour
 {
+    public bool isBed;
+    [SerializeField] private int check;
     [SerializeField] private GameObject player;
-    [SerializeField] private Transform bed;
-    [SerializeField] private Transform two;
-    [SerializeField] private GameObject fadeout;
-    private ChoiceEvent theChoiceEvent;
-    private PlayerMove thePlayerMove;
-
-    void Start()
+    [SerializeField] private Transform room_transform;
+    
+    private void Update()
     {
-        theChoiceEvent = GetComponent<ChoiceEvent>();
-        thePlayerMove = FindObjectOfType<PlayerMove>();
-    }
-    void Update()
-    {
-        if (theChoiceEvent.goEvent == true)
+        if(this.isBed && Input.GetKeyDown(KeyCode.Space))
         {
-            theChoiceEvent.goEvent = false;
-            player.transform.position = bed.position;
-            thePlayerMove.SetIsMove(false);
-            fadeout.SetActive(true);
-
-            StartCoroutine(WakeUp());
+            if(check == 1)
+            {
+                player.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                isBed = false;
+                player.GetComponent<PlayerMove>().isMove = true;
+                player.transform.position = room_transform.position;
+            }
         }
+
     }
 
-    IEnumerator WakeUp()
+    public void BedTransform()
     {
-        yield return new WaitUntil(() => fadeout.activeSelf == false);
-        player.transform.position = two.position;
-        thePlayerMove.SetIsMove(true);
+        isBed = true;
+        player.transform.position = room_transform.position;
+        player.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
+        player.GetComponent<PlayerMove>().isMove = false;
     }
+
+    
+   
 }

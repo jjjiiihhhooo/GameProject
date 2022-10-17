@@ -8,6 +8,7 @@ public class Potal : MonoBehaviour
     [SerializeField] private GameObject player; //이동 할 캐릭터
     [SerializeField] private Transform mapTransform;
     [SerializeField] private GameObject fade;
+    [SerializeField] private GameObject mainCamera;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,6 +16,7 @@ public class Potal : MonoBehaviour
         {
             player.transform.position = mapTransform.position;
             fade.SetActive(true);
+            mainCamera.GetComponent<CameraManager>().Bool();
         }
     }
 }

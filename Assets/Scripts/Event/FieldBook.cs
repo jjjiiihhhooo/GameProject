@@ -23,7 +23,7 @@ public class FieldBook : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            puzzle_title.SetActive(true);
+            puzzle_title.SetActive(isTrigger);
             isTrigger = false;
         }
     }

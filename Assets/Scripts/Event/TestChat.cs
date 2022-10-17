@@ -8,10 +8,17 @@ public class TestChat : MonoBehaviour
     public GameObject npc_image;
     private ChatManager theChatManager;
     public Chat chat;
-
+    public int check;
+    public int[] animCount;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject fade;
+    [SerializeField] private Transform mapTransform;
+    [SerializeField] private Transform mapTransform2;
+    [SerializeField] private CameraManager main_camera;
 
     public bool isTrigger = false;
     public bool isTarget = true;
+    public bool isStart;
 
     void Start()
     {
@@ -22,7 +29,8 @@ public class TestChat : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            isTrigger = true;   
+            if(check <= 0)
+                isTrigger = true;   
         }
     }
 
@@ -52,8 +60,23 @@ public class TestChat : MonoBehaviour
     }
 
 
-    private void Chat()
+    public void Chat()
     {
-        theChatManager.ShowChat(chat);
+        theChatManager.ShowChat(chat, animCount);
+    }
+
+    public void MapChange()
+    {
+        fade.SetActive(true);
+        main_camera.Transform(mapTransform);
+        Invoke("MapChange_2", 1.5f);
+
+    }
+
+    private void MapChange_2()
+    {
+        fade.SetActive(true);
+        player.transform.position = mapTransform2.position;
+        main_camera.Bool();
     }
 }
