@@ -11,36 +11,58 @@ public class Mob : MonoBehaviour
     [SerializeField] private TestChat testChat;
     [SerializeField] private GameObject blackMob;
 
+    [SerializeField] GameObject player; ///
+    bool spaceDown;
+    bool mobReady = false;
+    int spaceCount = 0;
+
+    public void Count() // 각 지연과의 대화로 호출
+    {
+        count++;
+    }
     public void Bool()
     {
         isStart = true;
+        testChat.Chat(); // ??아 집에 가자.
         isTrigger = false;
-        testChat.isTrigger = true;
     }
 
-    public void Count()
+    IEnumerator Moving()
     {
-        count++;
+        transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, transform.position.z);
+        yield return null;
     }
 
     private void Update()
     {
-        if (!isStart && count > 3)
+        if (!isStart && count > 3) // 모든 대화를 마치면
+        {
+            player.GetComponent<PlayerMove>().inEvent = true;
             Bool();
-
+        }
         if (!isTrigger)
-            Invoke("Moving", 3f);
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+                spaceDown = true;
+
+            if (spaceDown) // ??아 집에 가자. 에서 space를 누르면
+                StartCoroutine(Moving());
+        }
+        if (mobReady && Input.GetKeyDown(KeyCode.Space))
+            spaceCount++;
+        if (spaceCount >= 4)
+            MobStart();
     }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "MobPar")
         {
-            isTrigger = true;
-            other.GetComponent<MobPar>().Chat();
-            Invoke("MobStart", 4f);
+            isTrigger = true; // 해당 오브젝트 움직임을 멈춤
+            mobReady = true;
+            other.GetComponent<MobPar>().Chat(); // 아니...부러워서
         }
-            
     }
 
     private void MobStart()
@@ -48,9 +70,5 @@ public class Mob : MonoBehaviour
         blackMob.SetActive(true);
     }
 
-    private void Moving()
-    {
-        transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, transform.position.z);
-    }
-        
+
 }

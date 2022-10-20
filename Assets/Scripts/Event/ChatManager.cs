@@ -90,7 +90,7 @@ public class ChatManager : MonoBehaviour
 
     IEnumerator ChatOpenCoroutine()
     {
-        if(count > 0)
+        if (count > 0)
         {
             if (listChatWindows[count] != listChatWindows[count - 1])
             {
@@ -165,7 +165,7 @@ public class ChatManager : MonoBehaviour
             text.text += listSentences[count][i];
             yield return new WaitForSeconds(0.01f);
         }
-        isChat2 = true;
+        isChat2 = true; //위로 올리면 오류 생김.
     }
 
     private void Update()

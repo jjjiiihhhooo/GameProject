@@ -9,6 +9,9 @@ public class PotalTwo : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject mob;
     [SerializeField] private Transform mapTransform;
+
+    [SerializeField] private GameObject chase;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Player")
@@ -17,6 +20,8 @@ public class PotalTwo : MonoBehaviour
             fade.SetActive(true);
             player.transform.position = mapTransform.position;
             mob.SetActive(false);
+
+            chase.GetComponent<ChaseScene>().isChase = true;
         }
     }
 }

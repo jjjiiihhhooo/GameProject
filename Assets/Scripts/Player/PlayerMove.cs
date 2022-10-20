@@ -14,12 +14,18 @@ public class PlayerMove : MoveManager
     private ChatManager theChatManager;
     private ChoiceManager theChoiceManager;
 
+    private ChaseScene chaseScene; ///
+    public bool inEvent = false; ///
+    private bool canMove; ///
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
         theChatManager = FindObjectOfType<ChatManager>();
         theChoiceManager = FindObjectOfType<ChoiceManager>();
         bed.BedTransform();
+
+        chaseScene = FindObjectOfType<ChaseScene>(); ///
     }
 
     public void BedActive()
@@ -29,7 +35,14 @@ public class PlayerMove : MoveManager
 
     private void Update()
     {
-        if(isMove && !theChatManager.isChat2 && !theChoiceManager.isChoice2)
+        canMove = !theChatManager.isChat2 && !theChoiceManager.isChoice2 && !chaseScene.isChase && !inEvent ? true : false;
+        Debug.Log(canMove);
+        //Debug.Log(theChatManager.isChat2);
+        //Debug.Log(theChoiceManager.isChoice2);
+        //Debug.Log(chaseScene.isChase);
+        //Debug.Log(inEvent);
+
+        if (isMove && canMove) ///
         {
             if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
             {
@@ -40,9 +53,8 @@ public class PlayerMove : MoveManager
     }
     private IEnumerator MoveCoroutine()
     {
-        while(Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
+        while((Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0 ) && canMove)
         {
-            
             vertical = Input.GetAxisRaw("Vertical");
             horizontal = Input.GetAxisRaw("Horizontal");
 
@@ -75,8 +87,8 @@ public class PlayerMove : MoveManager
         isMove = true;
     }
 
-    public void SetIsMove(bool _bool)
+    public bool GetCanMove()
     {
-        isMove = _bool;
+        return canMove;
     }
 }
