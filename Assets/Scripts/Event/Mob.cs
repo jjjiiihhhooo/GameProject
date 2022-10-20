@@ -51,7 +51,10 @@ public class Mob : MonoBehaviour
         if (mobReady && Input.GetKeyDown(KeyCode.Space))
             spaceCount++;
         if (spaceCount >= 4)
+        {
             MobStart();
+            player.GetComponent<PlayerMove>().inEvent = false;
+        }
     }
 
 
