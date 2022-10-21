@@ -7,7 +7,7 @@ public class CameraManager : MonoBehaviour
     public GameObject target_obj;
     public float speed;
     private Vector3 targetPosition;
-    private bool isCamera = false;
+    public bool isCamera = false;
 
     void Update()
     {

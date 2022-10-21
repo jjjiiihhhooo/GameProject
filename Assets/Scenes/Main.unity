@@ -792,14 +792,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlotTitle
       objectReference: {fileID: 0}
-    - target: {fileID: 2953794705211436585, guid: ec0ef1d59d6cbd94fb4f4fd2c97cbd8c, type: 3}
-      propertyPath: image
-      value: 
-      objectReference: {fileID: 1844932804}
-    - target: {fileID: 5664107345733144124, guid: ec0ef1d59d6cbd94fb4f4fd2c97cbd8c, type: 3}
-      propertyPath: m_Color.a
-      value: 0.3529412
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec0ef1d59d6cbd94fb4f4fd2c97cbd8c, type: 3}
 --- !u!224 &156048646 stripped
@@ -4541,6 +4533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target_obj: {fileID: 1180734290}
   speed: 10
+  isCamera: 0
 --- !u!1 &532211877
 GameObject:
   m_ObjectHideFlags: 0
@@ -5680,6 +5673,7 @@ GameObject:
   m_Component:
   - component: {fileID: 629555714}
   - component: {fileID: 629555715}
+  - component: {fileID: 629555716}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -5724,6 +5718,49 @@ MonoBehaviour:
   etcInventory: {fileID: 1112606540}
   questInventory: {fileID: 789633986}
   isInventory: 0
+--- !u!114 &629555716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629555713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4055cade7fc3d04194b073e52abdaba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slot_obj:
+  - {fileID: 790344401}
+  - {fileID: 1148017564}
+  - {fileID: 1200327096}
+  - {fileID: 436737944}
+  - {fileID: 1134282785}
+  - {fileID: 97004715}
+  - {fileID: 746448812}
+  - {fileID: 166894670}
+  - {fileID: 408627408}
+  theQuestManager: {fileID: 1990688022}
+  item:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  itemList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &635490149
 GameObject:
   m_ObjectHideFlags: 0
@@ -6806,7 +6843,6 @@ GameObject:
   - component: {fileID: 789633987}
   - component: {fileID: 789633989}
   - component: {fileID: 789633988}
-  - component: {fileID: 789633990}
   m_Layer: 5
   m_Name: QuestInventory
   m_TagString: Untagged
@@ -6873,29 +6909,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789633986}
   m_CullTransparentMesh: 1
---- !u!114 &789633990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789633986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4055cade7fc3d04194b073e52abdaba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slot_obj:
-  - {fileID: 790344401}
-  - {fileID: 1148017564}
-  - {fileID: 1200327096}
-  - {fileID: 436737944}
-  - {fileID: 1134282785}
-  - {fileID: 97004715}
-  - {fileID: 746448812}
-  - {fileID: 166894670}
-  - {fileID: 408627408}
-  theQuestManager: {fileID: 1990688022}
 --- !u!1 &790344401 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2152706529028027247, guid: ec0ef1d59d6cbd94fb4f4fd2c97cbd8c, type: 3}
@@ -17931,17 +17944,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841275500}
   m_CullTransparentMesh: 1
---- !u!114 &1844932804 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 180329105979626530, guid: ec0ef1d59d6cbd94fb4f4fd2c97cbd8c, type: 3}
-  m_PrefabInstance: {fileID: 156048645}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1861020493
 GameObject:
   m_ObjectHideFlags: 0
@@ -18037,6 +18039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBed: 0
+  isActive: 1
   check: 1
   player: {fileID: 1180734290}
   room_transform: {fileID: 1442675019}
@@ -19702,7 +19705,7 @@ MonoBehaviour:
   table: {fileID: 1868945977}
   field_book: {fileID: 2136285230}
   qusetImage: {fileID: 0}
-  theQuestInventory: {fileID: 789633990}
+  theQuestInventory: {fileID: 629555716}
 --- !u!224 &2002382415 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 956774702520656514, guid: ec0ef1d59d6cbd94fb4f4fd2c97cbd8c, type: 3}
@@ -21128,6 +21131,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 458de88479fb9f843981fd0da215fb1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  saveData:
+    transform_X: 0
+    transform_Y: 0
+    transform_Z: 0
+    active: 0
+    camera: 0
+    item_data:
+    - item_image: {fileID: 0}
+      item_text: {fileID: 0}
+      ex: {fileID: 0}
+    - item_image: {fileID: 0}
+      item_text: {fileID: 0}
+      ex: {fileID: 0}
+    - item_image: {fileID: 0}
+      item_text: {fileID: 0}
+      ex: {fileID: 0}
+    - item_image: {fileID: 0}
+      item_text: {fileID: 0}
+      ex: {fileID: 0}
+    - item_image: {fileID: 0}
+      item_text: {fileID: 0}
+      ex: {fileID: 0}
+    - item_image: {fileID: 0}
+      item_text: {fileID: 0}
+      ex: {fileID: 0}
+    - item_image: {fileID: 0}
+      item_text: {fileID: 0}
+      ex: {fileID: 0}
+    - item_image: {fileID: 0}
+      item_text: {fileID: 0}
+      ex: {fileID: 0}
+    - item_image: {fileID: 0}
+      item_text: {fileID: 0}
+      ex: {fileID: 0}
   save_obj: {fileID: 877482056}
 --- !u!1 &2130191715
 GameObject:

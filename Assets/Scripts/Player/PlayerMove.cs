@@ -13,12 +13,16 @@ public class PlayerMove : MoveManager
     [SerializeField] private Bed bed;
     private ChatManager theChatManager;
     private ChoiceManager theChoiceManager;
+    private SaveManager saveManager;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         theChatManager = FindObjectOfType<ChatManager>();
         theChoiceManager = FindObjectOfType<ChoiceManager>();
+        saveManager = FindObjectOfType<SaveManager>();
+
+        saveManager.IsLoad();
         bed.BedTransform();
     }
 
