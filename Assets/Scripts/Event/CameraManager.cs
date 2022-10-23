@@ -8,6 +8,11 @@ public class CameraManager : MonoBehaviour
     public float speed;
     private Vector3 targetPosition;
     private bool isCamera = false;
+    private ChaseScene chaseScene;
+    private void Start()
+    {
+        chaseScene = FindObjectOfType<ChaseScene>();
+    }
 
     void Update()
     {
@@ -17,6 +22,9 @@ public class CameraManager : MonoBehaviour
             {
                 targetPosition.Set(target_obj.transform.position.x, target_obj.transform.position.y, this.transform.position.z);
 
+                if (chaseScene.isChase == true)
+                    targetPosition.y += 2;
+                
                 this.transform.position = targetPosition;
             }
         }

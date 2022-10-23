@@ -72,6 +72,4 @@ public class Mob : MonoBehaviour
     {
         blackMob.SetActive(true);
     }
-
-
 }

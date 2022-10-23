@@ -35,8 +35,9 @@ public class PlayerMove : MoveManager
 
     private void Update()
     {
-        canMove = !theChatManager.isChat2 && !theChoiceManager.isChoice2 && !chaseScene.isChase && !inEvent ? true : false;
-        Debug.Log(canMove);
+        canMove = !theChatManager.isChat2 && !theChoiceManager.isChoice2 && !chaseScene.isChase && !inEvent ? true : false; ///
+        
+        //Debug.Log(canMove);
         //Debug.Log(theChatManager.isChat2);
         //Debug.Log(theChoiceManager.isChoice2);
         //Debug.Log(chaseScene.isChase);
@@ -53,7 +54,7 @@ public class PlayerMove : MoveManager
     }
     private IEnumerator MoveCoroutine()
     {
-        while((Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0 ) && canMove)
+        while((Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0 ) && canMove) ///
         {
             vertical = Input.GetAxisRaw("Vertical");
             horizontal = Input.GetAxisRaw("Horizontal");
