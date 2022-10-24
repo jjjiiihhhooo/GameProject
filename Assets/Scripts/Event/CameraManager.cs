@@ -9,6 +9,12 @@ public class CameraManager : MonoBehaviour
     private Vector3 targetPosition;
     public bool isCamera = false;
 
+    private void Awake()
+    {
+        this.transform.position = new Vector3(0, 0, -1);
+        isCamera = false; 
+    }
+
     void Update()
     {
         if(isCamera)

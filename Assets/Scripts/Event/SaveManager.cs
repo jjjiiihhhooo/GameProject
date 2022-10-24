@@ -57,7 +57,7 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    private void IsSave()
+    public void IsSave()
     {
         playerMove = FindObjectOfType<PlayerMove>();
         questInven = FindObjectOfType<QuestInventory>();

@@ -22,7 +22,7 @@ public class PlayerMove : MoveManager
         theChoiceManager = FindObjectOfType<ChoiceManager>();
         saveManager = FindObjectOfType<SaveManager>();
 
-        saveManager.IsLoad();
+        //saveManager.IsLoad();
         bed.BedTransform();
     }
 
