@@ -23,7 +23,8 @@ public class PlayerMove : MoveManager
         saveManager = FindObjectOfType<SaveManager>();
 
         //saveManager.IsLoad();
-        bed.BedTransform();
+        if(bed != null)
+            bed.BedTransform();
     }
 
     public void BedActive()
@@ -31,9 +32,9 @@ public class PlayerMove : MoveManager
         bed.gameObject.SetActive(false);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if(isMove && !theChatManager.isChat2 && !theChoiceManager.isChoice2)
+        if (isMove && !theChatManager.isChat2 && !theChoiceManager.isChoice2)
         {
             if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
             {
@@ -42,6 +43,7 @@ public class PlayerMove : MoveManager
             }
         }
     }
+
     private IEnumerator MoveCoroutine()
     {
         while(Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)

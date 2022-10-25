@@ -28,7 +28,7 @@ public class Intro : MonoBehaviour
         }
         else if(isStart)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("Title");
         }
     }
 

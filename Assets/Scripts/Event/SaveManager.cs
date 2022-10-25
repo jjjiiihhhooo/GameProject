@@ -95,7 +95,9 @@ public class SaveManager : MonoBehaviour
 
         cameraManager.isCamera = true;
         bed.isActive = saveData.active;
-
+        playerMove.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        playerMove.isMove = true;
+        bed.isBed = false;
         vector.Set(saveData.transform_X, saveData.transform_Y, saveData.transform_Z);
         playerMove.transform.position = vector;
         Debug.Log("플레이어 위치를 로드했습니다." + vector);

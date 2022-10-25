@@ -19,7 +19,7 @@ public class Title_ButtonManager : MonoBehaviour
     {
         if(count == 0)
         {
-            SceneManager.LoadScene(1); //새 게임
+            SceneManager.LoadScene("Main"); //새 게임
         }
         else if(count == 1)
         {

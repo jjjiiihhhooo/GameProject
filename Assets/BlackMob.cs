@@ -10,7 +10,7 @@ public class BlackMob : MonoBehaviour
     public bool isGo;
     private void Awake()
     {
-        Invoke("IsStart", 1.5f);
+        Invoke("IsStart", 1f);
         sizeSpeed = new Vector3(0.1f, 0.15f, 0);
     }
 
