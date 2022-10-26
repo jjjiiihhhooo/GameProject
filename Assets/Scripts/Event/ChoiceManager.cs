@@ -7,6 +7,7 @@ public class ChoiceManager : MonoBehaviour
 {
     
     public static ChoiceManager instance;
+    public bool isWait;
     private ChoiceEvent theChoiceEvent;
 
     private void Awake()
@@ -70,19 +71,23 @@ public class ChoiceManager : MonoBehaviour
 
     public void ShowChoice(Choice _choice)
     {
-        go.SetActive(true);
-        result = 0;
-
-        question = _choice.question;
-        for(int i = 0; i< _choice.answers.Length; i++)
+        if(!isWait)
         {
-            answerList.Add(_choice.answers[i]);
-            answer_Panel[i].SetActive(true);
-            count = i;
+            isWait = true;
+            go.SetActive(true);
+            result = 0;
+
+            question = _choice.question;
+            for (int i = 0; i < _choice.answers.Length; i++)
+            {
+                answerList.Add(_choice.answers[i]);
+                answer_Panel[i].SetActive(true);
+                count = i;
+            }
+            animator.SetBool("Appear", true);
+            Selection();
+            StartCoroutine(ChoiceCoroutine());
         }
-        animator.SetBool("Appear", true);
-        Selection();
-        StartCoroutine(ChoiceCoroutine());
     }
 
     private IEnumerator ChoiceCoroutine()
@@ -101,7 +106,7 @@ public class ChoiceManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         keyInput = true;
-        
+        isWait = false;
     }
 
     private IEnumerator TypingQuestion()

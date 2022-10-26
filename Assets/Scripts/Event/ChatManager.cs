@@ -8,6 +8,7 @@ public class ChatManager : MonoBehaviour
 {
     public bool isChat = false;
     public bool isChat2 = false;
+    public bool isWait;
 
     public static ChatManager instance;
 
@@ -166,12 +167,14 @@ public class ChatManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
         isChat2 = true;
+        isWait = false;
     }
 
     private void Update()
     {
-        if(isChat2 && Input.GetKeyDown(KeyCode.Space))
+        if(!isWait && isChat2 && Input.GetKeyDown(KeyCode.Space))
         {
+            isWait = true;
             count++;
             text.text = "";
 

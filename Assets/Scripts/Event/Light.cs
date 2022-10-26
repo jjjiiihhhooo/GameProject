@@ -12,27 +12,27 @@ public class Light : MonoBehaviour
 
     private void Update()
     {
-        this.transform.position = Player_obj.transform.position;
+        //this.transform.position = Player_obj.transform.position;
 
-        if(checkPoint == 0)
-        {
-            if (thePlayerMove.vector.x == 1)
-            {
-                this.transform.rotation = Quaternion.Euler(0, 0, 90);
-            }
-            else if (thePlayerMove.vector.x == -1)
-            {
-                this.transform.rotation = Quaternion.Euler(0, 0, -90);
-            }
-            else if (thePlayerMove.vector.y == 1)
-            {
-                this.transform.rotation = Quaternion.Euler(0, 0, 180);
-            }
-            else if (thePlayerMove.vector.y == -1)
-            {
-                this.transform.rotation = Quaternion.Euler(0, 0, 0);
-            }
-        }
+        //if(checkPoint == 0)
+        //{
+        //    if (thePlayerMove.vector.x == 1)
+        //    {
+        //        this.transform.rotation = Quaternion.Euler(0, 0, 90);
+        //    }
+        //    else if (thePlayerMove.vector.x == -1)
+        //    {
+        //        this.transform.rotation = Quaternion.Euler(0, 0, -90);
+        //    }
+        //    else if (thePlayerMove.vector.y == 1)
+        //    {
+        //        this.transform.rotation = Quaternion.Euler(0, 0, 180);
+        //    }
+        //    else if (thePlayerMove.vector.y == -1)
+        //    {
+        //        this.transform.rotation = Quaternion.Euler(0, 0, 0);
+        //    }
+        //}
 
     }
 }

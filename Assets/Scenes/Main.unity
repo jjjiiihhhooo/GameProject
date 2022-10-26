@@ -9414,6 +9414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b362a735bf50dbc4eabaa0b81f136a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isWait: 0
   go: {fileID: 810855737}
   npcGameObject: {fileID: 0}
   question_Text: {fileID: 1545052890}
@@ -20899,6 +20900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isChat: 0
   isChat2: 0
+  isWait: 0
   text: {fileID: 910083899}
   rendererSprite: {fileID: 563030898}
   rendererChatWindow: {fileID: 982304556}
@@ -22068,15 +22070,19 @@ PrefabInstance:
       objectReference: {fileID: 1861020497}
     - target: {fileID: 1517170844041911014, guid: fa02a029f32e07f409b03136e9663080, type: 3}
       propertyPath: speed
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1517170844041911014, guid: fa02a029f32e07f409b03136e9663080, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 1180734298}
     - target: {fileID: 1517170844041911014, guid: fa02a029f32e07f409b03136e9663080, type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517170844041911014, guid: fa02a029f32e07f409b03136e9663080, type: 3}
       propertyPath: walkCheck
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1517170844041911014, guid: fa02a029f32e07f409b03136e9663080, type: 3}
       propertyPath: theTestChat

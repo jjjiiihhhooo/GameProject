@@ -26,4 +26,9 @@ public class Title_ButtonManager : MonoBehaviour
             SceneManager.LoadScene(1); //이어 하기
         }
     }
+
+    public void ExitBtn()
+    {
+        Application.Quit();
+    }
 }
