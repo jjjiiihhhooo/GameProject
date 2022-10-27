@@ -19,6 +19,7 @@ public class TestChat : MonoBehaviour
     public bool isTrigger = false;
     public bool isTarget = true;
     public bool isStart;
+    public bool isQuest;
 
     void Start()
     {
@@ -46,7 +47,14 @@ public class TestChat : MonoBehaviour
     {
         if(isTarget && isTrigger && Input.GetKeyDown(KeyCode.Space))
         {
-            Chat();
+            if(isQuest)
+            {
+                Chat(0.2f);
+            }
+            else
+            {
+                ChatUpdate();
+            }
             isTrigger = false;
         }
     }
@@ -60,7 +68,12 @@ public class TestChat : MonoBehaviour
     }
 
 
-    public void Chat()
+    public void Chat(float _float = 0)
+    {
+        Invoke("ChatUpdate", _float);
+    }
+
+    private void ChatUpdate()
     {
         theChatManager.ShowChat(chat, animCount);
     }

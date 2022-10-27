@@ -21,8 +21,13 @@ public class QuestBox : MonoBehaviour
     {
         if(((choice != null && choice.isTrigger) || choice == null ) && isTest2 && isTest && Input.GetKeyDown(KeyCode.Space))
         {
-            testChat.isTarget = true;
+            Invoke("TargetUpdate", 0.8f);
         }
+    }
+
+    private void TargetUpdate()
+    {
+        testChat.isTarget = true;
     }
 
     private void OnTriggerExit2D(Collider2D other)

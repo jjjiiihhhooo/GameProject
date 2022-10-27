@@ -42,6 +42,7 @@ public class ChoiceManager : MonoBehaviour
     public bool isChoice;
     public bool isChoice2;
     private bool keyInput;
+    private bool isExit;
 
     private int count; //배열 크기
 
@@ -107,6 +108,9 @@ public class ChoiceManager : MonoBehaviour
 
         keyInput = true;
         isWait = false;
+        yield return new WaitForSeconds(0.2f);
+        isExit = true;
+        
     }
 
     private IEnumerator TypingQuestion()
@@ -126,6 +130,7 @@ public class ChoiceManager : MonoBehaviour
             answer_Text[0].text += answerList[0][i];
             yield return waitTime;
         }
+        
     }
 
     private IEnumerator TypingAnswer_1()
@@ -136,6 +141,7 @@ public class ChoiceManager : MonoBehaviour
             answer_Text[1].text += answerList[1][i];
             yield return waitTime;
         }
+        
     }
 
     private IEnumerator TypingAnswer_2()
@@ -146,6 +152,7 @@ public class ChoiceManager : MonoBehaviour
             answer_Text[2].text += answerList[2][i];
             yield return waitTime;
         }
+        
     }
 
     private IEnumerator TypingAnswer_3()
@@ -156,6 +163,7 @@ public class ChoiceManager : MonoBehaviour
             answer_Text[3].text += answerList[3][i];
             yield return waitTime;
         }
+
     }
 
     private void Update()
@@ -178,17 +186,19 @@ public class ChoiceManager : MonoBehaviour
                     result = 0;
                 Selection();
             }
-            else if (Input.GetKeyDown(KeyCode.Space))
+            else if (isExit && Input.GetKeyDown(KeyCode.Space))
             {
                 keyInput = false;
                 if(result == count) // 마지막은 항상 부정형인듯ㄴ
                 {
                     ExitChoice();
+                    isExit = false;
                 }
                 else
                 {
                     npcGameObject.GetComponent<ChoiceEvent>().Action(result);
                     ExitChoice();
+                    isExit = false;
                 }
             }
         }
@@ -202,6 +212,12 @@ public class ChoiceManager : MonoBehaviour
             
         }
 
+    }
+
+    private void ChoiceExit()
+    {
+        npcGameObject.GetComponent<ChoiceEvent>().Action(result);
+        ExitChoice();
     }
 
     public void Selection()

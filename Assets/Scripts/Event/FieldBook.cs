@@ -5,6 +5,7 @@ using UnityEngine;
 public class FieldBook : MonoBehaviour
 {
     [SerializeField] private GameObject puzzle_title;
+    [SerializeField] private ShowEmotion showEmotion;
     private bool isTrigger;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -23,7 +24,15 @@ public class FieldBook : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            puzzle_title.SetActive(isTrigger);
+            if(isTrigger)
+            {
+                if (showEmotion != null)
+                    showEmotion.ShowEmotions(1); //물음표 모양
+                if(puzzle_title != null)
+                    puzzle_title.SetActive(true);
+            }
+                
+            
             isTrigger = false;
         }
     }
