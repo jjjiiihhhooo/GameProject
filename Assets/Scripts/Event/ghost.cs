@@ -10,6 +10,8 @@ public class ghost : MonoBehaviour
     [SerializeField] private Mob mob;
     [SerializeField] private TestChat testChat;
 
+    bool getCount = false; ///
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -24,8 +26,14 @@ public class ghost : MonoBehaviour
         if (other.tag == "Player")
         {
             isTouch = false;
-            if(mob.count > 3)
-               testChat.isTarget = false;
+            if (mob.count > 3)
+                testChat.isTarget = false;
+
+            if (getCount) ///
+            {
+                mob.Count();
+                getCount = false;
+            }
         }
     }
 
@@ -36,8 +44,8 @@ public class ghost : MonoBehaviour
         {
             isTouch = false;
             isTouch2 = false;
-            mob.Count();
-            
+            // mob.Count();
+            getCount = true; ///
         }
     }
 }

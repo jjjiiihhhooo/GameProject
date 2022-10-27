@@ -9,14 +9,27 @@ public class PotalTwo : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject mob;
     [SerializeField] private Transform mapTransform;
+
+    [SerializeField] private GameObject chase;
+    [SerializeField] private GameObject mainCamera;
+
+    private void Awake()
+    {
+        Transform mobTransform = transform;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
-            blackMob.isStart = false;
+            chase.GetComponent<ChaseScene>().isChase = true;
+            
             fade.SetActive(true);
+
             player.transform.position = mapTransform.position;
-            mob.SetActive(false);
+            mainCamera.transform.position = chase.GetComponent<ChaseScene>().cameraLocation;
+            blackMob.transform.position = chase.GetComponent<ChaseScene>().mobLocation;
+
         }
     }
 }

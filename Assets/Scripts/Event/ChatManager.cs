@@ -23,7 +23,7 @@ public class ChatManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-    } //½Ì±ÛÅæ
+    } //ï¿½Ì±ï¿½ï¿½ï¿½
 
     public Text text;
     public SpriteRenderer rendererSprite;
@@ -91,7 +91,7 @@ public class ChatManager : MonoBehaviour
 
     IEnumerator ChatOpenCoroutine()
     {
-        if(count > 0)
+        if (count > 0)
         {
             if (listChatWindows[count] != listChatWindows[count - 1])
             {
@@ -166,8 +166,12 @@ public class ChatManager : MonoBehaviour
             text.text += listSentences[count][i];
             yield return new WaitForSeconds(0.01f);
         }
+
         isChat2 = true;
         isWait = false;
+
+        isChat2 = true; //ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+
     }
 
     private void Update()

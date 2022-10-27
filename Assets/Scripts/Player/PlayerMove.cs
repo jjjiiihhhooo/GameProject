@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerMove : MoveManager
 {
-    //»óÇÏÁÂ¿ì °ª
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Â¿ï¿½ ï¿½ï¿½
     [SerializeField] private float vertical;
     [SerializeField] private float horizontal;
     [SerializeField] private float runSpeed;
@@ -15,16 +15,26 @@ public class PlayerMove : MoveManager
     private ChoiceManager theChoiceManager;
     private SaveManager saveManager;
 
+    private ChaseScene chaseScene; ///
+    public bool inEvent = false; ///
+    private bool canMove; ///
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
         theChatManager = FindObjectOfType<ChatManager>();
         theChoiceManager = FindObjectOfType<ChoiceManager>();
+
         saveManager = FindObjectOfType<SaveManager>();
 
         //saveManager.IsLoad();
         if(bed != null)
             bed.BedTransform();
+
+        bed.BedTransform();
+
+        chaseScene = FindObjectOfType<ChaseScene>(); ///
+
     }
 
     public void BedActive()
@@ -34,7 +44,19 @@ public class PlayerMove : MoveManager
 
     private void FixedUpdate()
     {
+
         if (isMove && !theChatManager.isChat2 && !theChoiceManager.isChoice2)
+
+        canMove = !theChatManager.isChat2 && !theChoiceManager.isChoice2 && !chaseScene.isChase && !inEvent ? true : false; ///
+        
+        //Debug.Log(canMove);
+        //Debug.Log(theChatManager.isChat2);
+        //Debug.Log(theChoiceManager.isChoice2);
+        //Debug.Log(chaseScene.isChase);
+        //Debug.Log(inEvent);
+
+        if (isMove && canMove) ///
+
         {
             if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
             {
@@ -46,9 +68,8 @@ public class PlayerMove : MoveManager
 
     private IEnumerator MoveCoroutine()
     {
-        while(Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
+        while((Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0 ) && canMove) ///
         {
-            
             vertical = Input.GetAxisRaw("Vertical");
             horizontal = Input.GetAxisRaw("Horizontal");
 
@@ -81,8 +102,12 @@ public class PlayerMove : MoveManager
         isMove = true;
     }
 
-    public void SetIsMove(bool _bool)
+    public bool GetCanMove()
     {
-        isMove = _bool;
+        return canMove;
+    }
+    public bool GetIsChat()
+    {
+        return theChatManager.isChat2;
     }
 }

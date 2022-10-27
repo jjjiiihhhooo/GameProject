@@ -11,46 +11,94 @@ public class Mob : MonoBehaviour
     [SerializeField] private TestChat testChat;
     [SerializeField] private GameObject blackMob;
 
+    [SerializeField] GameObject player; ///
+    bool spaceDown;
+    bool mobReady = false;
+    int spaceCount;
+
+    public void Count() // 각 지연과의 대화로 호출
+    {
+        count++;
+    }
     public void Bool()
     {
         isStart = true;
+        testChat.Chat(); // ??아 집에 가자.
         isTrigger = false;
-        testChat.isTrigger = true;
     }
 
-    public void Count()
+    IEnumerator Moving()
     {
-        count++;
+        transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, transform.position.z);
+        yield return null;
     }
 
     private void Update()
     {
-        if (!isStart && count > 3)
+        if (!isStart && count > 3 && player.transform.position.x > -3.5f && player.transform.position.x < 3.0f) // 모든 대화를 마치고 일정 영역 내에 있을 때
+        {
+            player.GetComponent<PlayerMove>().inEvent = true;
             Bool();
-
+        }
         if (!isTrigger)
-            Invoke("Moving", 3f);
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+                spaceDown = true;
+
+            if (spaceDown) // ??아 집에 가자. 에서 space를 누르면
+                StartCoroutine(Moving());
+        }
+        if (mobReady)
+        {
+            if(Input.GetKeyDown(KeyCode.Space))
+            spaceCount++;
+            if (spaceCount >= 4 && !player.GetComponent<PlayerMove>().GetIsChat())
+            {
+                mobReady = false;
+                StartCoroutine(MobStart()); // 검은 형체 등장
+            }
+        }
     }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "MobPar")
         {
-            isTrigger = true;
-            other.GetComponent<MobPar>().Chat();
-            Invoke("MobStart", 4f);
+            player.GetComponent<Animator>().SetFloat("DirX", -1);
+            isTrigger = true; // 해당 오브젝트 움직임을 멈춤
+            other.GetComponent<MobPar>().Chat(); // 아니...부러워서
+            mobReady = true;
         }
-            
     }
 
-    private void MobStart()
+    private IEnumerator MobStart()
     {
+        yield return new WaitForSeconds(0.5f);
+        /*
+         * 몹이 등장하고, 플레이어가 몹을 바라봄.
+         * 몹과의 거리가 줄어들면, 간격을 들여 2번 뒷걸음질 침.
+         */
         blackMob.SetActive(true);
+        player.GetComponent<Animator>().SetFloat("DirX", -1);
+        while(Vector2.Distance(blackMob.transform.position, player.transform.position) > 6)
+            yield return null;
+        for (float i = 0; i < 0.5f; i += Time.deltaTime)
+        {
+            player.transform.Translate(Time.deltaTime, 0, 0);
+            player.GetComponent<Animator>().SetBool("Walk", true);
+            yield return null;
+        }
+        player.GetComponent<Animator>().SetBool("Walk", false);
+        yield return new WaitForSeconds(0.5f);
+        for (float i = 0; i < 0.5f; i += Time.deltaTime)
+        {
+            player.transform.Translate(Time.deltaTime, 0, 0);
+            player.GetComponent<Animator>().SetBool("Walk", true);
+            yield return null;
+        }
+        player.GetComponent<Animator>().SetBool("Walk", false);
+        yield return new WaitForSeconds(0.5f);
+        player.GetComponent<PlayerMove>().inEvent = false;
     }
-
-    private void Moving()
-    {
-        transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, transform.position.z);
-    }
-        
 }

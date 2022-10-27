@@ -6,7 +6,6 @@ public class MobPar : MonoBehaviour
 {
     [SerializeField] private TestChat testChat;
 
-
     public void Chat()
     {
         testChat.Chat();
