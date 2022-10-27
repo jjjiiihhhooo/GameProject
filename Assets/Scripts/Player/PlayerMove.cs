@@ -92,4 +92,8 @@ public class PlayerMove : MoveManager
     {
         return canMove;
     }
+    public bool GetIsChat()
+    {
+        return theChatManager.isChat2;
+    }
 }

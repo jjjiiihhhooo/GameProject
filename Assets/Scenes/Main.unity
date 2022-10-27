@@ -311,7 +311,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61675064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.55, y: 12.89, z: 0}
+  m_LocalPosition: {x: 2.35, y: 13.68, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8642,7 +8642,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944995694}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18, y: 0, z: 0}
+  m_LocalPosition: {x: 17.9, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10803,6 +10803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1180734290}
+  mainCamera: {fileID: 519420028}
   BlackMob: {fileID: 1319546513}
   black: {fileID: 2146709381}
   backGround:
@@ -10814,6 +10815,7 @@ MonoBehaviour:
   xSpeed: 10
   ySpeed: 10
   mobLocation: {x: 0, y: 0, z: 0}
+  cameraLocation: {x: 0, y: 0, z: 0}
 --- !u!212 &1122483939
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16692,6 +16694,7 @@ MonoBehaviour:
   mob: {fileID: 1319546513}
   mapTransform: {fileID: 198055984}
   chase: {fileID: 1122483935}
+  mainCamera: {fileID: 519420028}
 --- !u!61 &1644166714
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22240,7 +22243,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123679902}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.6100016, y: 0, z: 0}
+  m_LocalPosition: {x: -7.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

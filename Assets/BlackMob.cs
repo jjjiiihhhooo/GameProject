@@ -15,12 +15,13 @@ public class BlackMob : MonoBehaviour
     private int currentLocation = 0;
     private int phase = 1;
     private bool isAction = true;
+    //public bool canMove = false;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         chaseScene = FindObjectOfType<ChaseScene>();
-        sizeSpeed = new Vector3(0.02f, 0.025f, 0);
+        sizeSpeed = new Vector3(0.04f, 0.045f, 0);
     }
 
     private void Update()
@@ -43,24 +44,30 @@ public class BlackMob : MonoBehaviour
         }
         else if (chaseScene.isChase) // 추격씬(러닝 게임) 중일 때
         {
-            Invoke("GetGrow", 5.0f);
+            Invoke("StartGetGrow", 3.0f);
 
             if (chaseScene.isChase)
             {
                 animator.SetFloat("DirX", 1);
                 StartCoroutine(MobPattern(1, 4, 1, true));
-                StartCoroutine(MobPattern(2, 2, -1, true));
-                StartCoroutine(MobPattern(3, 3, 1, true));
-                StartCoroutine(MobPattern(4, 2, -1, true));
+                StartCoroutine(MobPattern(2, 4, -1, true));
+                StartCoroutine(MobPattern(3, 2, -1, true));
+                StartCoroutine(MobPattern(4, 4, 1, true));
+                StartCoroutine(MobPattern(5, 2, -1, false));
+                StartCoroutine(MobPattern(6, 3, -1, true));
             }
         }
     }
 
-    void GetGrow()
+    void StartGetGrow()
+    {
+        StartCoroutine(GetGrow());
+    }
+    private IEnumerator GetGrow()
     {
         this.transform.localScale += sizeSpeed * Time.deltaTime;
+        yield return null;
     }
-
     private IEnumerator MobPattern(int _phase, float StandBy, int MoveLocation, bool isAttack) // 인자들은 각각 순번, 대기시간, 이동위치(-1, 0, 1까지 아래, 중앙, 위), 공격 여부를 나타냄.
     {
         if ((phase == _phase) && isAction)

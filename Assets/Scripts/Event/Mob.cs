@@ -14,7 +14,7 @@ public class Mob : MonoBehaviour
     [SerializeField] GameObject player; ///
     bool spaceDown;
     bool mobReady = false;
-    int spaceCount = 0;
+    int spaceCount;
 
     public void Count() // 각 지연과의 대화로 호출
     {
@@ -35,7 +35,7 @@ public class Mob : MonoBehaviour
 
     private void Update()
     {
-        if (!isStart && count > 3) // 모든 대화를 마치면
+        if (!isStart && count > 3 && player.transform.position.x > -3.5f && player.transform.position.x < 3.0f) // 모든 대화를 마치고 일정 영역 내에 있을 때
         {
             player.GetComponent<PlayerMove>().inEvent = true;
             Bool();
@@ -48,12 +48,15 @@ public class Mob : MonoBehaviour
             if (spaceDown) // ??아 집에 가자. 에서 space를 누르면
                 StartCoroutine(Moving());
         }
-        if (mobReady && Input.GetKeyDown(KeyCode.Space))
-            spaceCount++;
-        if (spaceCount >= 4)
+        if (mobReady)
         {
-            MobStart();
-            player.GetComponent<PlayerMove>().inEvent = false;
+            if(Input.GetKeyDown(KeyCode.Space))
+            spaceCount++;
+            if (spaceCount >= 4 && !player.GetComponent<PlayerMove>().GetIsChat())
+            {
+                mobReady = false;
+                StartCoroutine(MobStart()); // 검은 형체 등장
+            }
         }
     }
 
@@ -62,14 +65,40 @@ public class Mob : MonoBehaviour
     {
         if (other.tag == "MobPar")
         {
+            player.GetComponent<Animator>().SetFloat("DirX", -1);
             isTrigger = true; // 해당 오브젝트 움직임을 멈춤
-            mobReady = true;
             other.GetComponent<MobPar>().Chat(); // 아니...부러워서
+            mobReady = true;
         }
     }
 
-    private void MobStart()
+    private IEnumerator MobStart()
     {
+        yield return new WaitForSeconds(0.5f);
+        /*
+         * 몹이 등장하고, 플레이어가 몹을 바라봄.
+         * 몹과의 거리가 줄어들면, 간격을 들여 2번 뒷걸음질 침.
+         */
         blackMob.SetActive(true);
+        player.GetComponent<Animator>().SetFloat("DirX", -1);
+        while(Vector2.Distance(blackMob.transform.position, player.transform.position) > 6)
+            yield return null;
+        for (float i = 0; i < 0.5f; i += Time.deltaTime)
+        {
+            player.transform.Translate(Time.deltaTime, 0, 0);
+            player.GetComponent<Animator>().SetBool("Walk", true);
+            yield return null;
+        }
+        player.GetComponent<Animator>().SetBool("Walk", false);
+        yield return new WaitForSeconds(0.5f);
+        for (float i = 0; i < 0.5f; i += Time.deltaTime)
+        {
+            player.transform.Translate(Time.deltaTime, 0, 0);
+            player.GetComponent<Animator>().SetBool("Walk", true);
+            yield return null;
+        }
+        player.GetComponent<Animator>().SetBool("Walk", false);
+        yield return new WaitForSeconds(0.5f);
+        player.GetComponent<PlayerMove>().inEvent = false;
     }
 }

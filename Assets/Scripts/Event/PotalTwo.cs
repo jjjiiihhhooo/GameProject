@@ -11,6 +11,7 @@ public class PotalTwo : MonoBehaviour
     [SerializeField] private Transform mapTransform;
 
     [SerializeField] private GameObject chase;
+    [SerializeField] private GameObject mainCamera;
 
     private void Awake()
     {
@@ -21,12 +22,14 @@ public class PotalTwo : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            chase.GetComponent<ChaseScene>().isChase = true;
+            
             fade.SetActive(true);
 
             player.transform.position = mapTransform.position;
+            mainCamera.transform.position = chase.GetComponent<ChaseScene>().cameraLocation;
             blackMob.transform.position = chase.GetComponent<ChaseScene>().mobLocation;
 
-            chase.GetComponent<ChaseScene>().isChase = true;
         }
     }
 }

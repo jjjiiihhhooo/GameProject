@@ -16,19 +16,16 @@ public class CameraManager : MonoBehaviour
 
     void Update()
     {
-        if(isCamera)
+        if (isCamera)
         {
-            if (target_obj.gameObject != null)
+            if (target_obj.gameObject != null && !chaseScene.isChase)
             {
                 targetPosition.Set(target_obj.transform.position.x, target_obj.transform.position.y, this.transform.position.z);
 
-                if (chaseScene.isChase == true)
-                    targetPosition.y += 2;
-                
+
                 this.transform.position = targetPosition;
             }
         }
-        
     }
 
     public void Bool()
