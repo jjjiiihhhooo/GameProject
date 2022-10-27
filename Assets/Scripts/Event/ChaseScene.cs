@@ -72,7 +72,7 @@ public class ChaseScene : MonoBehaviour
         BlackMob.transform.Translate((1 - horizontal) * xSpeed * Time.deltaTime, 0, 0);
 
         // 검은 배경, 입력한 horizontal값에 따라 x값만 이동
-        if (black.transform.position.x >= mapTransform.position.x - 1.8f *width)
+        if (black.transform.position.x >= mapTransform.position.x - 1.8f * width)
             black.transform.Translate(-horizontal * ySpeed * Time.deltaTime, 0, 0);
         for (int i = 0; i < length; i++)
         {
@@ -80,7 +80,9 @@ public class ChaseScene : MonoBehaviour
 
             if (backGround[i].transform.position.x <= mapTransform.position.x - (2.2f * width) + 0.1f) // backGround[i]가 카메라에서 보이지 않을 정도로 밀려났을 때
             {
-                backGround[i].transform.Translate(mapTransform.position.x + (1.3f * width) - 1.2f, 0, 0); // 해당 오브젝트를 화면 오른쪽에 옮김
+                float newX = mapTransform.position.x + (1.3f * width) - 0.2f;
+
+                backGround[i].transform.position = new Vector3(newX, this.transform.position.y, 0); // 해당 오브젝트를 화면 오른쪽에 옮김
             }
         }
         yield return null;

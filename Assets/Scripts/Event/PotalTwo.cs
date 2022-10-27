@@ -23,7 +23,7 @@ public class PotalTwo : MonoBehaviour
         if (other.tag == "Player")
         {
             chase.GetComponent<ChaseScene>().isChase = true;
-            
+
             fade.SetActive(true);
 
             player.transform.position = mapTransform.position;
