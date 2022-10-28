@@ -35,7 +35,7 @@ public class Mob : MonoBehaviour
 
     private void Update()
     {
-        if (!isStart && count > 3 && player.transform.position.x > -3.5f && player.transform.position.x < 3.0f) // 모든 대화를 마치고 일정 영역 내에 있을 때
+        if (!isStart && count > 3 && player.transform.position.x > -50f && player.transform.position.x < -40f && player.transform.position.y > 9f && player.transform.position.x < 17f) // 모든 대화를 마치고 일정 영역 내에 있을 때
         {
             player.GetComponent<PlayerMove>().inEvent = true;
             Bool();
@@ -90,7 +90,7 @@ public class Mob : MonoBehaviour
             yield return null;
         }
         player.GetComponent<Animator>().SetBool("Walk", false);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         for (float i = 0; i < 0.5f; i += Time.deltaTime)
         {
             player.transform.Translate(Time.deltaTime, 0, 0);
