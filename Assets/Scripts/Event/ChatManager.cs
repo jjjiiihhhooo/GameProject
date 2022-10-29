@@ -10,21 +10,6 @@ public class ChatManager : MonoBehaviour
     public bool isChat2 = false;
     public bool isWait;
 
-    public static ChatManager instance;
-
-    private void Awake()
-    {
-        if(instance == null)
-        {
-            DontDestroyOnLoad(this.gameObject);
-            instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    } //�̱���
-
     public Text text;
     public SpriteRenderer rendererSprite;
     public SpriteRenderer rendererChatWindow;

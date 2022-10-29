@@ -4,7 +4,8 @@ using UnityEditor;
 using UnityEngine;
 public class PlayerMove : MoveManager
 {
-    //»óÇÏÁÂ¿ì °ª
+    public static PlayerMove instance;
+
     [SerializeField] private float vertical;
     [SerializeField] private float horizontal;
     [SerializeField] private float runSpeed;
@@ -12,16 +13,24 @@ public class PlayerMove : MoveManager
     [SerializeField] private Bed bed;
     private ChatManager theChatManager;
     private ChoiceManager theChoiceManager;
-    private ChaseScene chaseScene; ///
-    public bool inEvent = false; ///
-    private bool canMove; ///
+    public bool inEvent = false;
+    private bool canMove;
     private void Awake()
     {
         animator = GetComponent<Animator>();
         theChatManager = FindObjectOfType<ChatManager>();
         theChoiceManager = FindObjectOfType<ChoiceManager>();
         bed.BedTransform();
-        chaseScene = FindObjectOfType<ChaseScene>(); ///
+
+        if (instance == null)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
     public void BedActive()
     {
@@ -29,9 +38,9 @@ public class PlayerMove : MoveManager
     }
     private void Update()
     {
-        canMove = !theChatManager.isChat2 && !theChoiceManager.isChoice2 && !chaseScene.isChase && !inEvent ? true : false; ///
+        canMove = !theChatManager.isChat2 && !theChoiceManager.isChoice2 && !inEvent ? true : false; ///
 
-        //Debug.Log(canMove);
+        //Debug.Log("canMove: " + canMove);
         //Debug.Log(theChatManager.isChat2);
         //Debug.Log(theChoiceManager.isChoice2);
         //Debug.Log(chaseScene.isChase);
@@ -49,8 +58,6 @@ public class PlayerMove : MoveManager
     {
         while ((Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0) && canMove) ///
         {
-            Debug.Log("moving"+ canMove);
-
             vertical = Input.GetAxisRaw("Vertical");
             horizontal = Input.GetAxisRaw("Horizontal");
             Vector2 moveVector;
@@ -64,6 +71,7 @@ public class PlayerMove : MoveManager
             animator.SetFloat("DirX", vector.x);
             animator.SetFloat("DirY", vector.y);
             animator.SetBool("Walk", true);
+
             while (walkCount < walkCheck)
             {
                 transform.Translate(vector * speed * Time.deltaTime); // speed/1s

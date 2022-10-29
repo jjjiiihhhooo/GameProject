@@ -81,7 +81,7 @@ public class Mob : MonoBehaviour
          */
         blackMob.SetActive(true);
         player.GetComponent<Animator>().SetFloat("DirX", -1);
-        while(Vector2.Distance(blackMob.transform.position, player.transform.position) > 6)
+        while(Vector2.Distance(blackMob.transform.position, player.transform.position) > 8)
             yield return null;
         for (float i = 0; i < 0.5f; i += Time.deltaTime)
         {

@@ -10,6 +10,7 @@ TagManager:
   - frame
   - Piece
   - MobPar
+  - Canvas
   layers:
   - Default
   - TransparentFX

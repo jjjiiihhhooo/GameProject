@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class ChaseScene : MonoBehaviour
 {
-    [SerializeField] GameObject player;
-    [SerializeField] GameObject mainCamera;
+    private GameObject player;
+    private GameObject mainCamera;
+
     [SerializeField] GameObject BlackMob;
     [SerializeField] GameObject black; // 초기 화면 왼쪽의 검은 부분. 플레이어가 화면 왼쪽에서부터 움직이는 착시
     [SerializeField] GameObject[] backGround = new GameObject[3]; //"러닝"의 이미지를 가진 오브젝트 배열
     [SerializeField] Transform mapTransform; // 맵 위치 좌표
+    [SerializeField] PushScene pushScene;
     Animator chaseAnimator;
+    private GameObject canvas;
+    private GameObject fade;
     int length;
 
     public bool isChase = false;
+    public bool EndChase = false;
+    private bool singleCall_0 = true;
+    private bool singleCall_1 = true;
 
     float width = 12.8f; // "러닝"의 x폭
 
@@ -27,21 +34,37 @@ public class ChaseScene : MonoBehaviour
 
     void Start()
     {
-        mobLocation = mapTransform.position + new Vector3(-9, -0.5f, 0);
-        cameraLocation = mapTransform.position + new Vector3(6, 2, -1);
-        length = backGround.Length;
+        player = GameObject.FindWithTag("Player");
+        mainCamera = GameObject.FindWithTag("MainCamera");
         chaseAnimator = player.GetComponent<Animator>();
+
+        isChase = true;
+        mainCamera.GetComponent<CameraManager>().isChase = true;
+
+        player.GetComponent<PlayerMove>().inEvent = true;
+        cameraLocation = mapTransform.position + new Vector3(6, 2, -1);
+        mobLocation = mapTransform.position + new Vector3(-9, -1.5f, 0);
+        length = backGround.Length;
+
+        canvas = GameObject.FindWithTag("Canvas");
+        fade = GameObject.Find("Canvas").transform.Find("Fade").gameObject;
     }
 
     void Update()
     {
-        if (isChase) // isChase값에 따라 MoveChase() 실행 또는 중단
+        if (isChase)
         {
             StartCoroutine(MoveChase());
+            if (EndChase && singleCall_0)
+            {
+                singleCall_0 = false;
+                StartCoroutine(ExitChase());
+            }
         }
-        else if (!isChase)
+        else if (!isChase && singleCall_1)
         {
-            StopCoroutine(MoveChase());
+            singleCall_1 = false;
+            pushScene.EndOfAlley();
         }
     }
 
@@ -53,8 +76,29 @@ public class ChaseScene : MonoBehaviour
          * 이에 따라 상대적으로 플레이어가 배경에 비해 x축으로 움직이는 것 같이 보인다.
          */
 
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
+        horizontal = EndChase? 1 :Input.GetAxisRaw("Horizontal");
+        vertical = EndChase ? 0 : Input.GetAxisRaw("Vertical");
+
+
+        if (EndChase) // 플레이어를 y값 중앙에 위치, 키 입력값 제한
+        {
+            if (player.transform.position.y > mapTransform.position.y)
+                while (isChase)
+                {
+                    player.transform.Translate(0, -Time.deltaTime, 0);
+                    yield return null;
+                    if (player.transform.position.y <= mapTransform.position.y)
+                        break;
+                }
+            else if (player.transform.position.y < mapTransform.position.y)
+                while (isChase)
+                {
+                    player.transform.Translate(0, Time.deltaTime, 0);
+                    yield return null;
+                    if (player.transform.position.y >= mapTransform.position.y)
+                        break;
+                }
+        }
 
         // 플레이어, 입력한 vertical값에 따라 y값만 이동
         player.transform.Translate(0, vertical * xSpeed * Time.deltaTime, 0);
@@ -86,5 +130,22 @@ public class ChaseScene : MonoBehaviour
             }
         }
         yield return null;
+    }
+
+    private IEnumerator ExitChase()
+    {
+        yield return new WaitForSeconds(4.0f);
+        
+        // 플레이어 화면 밖으로 이동
+        for (float i = 0; i < 1.0f; i += Time.deltaTime)
+        {
+            player.transform.Translate(ySpeed * Time.deltaTime, 0, 0);
+            yield return null;
+        }
+        fade.SetActive(true);
+        isChase = false;
+        BlackMob.SetActive(false);
+        StopCoroutine(MoveChase());
+        yield return new WaitForSeconds(0.3f);
     }
 }

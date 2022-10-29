@@ -25,19 +25,19 @@ public class Fade : MonoBehaviour
 
         if(fadeCount > 0)
         {
-            while (fadeCheck > 0)
+            while (fadeCheck > 0) // 1에서 0이 될 때까지
             {
                 fadeCheck -= 0.01f;
                 yield return new WaitForSeconds(fadeSecond);
                 image.color = new Color(color_r, color_g, color_b, fadeCheck);
             }
-            while (fadeCheck < 1)
+            while (fadeCheck < 1) // 0에서 다시 1이 될 때까지
             {
                 fadeCheck += 0.01f;
                 yield return new WaitForSeconds(fadeSecond);
                 image.color = new Color(color_r, color_g, color_b, fadeCheck);
             }
-            while(fadeCheck > 0)
+            while (fadeCheck > 0) // 1에서 다시 0이 될 때까지
             {
                 fadeCheck -= 0.01f;
                 yield return new WaitForSeconds(fadeSecond);

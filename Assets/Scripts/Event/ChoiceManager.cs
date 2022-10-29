@@ -10,19 +10,6 @@ public class ChoiceManager : MonoBehaviour
     public bool isWait;
     private ChoiceEvent theChoiceEvent;
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            DontDestroyOnLoad(this.gameObject);
-            instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    } //ΩÃ±€≈Ê
-
     private string question;
     private List<string> answerList;
 
