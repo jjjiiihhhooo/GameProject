@@ -11,15 +11,11 @@ public class ButtonManager : MonoBehaviour
     private bool isOption;
 
     [SerializeField] private SaveManager saveManager;
-    private void Awake()
-    {
-        saveManager = FindObjectOfType<SaveManager>();
-    }
-
+    [SerializeField] private ActiveGameOver gameOver;
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(menu_obj != null && Input.GetKeyDown(KeyCode.Escape))
         {
             SetActiveMenu();
         }
@@ -35,13 +31,17 @@ public class ButtonManager : MonoBehaviour
 
     private void SetActiveOption()
     {
-        isOption = !isOption;
-        option_obj.SetActive(isOption);
+        if(option_obj != null)
+        {
+            isOption = !isOption;
+            option_obj.SetActive(isOption);
+        }
     }
 
     private void InputButton(int _count)
     {
-        SetActiveMenu();
+        if(menu_obj != null)
+            SetActiveMenu();
 
         if (_count == 0)
         {
@@ -54,6 +54,11 @@ public class ButtonManager : MonoBehaviour
         else if(_count == 2)
         {
             saveManager.IsLoad();
+        }
+        else if(_count == 3)
+        {
+            gameOver.SetActive(false);
+            ReloadScene();
         }
         else
         {
@@ -71,5 +76,9 @@ public class ButtonManager : MonoBehaviour
         InputButton(_count);
     }
 
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
 }

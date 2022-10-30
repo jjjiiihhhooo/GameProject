@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 public class BlackMob_chap2 : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
