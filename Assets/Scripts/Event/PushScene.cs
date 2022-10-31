@@ -9,12 +9,14 @@ public class PushScene : MonoBehaviour
     private GameObject player;
     private GameObject mainCamera;
     Animator animator;
+    AudioSource audioSource;
     public float moveSpeed;
     public float speedDecrease;
     private float currentSpeed;
 
     void Start()
     {
+        audioSource = GameObject.FindWithTag("Canvas").transform.Find("SoundManager").gameObject.GetComponent<AudioSource>();
         chaseScene = FindObjectOfType<ChaseScene>();
         player = GameObject.FindWithTag("Player");
         mainCamera = GameObject.FindWithTag("MainCamera");
@@ -34,14 +36,19 @@ public class PushScene : MonoBehaviour
     {
         mainCamera.GetComponent<CameraManager>().isChase = false;
         player.transform.position = mapTransform.position;
-        
+
         while (currentSpeed > 0)
         {
             player.transform.Translate(currentSpeed * Time.deltaTime, 0, 0);
             yield return new WaitForSeconds(Time.deltaTime);
             currentSpeed -= speedDecrease;
+            if (audioSource.volume > 0)
+                audioSource.volume -= 0.01f;
             if (currentSpeed < moveSpeed / 4)
+            {
+                audioSource.volume = 0;
                 break;
+            }
         }
         animator.SetBool("Walk", false);
         player.GetComponent<PlayerMove>().inEvent = false;

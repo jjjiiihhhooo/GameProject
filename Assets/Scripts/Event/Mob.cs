@@ -11,11 +11,16 @@ public class Mob : MonoBehaviour
     [SerializeField] private TestChat testChat;
     [SerializeField] private GameObject blackMob;
 
-    [SerializeField] GameObject player; ///
+    [SerializeField] GameObject player;
+    MusicPlayer musicPlayer;
     bool spaceDown;
     bool mobReady = false;
     int spaceCount;
 
+    private void Start()
+    {
+        musicPlayer = GameObject.FindWithTag("Canvas").transform.Find("SoundManager").gameObject.GetComponent<MusicPlayer>();
+    }
     public void Count() // 각 지연과의 대화로 호출
     {
         count++;
@@ -99,6 +104,8 @@ public class Mob : MonoBehaviour
         }
         player.GetComponent<Animator>().SetBool("Walk", false);
         yield return new WaitForSeconds(0.5f);
+        musicPlayer.isRunningGame = true;
         player.GetComponent<PlayerMove>().inEvent = false;
+        blackMob.GetComponent<BlackMob_chap2>().moveSpeed = 7.5f;
     }
 }

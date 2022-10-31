@@ -8,15 +8,13 @@ public class RunningStartPoint : MonoBehaviour
     [SerializeField] ChaseScene chaseScene;
     public string startPoint;
     private SceneChanger sceneChanger;
-    private GameObject canvas;
     private GameObject fade;
     private GameObject player;
     private GameObject mainCamera;
 
     void Start()
     {
-        canvas = GameObject.FindWithTag("Canvas");
-        fade = GameObject.Find("Canvas").transform.Find("Fade").gameObject;
+        fade = GameObject.FindWithTag("Canvas").transform.Find("Fade").gameObject;
         fade.SetActive(true);
 
         sceneChanger = FindObjectOfType<SceneChanger>();

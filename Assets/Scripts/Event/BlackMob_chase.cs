@@ -7,45 +7,53 @@ public class BlackMob_chase : MonoBehaviour
     [SerializeField] private float moveSpeed;
     private ChaseScene chaseScene;
     private Animator animator;
+    private SoundManager soundManager;
     private Vector3 sizeSpeed;
     private int currentLocation = 0;
     private int phase = 1;
     private bool isAction = true;
     private bool isGrow = false;
-    private bool singleCall = true;
+    private bool singleCall_0 = true;
+    private bool singleCall_1 = true;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        soundManager = GetComponent<SoundManager>();
         chaseScene = FindObjectOfType<ChaseScene>();
         sizeSpeed = new Vector3(0.01f, 0.015f, 0);
     }
 
     private void Update()
     {
+        if (singleCall_1)
+        {
+            soundManager.PlaySound(1, false, true); // 발소리 출력, 루프
+            singleCall_1 = false;
+        }
         if (chaseScene.isChase) // 추격씬(러닝 게임) 중일 때
         {
-            if (singleCall)
+            if (singleCall_0)
             {
-                singleCall = false;
+                singleCall_0 = false;
                 StartCoroutine(StartGetGrow());
             }
             if (isGrow)
-                StartCoroutine(GetGrow());
+                //StartCoroutine(GetGrow());
 
             animator.SetFloat("DirX", 1);
-            //StartCoroutine(MobPattern(1, 4, 1, true));
-            //StartCoroutine(MobPattern(2, 4, -1, true));
-            //StartCoroutine(MobPattern(3, 2, -1, true));
-            //StartCoroutine(MobPattern(4, 4, 1, true));
-            //StartCoroutine(MobPattern(5, 0, -1, false));
-            //StartCoroutine(MobPattern(6, 2, -1, true));
-            StartCoroutine(MobPattern(1, 0, -1, false));
-            StartCoroutine(MobPattern(2, 0, -1, false));
-            StartCoroutine(MobPattern(3, 0, -1, false));
-            StartCoroutine(MobPattern(4, 0, -1, false));
+            StartCoroutine(MobPattern(1, 4, 1, true));
+            StartCoroutine(MobPattern(2, 4, -1, true));
+            StartCoroutine(MobPattern(3, 2, -1, true));
+            StartCoroutine(MobPattern(4, 4, 1, true));
             StartCoroutine(MobPattern(5, 0, -1, false));
-            StartCoroutine(MobPattern(6, 3, -1, false));
+            StartCoroutine(MobPattern(6, 2, -1, true));
+            //StartCoroutine(MobPattern(1, 0, -1, false));
+            //StartCoroutine(MobPattern(2, 0, -1, false));
+            //StartCoroutine(MobPattern(3, 0, -1, false));
+            //StartCoroutine(MobPattern(4, 0, -1, false));
+            //StartCoroutine(MobPattern(5, 0, -1, false));
+            //StartCoroutine(MobPattern(6, 3, -1, false));
 
             if (phase == 7)
                 chaseScene.EndChase = true;
@@ -92,7 +100,9 @@ public class BlackMob_chase : MonoBehaviour
             if (isAttack)
             {
                 animator.SetTrigger("isAttack");
-                yield return new WaitForSeconds(1.75f); // 공격모션 출력 시간
+                yield return new WaitForSeconds(0.5f); // 공격모션 출력 시간
+                soundManager.PlaySound(0, true, false); // 포효소리 출력
+                yield return new WaitForSeconds(1.0f);
             }
             phase++;
             isAction = true;
