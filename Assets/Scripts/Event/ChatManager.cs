@@ -36,22 +36,22 @@ public class ChatManager : MonoBehaviour
         listChatWindows = new List<Sprite>();
     }
 
-    public void ShowChat(Chat chat, int[] _count)
+    public void ShowChat(Chat chat, int[] _count) // 첫 대화를 출력
     {
-        for(int i = 0; i < chat.sentences.Length; i++)
+        for(int i = 0; i < chat.sentences.Length; i++) // 대화 내용 초기화
         {
             listSentences.Add(chat.sentences[i]);
             listSprite.Add(chat.sprites[i]);
             listChatWindows.Add(chat.chatWindows[i]);
             sprite_count[i] = _count[i];
         }
-        if (sprite_count[0] != 0)
+        if (sprite_count[0] != 0) // 처음 일러가 하나니까 지연으로 설정되어 있으면 변경
         {
             animSprite.SetBool("Appear_jiyeon", true);
             animChatWindow.SetBool("Appear", true);
             StartCoroutine(ChatOpenCoroutine());
         }
-        else
+        else // 아니면 그냥 출력
         {
             animSprite.SetBool("Appear", true);
             animChatWindow.SetBool("Appear", true);
@@ -78,7 +78,7 @@ public class ChatManager : MonoBehaviour
     {
         if (count > 0)
         {
-            if (listChatWindows[count] != listChatWindows[count - 1])
+            if (listChatWindows[count] != listChatWindows[count - 1]) //?
             {
                 if (sprite_count[count] != 0)
                 {
@@ -138,7 +138,7 @@ public class ChatManager : MonoBehaviour
                 }
             }
         }
-        else
+        else // if (count == 0)
         {
             yield return new WaitForSeconds(0.05f);
             rendererChatWindow.GetComponent<SpriteRenderer>().sprite = listChatWindows[count];

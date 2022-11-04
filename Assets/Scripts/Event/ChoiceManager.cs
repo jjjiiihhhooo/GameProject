@@ -8,11 +8,13 @@ public class ChoiceManager : MonoBehaviour
     
     public static ChoiceManager instance;
     public bool isWait;
-    private ChoiceEvent theChoiceEvent;
+    //private ChoiceEvent theChoiceEvent;
 
+    // 선택창에 등장하는 문구들
     private string question;
     private List<string> answerList;
 
+    // go??
     public GameObject go;
     public GameObject npcGameObject;
 
@@ -40,7 +42,7 @@ public class ChoiceManager : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-        theChoiceEvent = FindObjectOfType<ChoiceEvent>();
+        //theChoiceEvent = FindObjectOfType<ChoiceEvent>();  //???
         answerList = new List<string>();
         for(int i = 0; i<= 3; i++)
         {

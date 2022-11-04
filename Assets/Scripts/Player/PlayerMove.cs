@@ -12,6 +12,7 @@ public class PlayerMove : MoveManager
     public bool isMove = true;
     [SerializeField] private Bed bed;
     private ChatManager theChatManager;
+    DialogueManager dialogueManager;
     private ChoiceManager theChoiceManager;
     public bool inEvent = false;
     private bool canMove;
@@ -19,6 +20,7 @@ public class PlayerMove : MoveManager
     {
         animator = GetComponent<Animator>();
         theChatManager = FindObjectOfType<ChatManager>();
+        dialogueManager = FindObjectOfType<DialogueManager>();
         theChoiceManager = FindObjectOfType<ChoiceManager>();
         bed.BedTransform();
 
@@ -38,7 +40,8 @@ public class PlayerMove : MoveManager
     }
     private void Update()
     {
-        canMove = !theChatManager.isChat2 && !theChoiceManager.isChoice2 && !inEvent ? true : false; ///
+        canMove = !dialogueManager.onDialogue && !theChatManager.isChat2 && !theChoiceManager.isChoice2 && !inEvent ? true : false;
+        //canMove = !dialogueManager.onDialogue && !theChatManager.isChat2 && !inEvent ? true : false; ///
 
         //Debug.Log("canMove: " + canMove);
         //Debug.Log(theChatManager.isChat2);
