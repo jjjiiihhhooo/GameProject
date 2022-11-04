@@ -17,10 +17,12 @@ public class PlayerMove : MoveManager
     private bool canMove;
     private void Awake()
     {
+        canMove = true; //다른 씬에서 사용가능하게
         animator = GetComponent<Animator>();
         theChatManager = FindObjectOfType<ChatManager>();
         theChoiceManager = FindObjectOfType<ChoiceManager>();
-        bed.BedTransform();
+        if(bed != null)
+            bed.BedTransform();
 
         if (instance == null)
         {
@@ -38,7 +40,8 @@ public class PlayerMove : MoveManager
     }
     private void Update()
     {
-        canMove = !theChatManager.isChat2 && !theChoiceManager.isChoice2 && !inEvent ? true : false; ///
+        if(theChatManager != null)
+            canMove = !theChatManager.isChat2 && !theChoiceManager.isChoice2 && !inEvent ? true : false; ///
 
         //Debug.Log("canMove: " + canMove);
         //Debug.Log(theChatManager.isChat2);

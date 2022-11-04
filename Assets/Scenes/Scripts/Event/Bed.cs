@@ -13,6 +13,7 @@ public class Bed : MonoBehaviour
 
     private void Awake()
     {
+        player = GameObject.FindWithTag("Player");
         isActive = true;
     }
 
