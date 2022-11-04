@@ -15,6 +15,7 @@ public class SaveData
     public float transform_Z;
     public bool active;
     public bool camera;
+    public string sceneName;
     public List<SlotData> item_data;
 }
 
@@ -94,10 +95,14 @@ public class SaveManager : MonoBehaviour
         bed = FindObjectOfType<Bed>();
 
         cameraManager.isCamera = true;
-        bed.isActive = saveData.active;
+        
+        if (bed != null)
+            bed.isActive = saveData.active;
         playerMove.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         playerMove.isMove = true;
-        bed.isBed = false;
+        if (bed != null)
+            bed.isBed = false;
+
         vector.Set(saveData.transform_X, saveData.transform_Y, saveData.transform_Z);
         playerMove.transform.position = vector;
         Debug.Log("플레이어 위치를 로드했습니다." + vector);

@@ -13,12 +13,13 @@ public class SaveCheck : MonoBehaviour
     [SerializeField] private GameObject blackDisplay;
     [SerializeField] private string text;
     [SerializeField] private int checkCount;
+    [SerializeField] private int saveSceneCount;
+    [SerializeField] private string SceneName;
     private bool isStart;
 
     private void Awake()
     {
         testChat = GetComponent<TestChat>();
-
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -30,6 +31,7 @@ public class SaveCheck : MonoBehaviour
             if (!isStart && checkCount == 1)
             {
                 isStart = true;
+                saveManager.saveData.sceneName = SceneName;
                 saveManager.IsSave();
                 saveChat.GetComponent<Text>().text = text;
                 Invoke("SaveChatTrue", 2f);

@@ -20843,6 +20843,8 @@ MonoBehaviour:
   blackDisplay: {fileID: 779215290}
   text: "\uC138\uC774\uBE0C \uB418\uC5C8\uC2B5\uB2C8\uB2E4."
   checkCount: 1
+  saveSceneCount: 1
+  SceneName: Main
 --- !u!61 &1449549435
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22467,6 +22469,8 @@ MonoBehaviour:
   blackDisplay: {fileID: 0}
   text: "\uC138\uC774\uBE0C \uB85C\uB4DC\uD558\uC2DC\uB824\uBA74 [F11]\uC744 \uB20C\uB7EC\uC8FC\uC138\uC694"
   checkCount: 0
+  saveSceneCount: 0
+  SceneName: 
 --- !u!61 &1557068567
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25260,7 +25264,7 @@ GameObject:
   - component: {fileID: 1724731012}
   m_Layer: 5
   m_Name: SaveChat
-  m_TagString: Untagged
+  m_TagString: SaveChat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30585,6 +30589,7 @@ MonoBehaviour:
     transform_Z: 0
     active: 0
     camera: 0
+    sceneName: 
     item_data:
     - item_text: 
     - item_text: 
