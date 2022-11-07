@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +15,9 @@ public class DialogueManager : MonoBehaviour
      */
 
     public bool onDialogue = false;
-    bool GetKey = false; // 키를 입력 받을 경우
+    public bool isEnd;
+    bool single;
+    bool GetKey = false; // 키를 입력 받을 수 있는 경우
     //====================================== 대화 관련 필드 ==============================================
 
     [SerializeField] Text text;                             // sentences
@@ -47,8 +51,7 @@ public class DialogueManager : MonoBehaviour
     public bool Choosing = false;
     int answerLength = 2;
     int answerCount;
-    int[] result; // 결과값 저장. 초기값은 -1이므로 해당 값이 출력된다면, 선택 결과값이 없는 것이다.
-    string temp;
+    public int[] result; // 결과값 저장. 초기값은 -1이므로 해당 값이 출력된다면, 선택 결과값이 없는 것이다.
 
     //====================================================================================================
 
@@ -57,7 +60,7 @@ public class DialogueManager : MonoBehaviour
         text.text = "";
         answer_Text0.text = "";
         answer_Text1.text = "";
-        
+
         sentenceList = new List<string>();
         answerList_0 = new List<string>();
         answerList_1 = new List<string>();
@@ -70,7 +73,6 @@ public class DialogueManager : MonoBehaviour
         onDialogue = Talking || Choosing ? true : false;
 
         // 게임 오브젝트에서 Talking을 활성화 시켜줄 것
-
         // 대화 중일 때
         if (logCount != 0 && Talking && !Choosing && GetKey && Input.GetKeyDown(KeyCode.Space))
         {
@@ -84,8 +86,8 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                if(!isChoice[logCount]) text.text = "";
-                StartCoroutine(StartDialogue());
+                if (!isChoice[logCount]) text.text = "";
+                StartCoroutine(this.StartDialogue());
             }
         }
         // 선택 중일 때
@@ -130,7 +132,7 @@ public class DialogueManager : MonoBehaviour
                 // 대화 진행
                 else
                 {
-                    StartCoroutine(StartDialogue());
+                    StartCoroutine(this.StartDialogue());
                 }
             }
         }
@@ -139,6 +141,7 @@ public class DialogueManager : MonoBehaviour
     // 초기 호출
     public void UpdateDialogue(Dialogue[] _dialogue)
     {
+        single = true;
         logLength = _dialogue.Length;
 
         CharNum = new int[logLength];
@@ -152,8 +155,10 @@ public class DialogueManager : MonoBehaviour
             answerList_0.Add(_dialogue[i].answers_0);
             answerList_1.Add(_dialogue[i].answers_1);
             isChoice.Add(_dialogue[i].choice);
-            result[i] = -1;
+            if(single)
+                result[i] = -1;
         }
+        single = false;
         StartCoroutine(StartDialogue());
     }
 
@@ -166,6 +171,7 @@ public class DialogueManager : MonoBehaviour
             // 상/하단 패널 생성
             aniTopPanel.SetBool("Appear", true);
             aniBotPanel.SetBool("Appear", true);
+            aniAnswer.SetInteger("Chosen", 0);
             yield return new WaitForSeconds(0.25f);
         }
         // 첫 대화가 선택일 경우
@@ -173,7 +179,7 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.Log("질문(대화)를 먼저 입력하시오.");
             Talking = Choosing = false;
-            StopCoroutine(StartDialogue());
+            StopCoroutine(this.StartDialogue());
         }
 
         // 대화일 경우
@@ -231,13 +237,12 @@ public class DialogueManager : MonoBehaviour
         else if (isChoice[logCount])
         {
             answerCount = 0;
-
+            result[logCount] = -1;
             // answer 패널 생성
             aniAnswer.SetBool("Appear", true);
             yield return new WaitForSeconds(0.25f);
 
             // answer 출력
-            Debug.Log(answerList_0[logCount].Length);
             for (int i = 0; i < answerList_0[logCount].Length; i++)
             {
                 answer_Text0.text += answerList_0[logCount][i];
@@ -251,23 +256,30 @@ public class DialogueManager : MonoBehaviour
             Chosen();
             Choosing = true;
         }
-        GetKey = true;
         logCount++;
+        GetKey = true;
     }
 
     // 대화 탈출
     void ExitDialogue()
     {
         text.text = "";
+        answer_Text0.text = "";
+        answer_Text1.text = ""; 
         logCount = 0;
+        CharNum = Enumerable.Repeat<int>(0, CharNum.Length).ToArray<int>();
         sentenceList.Clear();
         spriteList.Clear();
+        answerList_0.Clear();
+        answerList_1.Clear();
+        isChoice.Clear();
         aniLeft.SetBool("Appear", false);
         aniRight.SetBool("Appear", false);
         aniTopPanel.SetBool("Appear", false);
         aniBotPanel.SetBool("Appear", false);
         aniAnswer.SetBool("Appear", false);
         Talking = false;
+        isEnd = true;
     }
 
     void Chosen()

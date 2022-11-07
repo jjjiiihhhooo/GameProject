@@ -11,17 +11,17 @@ public class PlayerMove : MoveManager
     [SerializeField] private float runSpeed;
     public bool isMove = true;
     [SerializeField] private Bed bed;
-    private ChatManager theChatManager;
+    //private ChatManager theChatManager;
     DialogueManager dialogueManager;
-    private ChoiceManager theChoiceManager;
+    //private ChoiceManager theChoiceManager;
     public bool inEvent = false;
     private bool canMove;
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        theChatManager = FindObjectOfType<ChatManager>();
+        //theChatManager = FindObjectOfType<ChatManager>();
         dialogueManager = FindObjectOfType<DialogueManager>();
-        theChoiceManager = FindObjectOfType<ChoiceManager>();
+        //theChoiceManager = FindObjectOfType<ChoiceManager>();
         bed.BedTransform();
 
         if (instance == null)
@@ -40,8 +40,8 @@ public class PlayerMove : MoveManager
     }
     private void Update()
     {
-        canMove = !dialogueManager.onDialogue && !theChatManager.isChat2 && !theChoiceManager.isChoice2 && !inEvent ? true : false;
-        //canMove = !dialogueManager.onDialogue && !theChatManager.isChat2 && !inEvent ? true : false; ///
+        //canMove = !dialogueManager.onDialogue && !theChatManager.isChat2 && !theChoiceManager.isChoice2 && !inEvent ? true : false;
+        canMove = !dialogueManager.onDialogue && !inEvent ? true : false; ///
 
         //Debug.Log("canMove: " + canMove);
         //Debug.Log(theChatManager.isChat2);
@@ -91,8 +91,8 @@ public class PlayerMove : MoveManager
     {
         return canMove;
     }
-    public bool GetIsChat()
-    {
-        return theChatManager.isChat2;
-    }
+    //public bool GetIsChat()
+    //{
+    //    return theChatManager.isChat2;
+    //}
 }

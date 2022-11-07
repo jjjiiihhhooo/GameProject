@@ -8,10 +8,11 @@ public class Mob : MonoBehaviour
     [SerializeField] private float speed = 1;
     public int count;
     [SerializeField] private bool isStart;
-    [SerializeField] private TestChat testChat;
+    //[SerializeField] private TestChat testChat;
     [SerializeField] private GameObject blackMob;
 
     [SerializeField] GameObject player;
+    DialogueBox dialogueBox;
     MusicPlayer musicPlayer;
     bool spaceDown;
     bool mobReady = false;
@@ -19,6 +20,7 @@ public class Mob : MonoBehaviour
 
     private void Start()
     {
+        dialogueBox = GetComponent<DialogueBox>();
         musicPlayer = GameObject.FindWithTag("Canvas").transform.Find("SoundManager").gameObject.GetComponent<MusicPlayer>();
     }
     public void Count() // 각 지연과의 대화로 호출
@@ -28,7 +30,8 @@ public class Mob : MonoBehaviour
     public void Bool()
     {
         isStart = true;
-        testChat.Chat(); // ??아 집에 가자.
+        dialogueBox.SetDialogue();
+        //testChat.Chat(); // ??아 집에 가자.
         isTrigger = false;
     }
 
@@ -57,7 +60,7 @@ public class Mob : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Space))
             spaceCount++;
-            if (spaceCount >= 4 && !player.GetComponent<PlayerMove>().GetIsChat())
+            if (spaceCount >= 4 && !dialogueBox.isLog)
             {
                 mobReady = false;
                 StartCoroutine(MobStart()); // 검은 형체 등장
@@ -106,6 +109,6 @@ public class Mob : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         musicPlayer.isRunningGame = true;
         player.GetComponent<PlayerMove>().inEvent = false;
-        blackMob.GetComponent<BlackMob_chap2>().moveSpeed = 7.5f;
+        blackMob.GetComponent<BlackMob_chap2>().moveSpeed = 3.0f;
     }
 }

@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class MobPar : MonoBehaviour
 {
-    [SerializeField] private TestChat testChat;
+    DialogueBox dialogueBox;
+    //[SerializeField] private TestChat testChat;
+
+    private void Start()
+    {
+        dialogueBox = GetComponent<DialogueBox>();
+    }
 
     public void Chat()
     {
-        testChat.Chat();
+        dialogueBox.SetDialogue();
     }
 }

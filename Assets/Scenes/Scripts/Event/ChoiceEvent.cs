@@ -49,6 +49,7 @@ public class ChoiceEvent : MonoBehaviour
         yield return new WaitUntil(() => !theChoiceManager.choiceIng);
     }
 
+    // 선택 이후
     public void Action(int _result)
     {
         if(_result == 0 && check == 0)
