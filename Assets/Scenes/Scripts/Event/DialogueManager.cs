@@ -182,6 +182,33 @@ public class DialogueManager : MonoBehaviour
             StopCoroutine(this.StartDialogue());
         }
 
+        // 첫 번째 이후 대화
+        // 화자에 따라 다른 스프라이트가 어두워짐
+        if (logCount > 0)
+        {
+            // 화자가 변경되었을 때
+            if (CharNum[logCount] != CharNum[logCount - 1])
+            {
+                // 화자가 하나일 때
+                if (CharNum[logCount] == 0)
+                {
+                    // 지연이 등장한 상태라면 어두워짐
+                    aniRight.SetBool("GetDark", aniRight.GetBool("Appear") ? true : false);
+                }
+                // 화자가 지연일 때
+                else if (CharNum[logCount] == 1)
+                {
+                    // 하나가 등장한 상태라면 어두워짐
+                    aniLeft.SetBool("GetDark", aniLeft.GetBool("Appear") ? true : false);
+                }
+                else
+                {
+                    aniRight.SetBool("GetDark", true);
+                    aniLeft.SetBool("GetDark", true);
+                }
+            }
+        }
+
         // 대화일 경우
         if (!isChoice[logCount])
         {
