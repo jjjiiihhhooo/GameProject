@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ public class DialogueManager : MonoBehaviour
      */
 
     public bool onDialogue = false;
-    public bool isEnd;
+    public bool isEnd = false;
     bool single;
     bool GetKey = false; // 키를 입력 받을 수 있는 경우
     //====================================== 대화 관련 필드 ==============================================
@@ -52,6 +53,7 @@ public class DialogueManager : MonoBehaviour
     int answerLength = 2;
     int answerCount;
     public int[] result; // 결과값 저장. 초기값은 -1이므로 해당 값이 출력된다면, 선택 결과값이 없는 것이다.
+    bool[] _choice;
 
     //====================================================================================================
 
@@ -146,6 +148,7 @@ public class DialogueManager : MonoBehaviour
 
         CharNum = new int[logLength];
         result = new int[logLength];
+        _choice = new bool[logLength];
 
         for (int i = 0; i < logLength; i++)
         {
@@ -155,6 +158,7 @@ public class DialogueManager : MonoBehaviour
             answerList_0.Add(_dialogue[i].answers_0);
             answerList_1.Add(_dialogue[i].answers_1);
             isChoice.Add(_dialogue[i].choice);
+            _choice[i] = _dialogue[i].choice;
             if(single)
                 result[i] = -1;
         }
@@ -313,5 +317,15 @@ public class DialogueManager : MonoBehaviour
     {
         // 선택되지 않은 패널의 색을 연하게 함
         aniAnswer.SetInteger("Chosen", answerCount);
+    }
+
+    public bool[] GetIsChoice(int length)
+    {
+        bool[] _BoolArray = new bool[length];
+        for(int i = 0; i < length; i++)
+        {
+            _BoolArray[i] = _choice[i];
+        }
+        return _BoolArray;
     }
 }

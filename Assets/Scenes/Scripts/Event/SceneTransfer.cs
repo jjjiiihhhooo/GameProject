@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PotalTwo : MonoBehaviour
+public class SceneTransfer : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
-    [SerializeField] private GameObject mainCamera;
     private SceneChanger sceneChanger;
     public string transferScene;
 
-    private void Start()
+    void Start()
     {
         sceneChanger = FindObjectOfType<SceneChanger>();
     }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
