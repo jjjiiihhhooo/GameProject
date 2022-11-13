@@ -7,7 +7,7 @@ public class Light : MonoBehaviour
 {
     [SerializeField] private GameObject Player_obj;
     [SerializeField] private PlayerMove thePlayerMove;
-    [SerializeField] private int checkPoint = 0;
+    //[SerializeField] private int checkPoint = 0;
 
 
     private void Update()

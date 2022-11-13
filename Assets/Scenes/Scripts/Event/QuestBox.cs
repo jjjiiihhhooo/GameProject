@@ -92,7 +92,7 @@ public class QuestBox : MonoBehaviour
             {
                 if (quest_image != null)
                     theQuestManager.ChangeItem(quest_item, quest_image);
-                this.gameObject.SetActive(false);
+                //this.gameObject.SetActive(false);
             }
             else if (check == 4)
             {

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    private TestChat testChat;
+    //private TestChat testChat;
+    DialogueBox dialogueBox;
     [SerializeField] private GameObject npc_Image;
     [SerializeField] GameObject potal;
     public bool isNpc;
@@ -16,20 +17,14 @@ public class NPC : MonoBehaviour
 
     private void Awake()
     {
-        testChat = GetComponent<TestChat>();
+        //testChat = GetComponent<TestChat>();
+        dialogueBox= GetComponent<DialogueBox>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
-        {
-            if(testChat.isTarget)
-            {
-                if(potal != null)
-                    potal.SetActive(true);
-            }
-
-        }
+        if(other.tag == "Player" && dialogueBox.isTrigger && potal != null)
+            potal.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -38,7 +33,7 @@ public class NPC : MonoBehaviour
         {
             if(isNpc)
             {
-                testChat.isTarget = true;
+                dialogueBox.isTrigger = true;
             }
         }
     }

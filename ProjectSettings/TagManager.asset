@@ -12,6 +12,7 @@ TagManager:
   - MobPar
   - Canvas
   - SaveChat
+  - PlayerHitBox
   layers:
   - Default
   - TransparentFX

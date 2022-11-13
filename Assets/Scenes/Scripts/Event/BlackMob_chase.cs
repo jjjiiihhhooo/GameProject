@@ -28,7 +28,7 @@ public class BlackMob_chase : MonoBehaviour
     {
         if (singleCall_1)
         {
-            soundManager.PlaySound(1, false, true); // 발소리 출력, 루프
+            soundManager.PlaySound(1, false, true, 1.8f); // 발소리 출력, 루프
             singleCall_1 = false;
         }
         if (chaseScene.isChase) // 추격씬(러닝 게임) 중일 때
@@ -101,7 +101,7 @@ public class BlackMob_chase : MonoBehaviour
             {
                 animator.SetTrigger("isAttack");
                 yield return new WaitForSeconds(0.5f); // 공격모션 출력 시간
-                soundManager.PlaySound(0, true, false); // 포효소리 출력
+                soundManager.PlaySound(0, true, false, 0.8f); // 포효소리 출력
                 yield return new WaitForSeconds(1.0f);
             }
             phase++;

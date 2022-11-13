@@ -3,6 +3,7 @@ using System.Threading;
 using UnityEngine;
 using System;
 using static DialogueBox;
+using Unity.VisualScripting;
 
 public class DialogueBox : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class DialogueBox : MonoBehaviour
     public bool isStarted; // 한 번이라도 대화가 호출되면 계속 true
     public bool isEnd; // 한 번이라도 대화가 호출된 이후 종료된 적이 있으면 계속 true
     public bool noMore;
+    bool start;
 
     // 대화 반복 출력 여부
     // breakConditions 에 입력된 값이 충족되면, 더이상 대화/ 선택창을 반복해서 띄우지 않음(isRepeat = false;)
@@ -37,6 +39,7 @@ public class DialogueBox : MonoBehaviour
     {
         public int _index;
         public int _value;
+        public bool _isClear;
     }
     [SerializeField] BreakCondition[] breakConditions;
     public bool isRepeat;
@@ -89,12 +92,15 @@ public class DialogueBox : MonoBehaviour
             SetDialogue();
         }
 
-        if (this.isLog && this.isRepeat)
+        if (this.isLog) start = true;
+
+        if (start && this.isRepeat)
         {
             for (int i = 0; i < conLenth; i++)
             {
                 if (dialogueManager.result[breakConditions[i]._index] == breakConditions[i]._value)
                 {
+                    breakConditions[i]._isClear = true;
                     count++;
                     if (count == conLenth)
                     {

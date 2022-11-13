@@ -7,20 +7,25 @@ using UnityEngine.Timeline;
 public class SoundManager : MonoBehaviour
 {
     public AudioClip[] audioClip;
-    private AudioSource audioSource;
+    AudioSource audioSource;
 
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlaySound(int soundNum, bool isOneShot, bool isLoop)
+    public void PlaySound(int soundNum, bool isOneShot, bool isLoop, float pitch)
     {
-        if (isOneShot) audioSource.PlayOneShot(audioClip[soundNum]);
+        if (isOneShot)
+        {
+            audioSource.pitch = pitch;
+            audioSource.PlayOneShot(audioClip[soundNum]);
+        }
         else if (!isOneShot)
         {
             audioSource.clip = audioClip[soundNum];
             audioSource.loop = isLoop;
+            audioSource.pitch = pitch;
             audioSource.Play();
         }
     }

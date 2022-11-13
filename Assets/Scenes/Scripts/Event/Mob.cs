@@ -12,14 +12,17 @@ public class Mob : MonoBehaviour
     [SerializeField] private GameObject blackMob;
 
     [SerializeField] GameObject player;
+    
     DialogueBox dialogueBox;
     MusicPlayer musicPlayer;
+    AudioSource audioSource;
     bool spaceDown;
     bool mobReady = false;
     int spaceCount;
-
+    
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         dialogueBox = GetComponent<DialogueBox>();
         musicPlayer = GameObject.FindWithTag("Canvas").transform.Find("SoundManager").gameObject.GetComponent<MusicPlayer>();
     }
@@ -63,6 +66,7 @@ public class Mob : MonoBehaviour
             if (spaceCount >= 4 && !dialogueBox.isLog)
             {
                 mobReady = false;
+                audioSource.Play();
                 StartCoroutine(MobStart()); // 검은 형체 등장
             }
         }

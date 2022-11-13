@@ -12,7 +12,6 @@ public class DialogueBoxBox : MonoBehaviour
     int preLogLength = 0;
     bool singleCall = true;
     bool[] isChoiceArray;
-    int count = 0;
 
     [Serializable]
     public struct _GoTo
@@ -42,8 +41,6 @@ public class DialogueBoxBox : MonoBehaviour
     {
         if (preLogCount < dialogueBoxes.Length && logCheck != -1)
         {
-            Debug.Log($"{preLogCount}");
-            Debug.Log($"{dialogueBoxes[preLogCount].dialogues.Length}");
             preLogLength = dialogueBoxes[preLogCount].dialogues.Length;
         }
 
@@ -75,7 +72,6 @@ public class DialogueBoxBox : MonoBehaviour
             {
                 goTo[i]._isClear = true; // goTo[i] 조건 달성!
                 dialogueBoxes[goTo[i]._logCheck].dialogueManager.result[goTo[i]._index] = -1; // 초기화
-                Debug.Log($"goTo[{i}]: {goTo[i]._isClear}!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             }
         }
     }
@@ -96,18 +92,15 @@ public class DialogueBoxBox : MonoBehaviour
                     goTo[i]._isClear = false;
                     // 조건 충족 이후 다음 대화를 즉시 호출할 경우. 기존 Dialogue의 isContinue는 별도이다.
                     goContinue = goTo[i]._isContinue;
-                    Debug.Log($"a. 프리로그.{preLogCount}/ 로그.{logCheck}");
                     break;
                 }
             }
         }
         // goTo 조건이 없을 경우
-        if (!check)
+        if (!check || goTo.Length == 0)
         {
             logCheck++;
-            Debug.Log($"b. 프리로그.{preLogCount}/ 로그.{logCheck}");
         }
-        Debug.Log($"2. 프리로그.{preLogCount}/ 로그.{logCheck}");
     }
 
     IEnumerator CheckTurnOn()
@@ -115,7 +108,6 @@ public class DialogueBoxBox : MonoBehaviour
         preLogCount = logCheck;
 
         dialogueBoxes[logCheck].turnOn = false;
-        Debug.Log($"1. 프리로그.{preLogCount}/ 로그.{logCheck}");
 
         // _GoTo 검사. 이후 logCheck는 변동 되어있음.
         CheckGoTo();
@@ -129,7 +121,6 @@ public class DialogueBoxBox : MonoBehaviour
         if (logCheck >= dialogueBoxes.Length)
         {
             logCheck = -1;
-            Debug.Log($"fin. 프리로그.{preLogCount}/ 로그.{logCheck}");
         }
         else if (logCheck < dialogueBoxes.Length)
         {
@@ -141,7 +132,6 @@ public class DialogueBoxBox : MonoBehaviour
                 {
                     if (!dialogueBoxes[preLogCount].isLog)
                     {
-                        Debug.Log($"3. 켜진 로그: {logCheck}");
                         dialogueBoxes[logCheck].turnOn = true;
                         break;
                     }
@@ -160,7 +150,6 @@ public class DialogueBoxBox : MonoBehaviour
             goContinue = false;
         }
 
-        Debug.Log($"4. 프리로그.{preLogCount}/ 로그.{logCheck}");
         // 같을 경우 isRepeat을 체크하면 되려나
         // 되려 logCheck가 작아질 경우 그간의 상태를 롤백한다.
         
@@ -176,7 +165,6 @@ public class DialogueBoxBox : MonoBehaviour
         }
         preLogCount = logCheck;
 
-        Debug.Log($"5. 프리로그.{preLogCount}/ 로그.{logCheck}");
         singleCall = true;
     }
 }

@@ -18,7 +18,7 @@ public class MusicPlayer : MonoBehaviour
         if (isRunningGame && singleCall_0)
         {
             singleCall_0 = false;
-            soundManager.PlaySound(0, false, true);
+            soundManager.PlaySound(0, false, true, 1);
         }
     }
 }
