@@ -15,6 +15,7 @@ public class BlackSpace : MonoBehaviour
     private chap3_manager manager;
     [SerializeField] private GameObject puzzle_player;
     [SerializeField] private GameObject puzzle_jiyeon;
+    [SerializeField] private GameObject puzzle_mob;
     [SerializeField] private GameObject[] mapNodes;
     [SerializeField] Transform blackSpaceTransform;
     
@@ -26,11 +27,21 @@ public class BlackSpace : MonoBehaviour
         cameraManager = FindObjectOfType<CameraManager>();
         manager = FindObjectOfType<chap3_manager>();
         player.isMove = false;
+        isTurn = false;
         moveCount = 1;
         cameraManager.Transform(blackSpaceTransform);
 
+        puzzle_mob.transform.position = mapNodes[70].transform.position;
+        Renderer renderer1 = puzzle_mob.GetComponentInChildren<Renderer>();
+        renderer1.enabled = false;
         puzzle_player.transform.position = mapNodes[0].transform.position;
         puzzle_jiyeon.transform.position = mapNodes[1].transform.position;
+
+        for (int i = 1; i < mapNodes.Length - 2; i++)
+        {
+            Renderer renderer = mapNodes[i].GetComponent<Renderer>();
+            renderer.enabled = false;
+        }
 
         StartCoroutine(MoveCoroutine());
     }
@@ -45,11 +56,29 @@ public class BlackSpace : MonoBehaviour
         }
     }
 
-    private void ResetPosition()
+    private IEnumerator MobMoveCoroutine()
+    {
+        int count = 69;
+        yield return new WaitForSeconds(1f);
+        while(count > 0)
+        {
+            if(playerMoveCount == count)
+            {
+                ResetPosition();
+            }
+            puzzle_mob.transform.position = mapNodes[count].transform.position;
+            yield return new WaitForSeconds(0.2f);
+            count--;
+        }
+        
+    }
+
+    public void ResetPosition()
     {
         puzzle_player.transform.position = mapNodes[0].transform.position;
         playerMoveCount = 0;
-
+        StopCoroutine(MoveCoroutine());
+        StopCoroutine(MobMoveCoroutine());
         manager.SetActive();
     }
 
@@ -150,11 +179,14 @@ public class BlackSpace : MonoBehaviour
 
     private void SetActiveNode()
     {
-        for(int i = 0; i < mapNodes.Length; i++)
+        for(int i = 0; i < mapNodes.Length - 1; i++)
         {
             Renderer renderer = mapNodes[i].GetComponent<Renderer>();
             renderer.enabled = true;
         }
+
+        Renderer renderer1 = puzzle_mob.GetComponentInChildren<Renderer>();
+        renderer1.enabled = true;
     }
 
     private void Update()
@@ -180,6 +212,7 @@ public class BlackSpace : MonoBehaviour
         {
             isTurn = true;
             SetActiveNode();
+            StartCoroutine(MobMoveCoroutine());
         }
 
     }
