@@ -8,10 +8,10 @@ public class PuzzleMove : MonoBehaviour
     [SerializeField] private GameObject[] piece;
     [SerializeField] private GameObject fade;
     [SerializeField] private GameObject fade2;
-    [SerializeField] private GameObject npc_idle_obj2;
     [SerializeField] private GameObject npc_idle_obj;
+    [SerializeField] private GameObject npc_idle_obj2;
     [SerializeField] private Table table;
-    [SerializeField] TestChat testChat;
+    //[SerializeField] TestChat testChat;
     private int count;
     
 

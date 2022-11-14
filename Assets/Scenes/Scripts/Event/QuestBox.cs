@@ -11,6 +11,9 @@ public class QuestBox : MonoBehaviour
     [SerializeField] private Transform mapTransform;
     [SerializeField] private Sprite quest_image;
     [SerializeField] private string quest_item;
+    [SerializeField] private GameObject fade;
+    [SerializeField] private Transform mapTransform2;
+    [SerializeField] private CameraManager main_camera;
 
     DialogueBox[] dialogueBoxes;
 
@@ -31,6 +34,7 @@ public class QuestBox : MonoBehaviour
         public int _logCheck;
         public int _index;
         public int _value;
+        public bool _isNoMore;
         public bool _isClear;
     }
     [SerializeField] LogCondition[] logConditions;
@@ -55,6 +59,8 @@ public class QuestBox : MonoBehaviour
         {
             if (dialogueBoxes[logConditions[i]._logCheck].isLog)
             {
+                if(logConditions[i]._isNoMore && dialogueBoxes[logConditions[i]._logCheck].noMore)
+                    logConditions[i]._isClear = true; // logConditions[i] 조건 달성!
                 if (dialogueBoxes[logConditions[i]._logCheck].dialogueManager.result[logConditions[i]._index] == logConditions[i]._value)
                     logConditions[i]._isClear = true; // logConditions[i] 조건 달성!
             }
@@ -84,21 +90,28 @@ public class QuestBox : MonoBehaviour
 
     void Action(int check)
     {
-        if(check >= 0)
+        if (check >= 0)
         {
-            if (check == 0)
-                player.transform.position = mapTransform.position;
-            else if (check == 1)
+            switch (check)
             {
-                if (quest_image != null)
-                    theQuestManager.ChangeItem(quest_item, quest_image);
-                //this.gameObject.SetActive(false);
-            }
-            else if (check == 4)
-            {
-                if (quest_image != null)
-                    theQuestManager.ChangeItem(quest_item, quest_image);
-                this.gameObject.SetActive(false);
+                case 0:
+                    if (check == 0)
+                        player.transform.position = mapTransform.position;
+                    break;
+                case 1:
+                    if (quest_image != null)
+                        theQuestManager.ChangeItem(quest_item, quest_image);
+                    break;
+                case 2:
+                    fade.SetActive(true);
+                    player.transform.position = mapTransform2.position;
+                    main_camera.Bool();
+                    break;
+                case 4:
+                    if (quest_image != null)
+                        theQuestManager.ChangeItem(quest_item, quest_image);
+                    this.gameObject.SetActive(false);
+                    break;
             }
         }
     }

@@ -6,34 +6,32 @@ using UnityEngine.Timeline;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioClip[] audioClip;
-    AudioSource audioSource;
+    AudioSource[] audioSource;
 
     void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponents<AudioSource>();
     }
 
     public void PlaySound(int soundNum, bool isOneShot, bool isLoop, float pitch)
     {
         if (isOneShot)
         {
-            audioSource.pitch = pitch;
-            audioSource.PlayOneShot(audioClip[soundNum]);
+            audioSource[soundNum].pitch = pitch;
+            audioSource[soundNum].PlayOneShot(audioSource[soundNum].clip);
         }
         else if (!isOneShot)
         {
-            audioSource.clip = audioClip[soundNum];
-            audioSource.loop = isLoop;
-            audioSource.pitch = pitch;
-            audioSource.Play();
+            audioSource[soundNum].loop = isLoop;
+            audioSource[soundNum].pitch = pitch;
+            audioSource[soundNum].Play();
         }
     }
 
-    public void StopSound()
+    public void StopSound(int soundNum)
     {
-        if (audioSource.clip == null)
+        if (audioSource[soundNum].clip == null)
             return;
-        audioSource.Stop();
+        audioSource[soundNum].Stop();
     }
 }

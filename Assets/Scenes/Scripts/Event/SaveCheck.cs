@@ -8,18 +8,20 @@ public class SaveCheck : MonoBehaviour
 {
     [SerializeField] private SaveManager saveManager;
     [SerializeField] private GameObject saveChat;
-    [SerializeField] private TestChat testChat;
     [SerializeField] private GameObject fade;
     [SerializeField] private GameObject blackDisplay;
     [SerializeField] private string text;
     [SerializeField] private int checkCount;
     [SerializeField] private int saveSceneCount;
     [SerializeField] private string SceneName;
+    //private TestChat testChat;
+    DialogueBox dialogueBox;
     private bool isStart;
 
     private void Awake()
     {
-        testChat = GetComponent<TestChat>();
+        //testChat = GetComponent<TestChat>();
+        dialogueBox = GetComponent<DialogueBox>();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -55,8 +57,11 @@ public class SaveCheck : MonoBehaviour
 
     private void Chat()
     {
-        testChat.isTarget = false;
-        testChat.Chat();
+        //testChat.isTarget = false;
+        //testChat.Chat();
+
+        dialogueBox.isTrigger= false;
+        dialogueBox.SetDialogue();
     }
 
     private void DisplayFalse()

@@ -6,32 +6,52 @@ public class FadeBed : MonoBehaviour
 {
     [SerializeField] private GameObject fade;
     [SerializeField] private GameObject player;
-    [SerializeField] private Transform OneBg;
-    [SerializeField] private TestChat testChat;
-    [SerializeField] private GameObject bed;
+    //[SerializeField] private Transform OneBg;
+    //[SerializeField] private TestChat testChat;
+    //[SerializeField] private GameObject bed;
     [SerializeField] private GameObject idle_bed;
     [SerializeField] private GameObject npc;
-    [SerializeField] private GameObject npc2;
-    private bool isStart;
+    //[SerializeField] private GameObject npc2;
+    DialogueBox dialogueBox;
+    int phase = 0;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void Start()
     {
-        if(!isStart && testChat.isTarget && other.tag == "Player")
+        dialogueBox = GetComponent<DialogueBox>();
+    }
+    //private void OnTriggerStay2D(Collider2D other)
+    //{
+    //    Debug.Log($"{dialogueBox.noMore} && {other.tag}");
+    //    if(!isStart && dialogueBox.noMore && other.tag == "Player")
+    //    {
+    //        Fade();
+    //        isStart = true;
+    //    }
+    //}
+
+    private void Update()
+    {
+        if (phase == 0 && dialogueBox.noMore)
         {
-            Invoke("Fade", 2f);
-            isStart = true;
+            Fade();
+            phase++;
+        }
+        if(phase == 1 && npc.activeSelf)
+        {
+            npc.GetComponent<DialogueBox>().isTrigger = true;
+            npc.GetComponent<NPC>().Active();
+            gameObject.SetActive(false);
+            phase++;
         }
     }
 
-    private void Fade()
+    void Fade()
     {
-        player.transform.position = OneBg.position;
+        //player.transform.position = OneBg.position;
         fade.SetActive(true);
 
         idle_bed.GetComponent<BoxCollider2D>().isTrigger = true;
         idle_bed.GetComponent<Bed>().isBed = true;
-        npc.GetComponent<TestChat>().isTarget = true;
-        npc.GetComponent<NPC>().Active();
-        npc2.SetActive(false);
+        npc.SetActive(true);
     }
 }

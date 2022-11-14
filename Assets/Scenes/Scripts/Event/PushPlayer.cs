@@ -61,7 +61,7 @@ public class PushPlayer : MonoBehaviour
             yield return null;
         }
         mobAnimator.SetBool("isWalk", false);
-        soundManager.StopSound();
+        soundManager.StopSound(0);
         // 주인공에 혀감기;
         // 씬 로드;
 
