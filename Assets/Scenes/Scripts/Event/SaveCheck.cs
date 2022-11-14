@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,12 +17,14 @@ public class SaveCheck : MonoBehaviour
     [SerializeField] private string SceneName;
     //private TestChat testChat;
     DialogueBox dialogueBox;
+    SoundManager soundManager;
     private bool isStart;
 
     private void Awake()
     {
         //testChat = GetComponent<TestChat>();
         dialogueBox = GetComponent<DialogueBox>();
+        soundManager= GetComponent<SoundManager>();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -41,7 +44,7 @@ public class SaveCheck : MonoBehaviour
                 if (blackDisplay != null)
                 {
                     blackDisplay.SetActive(true);
-                    Chat();
+                    StartCoroutine(Chat());
                     Invoke("DisplayFalse", 4f);
                 }
 
@@ -55,11 +58,14 @@ public class SaveCheck : MonoBehaviour
         }
     }
 
-    private void Chat()
+    IEnumerator Chat()
     {
         //testChat.isTarget = false;
         //testChat.Chat();
-
+        soundManager.PlaySound(0, false, false, 1);
+        yield return new WaitForSeconds(1.3f);
+        soundManager.PlaySound(1, false, false, 1);
+        yield return new WaitForSeconds(1.3f);
         dialogueBox.isTrigger= false;
         dialogueBox.SetDialogue();
     }

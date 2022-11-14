@@ -7,6 +7,7 @@ public class BlackMob_chase : MonoBehaviour
     [SerializeField] private float moveSpeed;
     private ChaseScene chaseScene;
     private Animator animator;
+    [SerializeField] Animator tanimator;
     private SoundManager soundManager;
     private Vector3 sizeSpeed;
     private int currentLocation = 0;
@@ -99,7 +100,7 @@ public class BlackMob_chase : MonoBehaviour
 
             if (isAttack)
             {
-                animator.SetTrigger("isAttack");
+                tanimator.SetTrigger("isAttack");
                 yield return new WaitForSeconds(0.5f); // 공격모션 출력 시간
                 soundManager.PlaySound(0, true, false, 0.8f); // 포효소리 출력
                 yield return new WaitForSeconds(1.0f);

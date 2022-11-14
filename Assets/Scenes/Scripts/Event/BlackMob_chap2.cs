@@ -22,7 +22,7 @@ public class BlackMob_chap2 : MonoBehaviour
     {
         if (singleCall_1)
         {
-            soundManager.PlaySound(1, false, true, 1.8f); // 발소리 출력, 루프
+            soundManager.PlaySound(0, false, true, 1.8f); // 발소리 출력, 루프
             singleCall_1 = false;
         }
         moveDirection.x = (player.transform.position.x - transform.position.x) > 0 ? 1 : -1;

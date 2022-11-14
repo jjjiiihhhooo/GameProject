@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class chap4_MapSpawner : MonoBehaviour
 {
+    GameObject player;
+    bool singleCall_1 = true;
     [SerializeField] Transform O_point; // ÁÂÇ¥ ÁÂÃø »ó´Ü
     [SerializeField] Transform P_point; // ÁÂÇ¥ ¿ìÃø ÇÏ´Ü
     [SerializeField] GameObject obstacle;
@@ -92,6 +94,7 @@ public class chap4_MapSpawner : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
         PM = GetComponent<chap4_PlayerMove_Puzzle1>();
         map = new int[Y, X];
         width = (Mathf.Abs(O_point.position.x - P_point.position.x) / (X - 1));
@@ -109,6 +112,14 @@ public class chap4_MapSpawner : MonoBehaviour
 
     IEnumerator DrawMap(int mapNum)
     {
+        ///
+        if (singleCall_1)
+        {
+            singleCall_1 = false;
+            player.transform.position = P_point.position + new Vector3(0, 1, 0);
+            //player.GetComponent<PlayerMove>().inEvent = true;
+        }
+
         if (mapNum <= 0 && mapNum > 4)
         {
             Debug.Log("¸Ê ÀÎµ¦½º°¡ ¹üÀ§ ¹Ù±ù¿¡ ÀÖ½À´Ï´Ù.");
