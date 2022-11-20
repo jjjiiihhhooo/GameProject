@@ -43,6 +43,8 @@ public class QuestBox : MonoBehaviour
     private void Start()
     {
         dialogueBoxes = GetComponents<DialogueBox>();
+        if(theQuestManager == null)
+            theQuestManager = GameObject.FindWithTag("QuestManager").GetComponent<QuestManager>();
     }
 
     private void Update()

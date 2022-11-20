@@ -1,13 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class chap4_PlayerMove_Puzzle1 : MonoBehaviour
 {
+    [SerializeField] chap4_BlackMob blackMob;
     [SerializeField] Transform O_point; // 좌표 좌측 상단
     [SerializeField] Transform P_point; // 좌표 우측 하단
-    [SerializeField] GameObject sp;
+    [SerializeField] GameObject alleyScene;
+    [SerializeField] GameObject topWall;
+    [SerializeField] GameObject vanguard;
 
     // 맵의 가로x세로 값
     int mapX;
@@ -19,113 +21,139 @@ public class chap4_PlayerMove_Puzzle1 : MonoBehaviour
     int posX;
     int posY;
 
-    chap4_MapSpawner chap4_mapSpawner;
-    chap4_MapSpawner MS;
+    chap4_MapSpawner mapSpawner;
     GameObject player;
-    Rigidbody2D p_rigid;
     Animator p_ani;
 
     // 벡터 입력값
-    float speed = 8.0f;
-    float x;
-    float y;
+    float speed = 6.0f;
+    float dirX;
+    float dirY;
 
     // 가장 최근에 받은 입력값 계산
-    float timerX;
-    float timerXL;
-    float timerXR;
-    float timerY;
-    float timerYU;
-    float timerYD;
+    int timerX;
+    int timerXL;
+    int timerXR;
+    int timerY;
+    int timerYU;
+    int timerYD;
 
+    public bool canMove = true;
     bool getKey = true;
     bool singleCall_0 = true;
-    bool singleCall_1 = true;
-
+    //bool singleCall_1 = true;
+    int c = 0;
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        p_rigid = player.GetComponent<Rigidbody2D>();
         p_ani = player.GetComponent<Animator>();
-        chap4_mapSpawner = GetComponent<chap4_MapSpawner>();
-        MS = GetComponent<chap4_MapSpawner>();
+        mapSpawner = GetComponent<chap4_MapSpawner>();
 
-        mapX = MS.x; 
-        mapY = MS.y;
-        posX = MS.x;
-        posY = MS.y;
+        mapX = mapSpawner.x; 
+        mapY = mapSpawner.y;
+        posX = mapSpawner.x - 1;
+        posY = mapSpawner.y - 1;
+
+        vanguard.transform.position = P_point.position + new Vector3(0, 0.925f, 0);
 
         width = (Mathf.Abs(O_point.position.x - P_point.position.x) / (mapX - 1));
         height = (Mathf.Abs(O_point.position.y - P_point.position.y) / (mapY - 1));
-
-        sp.transform.position = P_point.position;
     }
 
     void Update()
     {
-        mapX = MS.x;
-        mapY = MS.y;
-        Debug.Log($" if {chap4_mapSpawner.GetGetReady()},{singleCall_0}");
-        if (chap4_mapSpawner.GetGetReady() && singleCall_0)
+        if (mapSpawner.GetGetReady() && canMove && singleCall_0)
         {
-            Debug.Log("Co");
+            topWall.SetActive(false);
             StartCoroutine(BoardMove());
         }
     }
 
     IEnumerator BoardMove()
     {
+        c++;
         singleCall_0 = false;
 
-        // 플레이어 퍼즐 시작 위치로 이동
-        //if (singleCall_1)
-        //{
-        //    singleCall_1 = false;
-        //    player.transform.position = P_point.position + new Vector3( 0, 1, 0 );
-        //    //player.GetComponent<PlayerMove>().inEvent = true;
-        //}
-
-        x = Input.GetAxisRaw("Horizontal");
-        y = Input.GetAxisRaw("Vertical");
+        // 입력값에 따른 dirX, dirY 초기화
+        dirX = Input.GetAxisRaw("Horizontal") == 1 ? 1 : (Input.GetAxisRaw("Horizontal") == -1 ? -1 : 0 );
+        dirY = Input.GetAxisRaw("Vertical") == 1 ? 1 : (Input.GetAxisRaw("Vertical") == -1 ? -1 : 0);
 
         // 누르는 동안 타이머 증가
-        timerXR = x == 1 ? timerXR + Time.deltaTime : 0;
-        timerXL = x == -1 ? timerXL + Time.deltaTime : 0;
-        timerYU = y == 1 ? timerYU + Time.deltaTime : 0;
-        timerYD = y == -1 ? timerYD + Time.deltaTime : 0;
-        Debug.Log($"{timerXR},{timerXL},{timerYU},{timerYD}");
-
-        // 최근에 누른 타이머 선별 (타이머가 적게 흘렀으며, 0이 아닌 경우)
-        timerX = timerXR < timerXL ? (timerXR != 0 ? timerXR : timerXL) : timerXL;
-        timerY = timerYU < timerYD ? (timerYU != 0 ? timerYU : timerYD) : timerYD;
+        timerXR = dirX == 1 ? ++timerXR : 0;
+        timerXL = dirX == -1 ? ++timerXL : 0;
+        timerYU = dirY == 1 ? ++timerYU : 0;
+        timerYD = dirY == -1 ? ++timerYD : 0;
 
         // 키입력이 있을 때
-        if ((x != 0 || y != 0) && getKey)
+        if ((dirX != 0 || dirY != 0) && getKey)
         {
-            getKey = false;
+            // 최근에 누른 타이머 선별 (타이머가 적게 흘렀으며, 0이 아닌 경우)
+            timerX = timerXR < timerXL ? (timerXR != 0 ? timerXR : timerXL) : (timerXR == 0 ? timerXR : timerXL);
+            timerY = timerYU < timerYD ? (timerYU != 0 ? timerYU : timerYD) : (timerYD == 0 ? timerYU : timerYD);
             // 최근에 누른 방향 추출
-            if (timerX < timerY)
-                y = 0;
-            else
-                x = 0;
+            if ((timerX < timerY && timerX != 0) || timerY == 0)
+                dirY = 0;
+            else if (timerY < timerX && timerY != 0 || timerX == 0)
+                dirX = 0;
 
-            // 플레이어 위치 초기화
-            posX += x == 1 ? 1 : (x == -1 ? -1 : 0);
-            posY += y == 1 ? 1 : (y == -1 ? -1 : 0);
+            // 이동 방향 정수형으로 변환
+            int iX = dirX == 1 ? 1 : (dirX == -1 ? -1 : 0);
+            int iY = dirY == 1 ? -1 : (dirY == -1 ? 1 : 0);
+            //Debug.Log($"{posX + iX < 0 || posX + iX >= mapX}");
+            //Debug.Log($"{posY + iY < 0 || posY + iY >= mapY}");
+            //Debug.Log($"{mapSpawner.Map[posY + iY, posX + iX] == 1}");
+            //Debug.Log($"{c}. pos: {posX}, {posY} // dir: {dirX}, {dirY} // i: {iX}, {iY}");
+            //Debug.Log($"{c}. posTo: {posX + iX}, {posY + iY}");
+            //Debug.Log($"{c}. if ({!(posX + iX < 0 || posX + iX >= mapX || posY + iY < 0 || posY + iY >= mapY || mapSpawner.Map[posY + iY, posX + iX] == 1)})");
 
-            // 플레이어 이동
-            for (float f = 0; ; f += Time.deltaTime)
+            // 맵 범위를 벗어나거나, 벽이 아닐 경우 or 목적지인 경우
+            if (!(posX + iX < 0 || posX + iX >= mapX 
+                || posY + iY < 0 || posY + iY >= mapY 
+                || mapSpawner.Map[posY + iY, posX + iX] == 1)
+                || (posX + iX == 8 && posY + iY == -1))
             {
-                Debug.Log("for");
-                p_rigid.velocity = new Vector2(x * speed * Time.deltaTime, y * speed * Time.deltaTime);
+                // 플레이어 위치 초기화
+                // 목적지 도달시 각각 X = 8, Y = -2
+                posX += 2 * iX;
+                posY += 2 * iY;
+
+                // 목적지 위치 초기화
+                vanguard.transform.Translate(new Vector3(2 * dirX * width, 2 * dirY * height, 0));
                 yield return null;
-                if (y == 0 && x * speed * f == 2 * width) break;
-                if (x == 0 && y * speed * f == 2 * height) break;
-                if (f > 2) break;
+
+                // 애니메이션 출력
+                p_ani.SetFloat("DirX", dirX);
+                p_ani.SetFloat("DirY", dirY);
+                p_ani.SetBool("Walk", true);
+
+                // 플레이어 이동
+                while (true)
+                {
+                    if (getKey)
+                    {
+                        getKey = false;
+                    }
+                    player.transform.position = Vector2.MoveTowards(player.transform.position, vanguard.transform.position, speed * Time.deltaTime);
+                    yield return null;
+                    if (Vector2.Distance(vanguard.transform.position, player.transform.position) < 0.001f)
+                    {
+                        p_ani.SetBool("Walk", false);
+                        blackMob.SetPos(posX, posY);
+                        break;
+                    }
+                }
+                // 목적지인 경우 방 탈출. 퍼즐 종료
+                if (posX == 8 && posY == -2)
+                {
+                    player.GetComponent<PlayerMove>().inEvent = false;
+                    yield return new WaitForSeconds(0.3f);
+                    mapSpawner.SetGetReady(false);
+                    alleyScene.SetActive(true);
+                }
             }
-            singleCall_0 = true;
             getKey = true;
         }
+        singleCall_0 = true;
     }
 
     public int PosX

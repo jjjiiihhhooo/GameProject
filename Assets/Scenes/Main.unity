@@ -7641,7 +7641,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.5012193, y: 1.7195288}
+  m_Size: {x: 3.5, y: 1.7}
   m_EdgeRadius: 0
 --- !u!1 &494135404
 GameObject:
@@ -21412,7 +21412,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1312055345
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23169,7 +23169,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1392917221
 GameObject:
@@ -32901,7 +32901,7 @@ GameObject:
   - component: {fileID: 1990688022}
   m_Layer: 5
   m_Name: Quest Manager
-  m_TagString: Untagged
+  m_TagString: QuestManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35336,11 +35336,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1517170844041911011, guid: fa02a029f32e07f409b03136e9663080, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -41.87
+      value: -42
       objectReference: {fileID: 0}
     - target: {fileID: 1517170844041911011, guid: fa02a029f32e07f409b03136e9663080, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.42
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1517170844041911011, guid: fa02a029f32e07f409b03136e9663080, type: 3}
       propertyPath: m_LocalPosition.z

@@ -5,11 +5,11 @@ using UnityEngine;
 public class chap4_Puzzle1_Ready : MonoBehaviour
 {
     /* 
-     * 검은 형체를 생성하고 대화창 실행
+     * 검은 형체를 생성하고 대화창 실행 ( 헉... )
      * 이후, 퍼즐 준비 완료
      */
 
-    [SerializeField] GameObject BlackShape;
+    [SerializeField] GameObject blackShape;
     [SerializeField] GameObject JY_0;
     [SerializeField] GameObject JY_1;
     chap4_MapSpawner mapSpawner;
@@ -30,7 +30,7 @@ public class chap4_Puzzle1_Ready : MonoBehaviour
     IEnumerator AppearBlackShape(float _waitTime)
     {
         yield return new WaitForSeconds(1.0f);
-        BlackShape.SetActive(true);
+        blackShape.SetActive(true);
         yield return new WaitForSeconds(_waitTime);
 
         dialogueBox.SetDialogue(); // 헉...
