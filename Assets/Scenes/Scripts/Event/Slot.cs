@@ -20,11 +20,11 @@ public class Slot : MonoBehaviour
 
     private void Update()
     {
-        if(item_image != null)
-        {
-            //this.slotData.ex = this.item_image.sprite;
-            this.slotData.item_text = this.item_text.text;
-        }
+        //if(item_image != null)
+        //{
+        //    //this.slotData.ex = this.item_image.sprite;
+        //    this.slotData.item_text = this.item_text.text;
+        //}
     }
 
 }

@@ -64,8 +64,10 @@ public class PushPlayer : MonoBehaviour
         soundManager.StopSound(0);
         // 주인공에 혀감기;
         // 씬 로드;
+        
 
         playerMove.inEvent = false;
         Debug.Log("Done.");
+        SceneManager.LoadScene("Game_3");
     }
 }

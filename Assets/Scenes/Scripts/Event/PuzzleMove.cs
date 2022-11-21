@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ExceptionServices;
 using UnityEngine;
 
 public class PuzzleMove : MonoBehaviour
@@ -11,9 +12,9 @@ public class PuzzleMove : MonoBehaviour
     [SerializeField] private GameObject npc_idle_obj;
     [SerializeField] private GameObject npc_idle_obj2;
     [SerializeField] private Table table;
+    [SerializeField] private QuestInventory inventory;
     //[SerializeField] TestChat testChat;
     private int count;
-    
 
     public void PuzzleMoving()
     {
@@ -39,6 +40,7 @@ public class PuzzleMove : MonoBehaviour
                 npc_idle_obj2.SetActive(true);
                 fade.SetActive(true);
                 fade2.SetActive(true);
+                inventory.ItemReset();
             }
         }
         

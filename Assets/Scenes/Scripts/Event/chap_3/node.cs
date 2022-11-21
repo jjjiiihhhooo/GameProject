@@ -10,4 +10,5 @@ public class node : MonoBehaviour
     public int right;
     public int backCheck;
     public int frontCheck;
+    public int ImageIndex;
 }

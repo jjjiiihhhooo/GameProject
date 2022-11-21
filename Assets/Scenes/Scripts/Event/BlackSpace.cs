@@ -15,14 +15,21 @@ public class BlackSpace : MonoBehaviour
     private chap3_manager manager;
     [SerializeField] private GameObject puzzle_player;
     [SerializeField] private GameObject puzzle_jiyeon;
+    [SerializeField] private GameObject puzzle_jiyeon_image;
+    [SerializeField] private GameObject puzzle_player_image;
     [SerializeField] private GameObject puzzle_mob;
     [SerializeField] private GameObject[] mapNodes;
-    [SerializeField] Transform blackSpaceTransform;
-    
+    [SerializeField] private Transform blackSpaceTransform;
+    [SerializeField] private Sprite[] palyerImage;
+    [SerializeField] private Sprite[] jiyeonImage;
+    private SpriteRenderer puzzlePlayer_renderer;
+    private SpriteRenderer puzzleJiyeon_renderer;
 
 
     private void OnEnable()
     {
+        puzzlePlayer_renderer = puzzle_player_image.GetComponent<SpriteRenderer>();
+        puzzleJiyeon_renderer = puzzle_jiyeon_image.GetComponent<SpriteRenderer>();
         player = FindObjectOfType<PlayerMove>();
         cameraManager = FindObjectOfType<CameraManager>();
         manager = FindObjectOfType<chap3_manager>();
@@ -50,9 +57,28 @@ public class BlackSpace : MonoBehaviour
     {
         while (moveCount < mapNodes.Length)
         {
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.4f);
             puzzle_jiyeon.transform.position = mapNodes[moveCount].transform.position;
+            int temp = mapNodes[moveCount].GetComponent<node>().ImageIndex;
+            puzzleJiyeon_renderer.sprite = jiyeonImage[temp];
+
+            for (int i = 1; i < mapNodes.Length-2; i++)
+            {
+                Renderer renderer_3 = mapNodes[i].GetComponent<Renderer>();
+                renderer_3.enabled = false;
+            }
+            if (moveCount+1 != mapNodes.Length)
+            {
+                Renderer renderer = mapNodes[moveCount].GetComponent<Renderer>();
+                Renderer renderer_1 = mapNodes[moveCount - 1].GetComponent<Renderer>();
+                Renderer renderer_2 = mapNodes[moveCount + 1].GetComponent<Renderer>();
+                renderer.enabled = true;
+                renderer_1.enabled = true;
+                renderer_2.enabled = true;
+            }
             moveCount++;
+            Renderer renderer_4 = mapNodes[70].GetComponent<Renderer>();
+            renderer_4.enabled = false;
         }
     }
 
@@ -194,18 +220,22 @@ public class BlackSpace : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             PlayerMove(1, 0);
+            puzzlePlayer_renderer.sprite = palyerImage[3];
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             PlayerMove(-1, 0);
+            puzzlePlayer_renderer.sprite = palyerImage[2];
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             PlayerMove(0, -1);
+            puzzlePlayer_renderer.sprite = palyerImage[0];
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             PlayerMove(0, 1);
+            puzzlePlayer_renderer.sprite = palyerImage[1];
         }
 
         if(playerMoveCount == 69 && !isTurn)

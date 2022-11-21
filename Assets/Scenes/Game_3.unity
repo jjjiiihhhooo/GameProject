@@ -201,6 +201,7 @@ MonoBehaviour:
   right: 0
   backCheck: 1
   frontCheck: -1
+  ImageIndex: 0
 --- !u!212 &10687171
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -415,6 +416,7 @@ MonoBehaviour:
   right: 0
   backCheck: -1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &103852193
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -629,6 +631,7 @@ MonoBehaviour:
   right: 0
   backCheck: 1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &150705994
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -759,6 +762,7 @@ MonoBehaviour:
   right: 0
   backCheck: 1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &203506397
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -889,6 +893,7 @@ MonoBehaviour:
   right: 1
   backCheck: -1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &232090355
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1103,6 +1108,7 @@ MonoBehaviour:
   right: 1
   backCheck: 2
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &249381444
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1233,6 +1239,7 @@ MonoBehaviour:
   right: 0
   backCheck: -1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &299353313
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1363,6 +1370,7 @@ MonoBehaviour:
   right: 0
   backCheck: -1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &303738574
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1493,6 +1501,7 @@ MonoBehaviour:
   right: 1
   backCheck: 2
   frontCheck: 1
+  ImageIndex: 2
 --- !u!212 &311653480
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1707,6 +1716,7 @@ MonoBehaviour:
   right: 1
   backCheck: 1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &403665774
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1896,6 +1906,7 @@ MonoBehaviour:
   right: 0
   backCheck: -2
   frontCheck: -1
+  ImageIndex: 0
 --- !u!212 &460494771
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2128,6 +2139,7 @@ MonoBehaviour:
   right: 0
   backCheck: 1
   frontCheck: -1
+  ImageIndex: 0
 --- !u!212 &490944918
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2258,6 +2270,7 @@ MonoBehaviour:
   right: 0
   backCheck: -1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &529171816
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2388,6 +2401,7 @@ MonoBehaviour:
   right: 0
   backCheck: 1
   frontCheck: -1
+  ImageIndex: 0
 --- !u!212 &537611947
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2518,6 +2532,7 @@ MonoBehaviour:
   right: 0
   backCheck: -2
   frontCheck: -1
+  ImageIndex: 0
 --- !u!212 &545910411
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2648,6 +2663,7 @@ MonoBehaviour:
   right: 0
   backCheck: -2
   frontCheck: -1
+  ImageIndex: 0
 --- !u!212 &571468986
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2778,6 +2794,7 @@ MonoBehaviour:
   right: 1
   backCheck: 1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &595566256
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3013,6 +3030,7 @@ MonoBehaviour:
   right: 0
   backCheck: -1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &631568893
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3128,6 +3146,7 @@ MonoBehaviour:
   right: 0
   backCheck: -1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &642947258
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3273,6 +3292,7 @@ MonoBehaviour:
   right: 0
   backCheck: 1
   frontCheck: -1
+  ImageIndex: 0
 --- !u!212 &680164047
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3403,6 +3423,7 @@ MonoBehaviour:
   right: 1
   backCheck: 1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &685377628
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3533,6 +3554,7 @@ MonoBehaviour:
   right: 1
   backCheck: -2
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &692769676
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3747,6 +3769,7 @@ MonoBehaviour:
   right: 0
   backCheck: 1
   frontCheck: -1
+  ImageIndex: 0
 --- !u!212 &723269851
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3877,6 +3900,7 @@ MonoBehaviour:
   right: 0
   backCheck: -2
   frontCheck: -1
+  ImageIndex: 0
 --- !u!212 &723749997
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4007,6 +4031,7 @@ MonoBehaviour:
   right: 1
   backCheck: -1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &724005066
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4137,6 +4162,7 @@ MonoBehaviour:
   right: 1
   backCheck: 1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &771032833
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4267,6 +4293,7 @@ MonoBehaviour:
   right: 1
   backCheck: 1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &833578200
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4397,6 +4424,7 @@ MonoBehaviour:
   right: 1
   backCheck: 1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &853568440
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4556,6 +4584,8 @@ MonoBehaviour:
   playerMoveCount: 0
   puzzle_player: {fileID: 410432132}
   puzzle_jiyeon: {fileID: 623685162}
+  puzzle_jiyeon_image: {fileID: 2002921449}
+  puzzle_player_image: {fileID: 241567897}
   puzzle_mob: {fileID: 620792723}
   mapNodes:
   - {fileID: 771032829}
@@ -4630,6 +4660,16 @@ MonoBehaviour:
   - {fileID: 1449302889}
   - {fileID: 642947255}
   blackSpaceTransform: {fileID: 904865725}
+  palyerImage:
+  - {fileID: 1662678675, guid: 79409d02a241c6c4984f968fe06baa23, type: 3}
+  - {fileID: 1569776033, guid: 79409d02a241c6c4984f968fe06baa23, type: 3}
+  - {fileID: -274041377, guid: 79409d02a241c6c4984f968fe06baa23, type: 3}
+  - {fileID: -1328447298, guid: 79409d02a241c6c4984f968fe06baa23, type: 3}
+  jiyeonImage:
+  - {fileID: -155542890, guid: b67404aae1f50c04286ff87871428e69, type: 3}
+  - {fileID: -59559828, guid: b67404aae1f50c04286ff87871428e69, type: 3}
+  - {fileID: 775154248, guid: b67404aae1f50c04286ff87871428e69, type: 3}
+  - {fileID: -1874716715, guid: b67404aae1f50c04286ff87871428e69, type: 3}
 --- !u!1 &942129359
 GameObject:
   m_ObjectHideFlags: 0
@@ -4708,6 +4748,7 @@ MonoBehaviour:
   right: 0
   backCheck: -2
   frontCheck: 1
+  ImageIndex: 2
 --- !u!212 &942129363
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4838,6 +4879,7 @@ MonoBehaviour:
   right: 1
   backCheck: -1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &946597065
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4968,6 +5010,7 @@ MonoBehaviour:
   right: 1
   backCheck: -1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &959320768
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5098,6 +5141,7 @@ MonoBehaviour:
   right: 0
   backCheck: 1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &962934754
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5228,6 +5272,7 @@ MonoBehaviour:
   right: 1
   backCheck: 1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &973161287
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5358,6 +5403,7 @@ MonoBehaviour:
   right: 1
   backCheck: 1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &987703926
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5488,6 +5534,7 @@ MonoBehaviour:
   right: 1
   backCheck: 1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &998077299
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5618,6 +5665,7 @@ MonoBehaviour:
   right: 0
   backCheck: -1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &1016825489
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5748,6 +5796,7 @@ MonoBehaviour:
   right: 0
   backCheck: -1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &1031682897
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6190,6 +6239,7 @@ MonoBehaviour:
   right: 1
   backCheck: 1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &1117150828
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6464,6 +6514,7 @@ MonoBehaviour:
   right: 0
   backCheck: 1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &1172697372
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6678,6 +6729,7 @@ MonoBehaviour:
   right: 1
   backCheck: -1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &1240977778
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6808,6 +6860,7 @@ MonoBehaviour:
   right: 1
   backCheck: 1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &1249967335
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7022,6 +7075,7 @@ MonoBehaviour:
   right: 0
   backCheck: -1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &1284858503
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7152,6 +7206,7 @@ MonoBehaviour:
   right: 1
   backCheck: 1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &1309030398
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7282,6 +7337,7 @@ MonoBehaviour:
   right: 0
   backCheck: -2
   frontCheck: -1
+  ImageIndex: 0
 --- !u!212 &1352863085
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7412,6 +7468,7 @@ MonoBehaviour:
   right: 0
   backCheck: 1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &1387208838
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7542,6 +7599,7 @@ MonoBehaviour:
   right: 0
   backCheck: -1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &1407349135
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7672,6 +7730,7 @@ MonoBehaviour:
   right: 1
   backCheck: -2
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &1415209901
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7802,6 +7861,7 @@ MonoBehaviour:
   right: 1
   backCheck: -2
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &1443139298
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7932,6 +7992,7 @@ MonoBehaviour:
   right: 1
   backCheck: -2
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &1445687736
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8062,6 +8123,7 @@ MonoBehaviour:
   right: 0
   backCheck: -1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &1449302893
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8192,6 +8254,7 @@ MonoBehaviour:
   right: 0
   backCheck: -2
   frontCheck: -1
+  ImageIndex: 0
 --- !u!212 &1471544478
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8322,6 +8385,7 @@ MonoBehaviour:
   right: 0
   backCheck: 1
   frontCheck: -1
+  ImageIndex: 0
 --- !u!212 &1495828002
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8452,6 +8516,7 @@ MonoBehaviour:
   right: 0
   backCheck: 1
   frontCheck: -1
+  ImageIndex: 0
 --- !u!212 &1508592437
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8582,6 +8647,7 @@ MonoBehaviour:
   right: 1
   backCheck: -2
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &1549344276
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8880,6 +8946,7 @@ MonoBehaviour:
   right: 1
   backCheck: 1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &1574991419
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9010,6 +9077,7 @@ MonoBehaviour:
   right: 0
   backCheck: 1
   frontCheck: -1
+  ImageIndex: 0
 --- !u!212 &1597894925
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9140,6 +9208,7 @@ MonoBehaviour:
   right: 0
   backCheck: -2
   frontCheck: -1
+  ImageIndex: 0
 --- !u!212 &1633642992
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9354,6 +9423,7 @@ MonoBehaviour:
   right: 0
   backCheck: -1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &1745774595
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9484,6 +9554,7 @@ MonoBehaviour:
   right: 1
   backCheck: -2
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &1787788495
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9614,6 +9685,7 @@ MonoBehaviour:
   right: 0
   backCheck: 1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &1796551670
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9744,6 +9816,7 @@ MonoBehaviour:
   right: 1
   backCheck: -2
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &1796747461
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9906,6 +9979,7 @@ MonoBehaviour:
   right: 1
   backCheck: 1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &1880165976
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10036,6 +10110,7 @@ MonoBehaviour:
   right: 1
   backCheck: 1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &1888975296
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10166,6 +10241,7 @@ MonoBehaviour:
   right: 1
   backCheck: 2
   frontCheck: -1
+  ImageIndex: 0
 --- !u!212 &1891567606
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10248,6 +10324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackSpace: {fileID: 904865723}
+  fade: {fileID: 0}
 --- !u!4 &1944576585
 Transform:
   m_ObjectHideFlags: 0
@@ -10425,6 +10502,7 @@ MonoBehaviour:
   right: 0
   backCheck: -1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &1989165900
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10555,6 +10633,7 @@ MonoBehaviour:
   right: 0
   backCheck: -1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &1991327010
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10685,6 +10764,7 @@ MonoBehaviour:
   right: 0
   backCheck: -1
   frontCheck: 1
+  ImageIndex: 2
 --- !u!212 &1992098575
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10815,6 +10895,7 @@ MonoBehaviour:
   right: 1
   backCheck: 1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &2001824984
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11029,6 +11110,7 @@ MonoBehaviour:
   right: 1
   backCheck: -2
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &2037492379
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11159,6 +11241,7 @@ MonoBehaviour:
   right: 0
   backCheck: -1
   frontCheck: -2
+  ImageIndex: 1
 --- !u!212 &2040629006
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11289,6 +11372,7 @@ MonoBehaviour:
   right: 1
   backCheck: 1
   frontCheck: 2
+  ImageIndex: 3
 --- !u!212 &2077438886
 SpriteRenderer:
   m_ObjectHideFlags: 0
