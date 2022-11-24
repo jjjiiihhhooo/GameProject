@@ -9,18 +9,16 @@ public class chap4_EyeSpawn : MonoBehaviour
     [SerializeField] GameObject eyelid; // ´«²¨Ç®
 
     float delay;
-    float delay1;
     int dir;
     int blink;
 
     void Start()
     {
-        delay = Random.Range(0.0f, 0.5f);
-        delay1 = Random.Range(0.0f, 0.5f);
+        delay = Random.Range(0.5f, 1.75f);
         dir = Random.Range(0, 2);
         blink = Random.Range(0, 2);
 
-        eyelid.SetActive(false);
+        eyelid.SetActive(true);
         white.SetActive(false);
         black.SetActive(false);
 
@@ -30,11 +28,6 @@ public class chap4_EyeSpawn : MonoBehaviour
     IEnumerator EyeOpen()
     {
         yield return new WaitForSeconds(delay);
-        eyelid.SetActive(true);
-        white.SetActive(false);
-        black.SetActive(false);
-
-        yield return new WaitForSeconds(delay1);
         eyelid.SetActive(false);
         white.SetActive(true);
         black.SetActive(true);
@@ -70,7 +63,7 @@ public class chap4_EyeSpawn : MonoBehaviour
                 white.SetActive(false);
                 black.SetActive(false);
 
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.5f);
 
                 eyelid.SetActive(false);
                 white.SetActive(true);

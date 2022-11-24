@@ -3392,6 +3392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2.5
   tanimator: {fileID: 2114424943}
+  tongue: {fileID: 2114424945}
 --- !u!61 &1685391304
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4456,6 +4457,8 @@ GameObject:
   - component: {fileID: 2114424942}
   - component: {fileID: 2114424944}
   - component: {fileID: 2114424943}
+  - component: {fileID: 2114424946}
+  - component: {fileID: 2114424945}
   m_Layer: 0
   m_Name: tongue
   m_TagString: Untagged
@@ -4550,6 +4553,46 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2114424945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114424941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0ff04e11814b540aa570d1f2da47cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttack: 0
+  gameOver: {fileID: 338818337}
+--- !u!61 &2114424946
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114424941}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 45, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0.5}
+    oldSize: {x: 17.966795, y: 8.0199995}
+    newSize: {x: 17.966795, y: 8.0199995}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 90, y: 8.0199995}
+  m_EdgeRadius: 0
 --- !u!1 &2133798649
 GameObject:
   m_ObjectHideFlags: 0

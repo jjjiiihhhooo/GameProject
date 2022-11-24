@@ -12,13 +12,14 @@ public class chap4_Eye : MonoBehaviour
     bool single;
 
     Transform playerPos;
-    Vector2 localPos;
-    Vector2 direction;
+    Vector3 localPos;
+    Vector3 direction;
     float distance;
 
     void Start()
     {
-        localPos = new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y);
+        localPos = this.transform.position;
+        //new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y);
     }
 
     void Update()
@@ -35,6 +36,7 @@ public class chap4_Eye : MonoBehaviour
         else if (!isOpen)
         {
             StopAllCoroutines();
+            single = false;
 
             open = false;
 
@@ -64,7 +66,7 @@ public class chap4_Eye : MonoBehaviour
             direction *= 0.1f / distance;
         }
 
-        this.black.transform.position = Vector2.MoveTowards(this.black.transform.position, localPos + direction, 2 * Time.deltaTime);
+        this.black.transform.position = Vector3.MoveTowards(this.black.transform.position, localPos + direction + new Vector3(0, 0, -0.1f), 2 * Time.deltaTime);
         yield return null;
 
         single = false;

@@ -44,12 +44,26 @@ public class chap4_MapSpawner : MonoBehaviour
     // 1 ~ 4 : 일반
     // 5 ~ 8 : 트롤
 
+    //{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+    //{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+    //{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+    //{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+    //{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+    //{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+    //{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+    //{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+    //{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+    //{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+    //{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+    //{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+    //{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1}
+    
     int[,] map1 = { // 검 // 낮 1
     { 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0},
     { 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-    { 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0},
-    { 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0},
-    { 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0},
+    { 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1},
+    { 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1},
+    { 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1},
     { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1},
     { 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1},
     { 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -79,9 +93,9 @@ public class chap4_MapSpawner : MonoBehaviour
     int[,] map3 = { // 보 // 낮 1
     { 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
     { 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
-    { 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0},
-    { 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0},
-    { 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0},
+    { 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1},
+    { 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1},
+    { 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1},
     { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1},
     { 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0},
     { 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
@@ -214,7 +228,7 @@ public class chap4_MapSpawner : MonoBehaviour
             player.GetComponent<PlayerMove>().inEvent = true;
         }
 
-        if (mapNum <= 0 && mapNum > 4)
+        if (mapNum <= 0 && mapNum > 8)
         {
             Debug.Log("맵 인덱스가 범위 바깥에 있습니다.");
             yield break;
@@ -249,7 +263,6 @@ public class chap4_MapSpawner : MonoBehaviour
                 map = map8;
                 break;
         }
-        Debug.Log(mapNum);
         // 암전
         if (i % 2 == 1)
         {
@@ -269,17 +282,28 @@ public class chap4_MapSpawner : MonoBehaviour
             {
                 if (map[y, x] == 0)
                 {
-                    mapInstance.Add(Instantiate(eye, new Vector2(O_point.position.x + x * width, O_point.position.y - y * height), Quaternion.identity));
-                    mapInstance[j].GetComponent<chap4_Eye>().isOpen = false;
+                    if(i == 0)
+                        mapInstance.Add(Instantiate(eye, new Vector2(O_point.position.x + x * width, O_point.position.y - y * height), Quaternion.identity));
+                    else if(mapInstance[j].GetComponent<chap4_Eye>().isOpen)
+                        mapInstance[j].GetComponent<chap4_Eye>().isOpen = false;
                     j++;
+                    //Debug.Log($"{x},{y}");
                 }
                 else if (map[y, x] == 1)
                 {
-                    mapInstance.Add(Instantiate(eye, new Vector2(O_point.position.x + x * width, O_point.position.y - y * height), Quaternion.identity));
-                    
-                    // 맵 생성시, 플레이어 위치에는 함정생성x
-                    if (!(PM.PosX == x && PM.PosY == y))
+                    if (i == 0)
+                    {
+                        mapInstance.Add(Instantiate(eye, new Vector2(O_point.position.x + x * width, O_point.position.y - y * height), Quaternion.identity));
                         mapInstance[j].GetComponent<chap4_Eye>().isOpen = true;
+                    }
+                    else if (!mapInstance[j].GetComponent<chap4_Eye>().isOpen)
+                    {
+                        // 맵 생성시, 플레이어 위치에는 함정생성x
+                        if (!(PM.PosX == x && PM.PosY == y))
+                        {
+                            mapInstance[j].GetComponent<chap4_Eye>().isOpen = true;
+                        }
+                    }
                     j++;
                 }
             }
@@ -287,8 +311,8 @@ public class chap4_MapSpawner : MonoBehaviour
         yield return new WaitForSeconds(wait);
 
         // 맵 삭제
-        foreach (GameObject toDestroy in mapInstance) Destroy(toDestroy);
-        mapInstance.Clear();
+        // foreach (GameObject toDestroy in mapInstance) Destroy(toDestroy);
+        // mapInstance.Clear();
 
         // 맵 배열 인덱스 초기화
         i++;

@@ -108,8 +108,7 @@ public class chap4_PlayerMove_Puzzle1 : MonoBehaviour
 
             // 맵 범위를 벗어나거나, 벽이 아닐 경우 or 목적지인 경우
             if (!(posX + iX < 0 || posX + iX >= mapX 
-                || posY + iY < 0 || posY + iY >= mapY 
-                || mapSpawner.Map[posY + iY, posX + iX] == 1)
+                || posY + iY < 0 || posY + iY >= mapY)
                 || (posX + iX == 8 && posY + iY == -1))
             {
                 // 플레이어 위치 초기화

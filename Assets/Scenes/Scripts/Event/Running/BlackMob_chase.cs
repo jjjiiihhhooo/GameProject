@@ -8,6 +8,7 @@ public class BlackMob_chase : MonoBehaviour
     private ChaseScene chaseScene;
     private Animator animator;
     [SerializeField] Animator tanimator;
+    [SerializeField] Tongue tongue;
     private SoundManager soundManager;
     private Vector3 sizeSpeed;
     private int currentLocation = 0;
@@ -27,6 +28,7 @@ public class BlackMob_chase : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log($"{tanimator.GetBool("isAttack")}// {tongue.isAttack}");
         if (singleCall_1)
         {
             soundManager.PlaySound(1, false, true, 1.8f); // 발소리 출력, 루프
@@ -101,9 +103,13 @@ public class BlackMob_chase : MonoBehaviour
             if (isAttack)
             {
                 tanimator.SetTrigger("isAttack");
-                yield return new WaitForSeconds(0.5f); // 공격모션 출력 시간
+                yield return new WaitForSeconds(0.3f);
+                tongue.isAttack = true;
+                yield return new WaitForSeconds(0.2f);
                 soundManager.PlaySound(0, true, false, 0.8f); // 포효소리 출력
-                yield return new WaitForSeconds(1.0f);
+                yield return new WaitForSeconds(0.2f);
+                tongue.isAttack = false;
+                yield return new WaitForSeconds(0.8f); // 공격모션 출력 시간
             }
             phase++;
             isAction = true;
