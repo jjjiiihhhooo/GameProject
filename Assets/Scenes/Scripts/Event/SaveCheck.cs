@@ -72,7 +72,7 @@ public class SaveCheck : MonoBehaviour
 
     private void DisplayFalse()
     {
-        fade.SetActive(true);
+        //fade.SetActive(true);
         blackDisplay.SetActive(false);
     }
 
