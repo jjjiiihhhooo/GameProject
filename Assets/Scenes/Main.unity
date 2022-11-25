@@ -1834,14 +1834,14 @@ MonoBehaviour:
   dialogueManager: {fileID: 0}
   dialogues:
   - charSprites: {fileID: -1502730524, guid: 04c8bc5c8610eff4089efeb19bac7fa3, type: 3}
-    charNum: 1
-    sentences: "\uC9C0\uC5F0: OO\uC544 \uB0B4\uB824\uC640"
+    charNum: -1
+    sentences: "OO\uC544 \uB0B4\uB824\uC640"
     choice: 0
     answers_0: 
     answers_1: 
   - charSprites: {fileID: -1870597651, guid: de4c2f4d38977e54ab03f2b41751b28e, type: 3}
-    charNum: 0
-    sentences: "\uD558\uB098: \uBB34\uC11C\uC6B4\uB370..."
+    charNum: -1
+    sentences: "\uBB34\uC11C\uC6B4\uB370..."
     choice: 0
     answers_0: 
     answers_1: 
@@ -6952,13 +6952,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454534292}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.95, y: 0.71, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 13.433866, y: -5.252335, z: -1.038362}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_Father: {fileID: 599970912}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &455857168
 GameObject:
@@ -8739,13 +8739,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533425127}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.65, y: -2.04, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.133865, y: -8.002335, z: -1.038362}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_Father: {fileID: 599970912}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &533425130
 BoxCollider2D:
@@ -10084,6 +10084,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &599970911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 599970912}
+  m_Layer: 0
+  m_Name: Test.
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &599970912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599970911}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.483866, y: 5.962335, z: 1.038362}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 533425129}
+  - {fileID: 1583987011}
+  - {fileID: 454534298}
+  - {fileID: 1634270481}
+  m_Father: {fileID: 0}
+  m_RootOrder: 28
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &604745831
 GameObject:
   m_ObjectHideFlags: 0
@@ -11378,15 +11413,14 @@ MonoBehaviour:
   dialogueManager: {fileID: 0}
   dialogues:
   - charSprites: {fileID: -1502730524, guid: 04c8bc5c8610eff4089efeb19bac7fa3, type: 3}
-    charNum: 1
-    sentences: "\uC9C0\uC5F0: \uC6B0\uB9AC \uB204\uAC00 \uB354 \uBA40\uB9AC\uAC00\uB294\uC9C0
-      \uB0B4\uAE30\uD560\uAE4C?"
+    charNum: -1
+    sentences: "\uC6B0\uB9AC \uB204\uAC00 \uB354 \uBA40\uB9AC\uAC00\uB294\uC9C0 \uB0B4\uAE30\uD560\uAE4C?"
     choice: 0
     answers_0: 
     answers_1: 
   - charSprites: {fileID: -2051136904, guid: de4c2f4d38977e54ab03f2b41751b28e, type: 3}
-    charNum: 0
-    sentences: "\uD558\uB098: \uADF8\uB798"
+    charNum: -1
+    sentences: "\uADF8\uB798"
     choice: 0
     answers_0: 
     answers_1: 
@@ -21546,7 +21580,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1312055349
 MonoBehaviour:
@@ -23259,7 +23293,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 32
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1392917221
 GameObject:
@@ -25182,12 +25216,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1518398844}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -51.04, y: 18.18368, z: 0}
-  m_LocalScale: {x: 0.07, y: 0.07, z: 1}
+  m_LocalPosition: {x: 0.2999878, y: 0.2599907, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_Father: {fileID: 1941748789}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1520343731
 GameObject:
@@ -25408,25 +25442,25 @@ MonoBehaviour:
   dialogueManager: {fileID: 0}
   dialogues:
   - charSprites: {fileID: -1502730524, guid: 04c8bc5c8610eff4089efeb19bac7fa3, type: 3}
-    charNum: 1
-    sentences: "\uC9C0\uC5F0: OO\uC544.. \uC774\uAC70 \uBC1B\uC544"
+    charNum: -1
+    sentences: "OO\uC544.. \uC774\uAC70 \uBC1B\uC544"
     choice: 0
     answers_0: 
     answers_1: 
   - charSprites: {fileID: -1870597651, guid: de4c2f4d38977e54ab03f2b41751b28e, type: 3}
-    charNum: 0
-    sentences: "\uD558\uB098: \uC774\uAC74...?"
+    charNum: -1
+    sentences: "\uC774\uAC74...?"
     choice: 0
     answers_0: 
     answers_1: 
   - charSprites: {fileID: 2074006910, guid: 04c8bc5c8610eff4089efeb19bac7fa3, type: 3}
-    charNum: 1
-    sentences: "\uC9C0\uC5F0: \uBA38\uB9AC\uD540\uC774\uC57C"
+    charNum: -1
+    sentences: "\uBA38\uB9AC\uD540\uC774\uC57C"
     choice: 0
     answers_0: 
     answers_1: 
   - charSprites: {fileID: -2051136904, guid: de4c2f4d38977e54ab03f2b41751b28e, type: 3}
-    charNum: 0
+    charNum: -1
     sentences: "\uBA38\uB9AC\uD540\uC744 \uC8FC\uC6E0\uB2E4."
     choice: 0
     answers_0: 
@@ -26564,13 +26598,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1583987005}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.64, y: 0.71, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.123866, y: -5.252335, z: -1.038362}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_Father: {fileID: 599970912}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1583987012
 MonoBehaviour:
@@ -27649,13 +27683,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634270475}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.46, y: 1.14, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.0238657, y: -4.8223352, z: -1.038362}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_Father: {fileID: 599970912}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1635040296
 GameObject:
@@ -31183,7 +31217,7 @@ Transform:
   - {fileID: 1735261708}
   - {fileID: 2080419458}
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1895485896
 GameObject:
@@ -32208,7 +32242,8 @@ Transform:
   m_LocalPosition: {x: -6.669998, y: 15.77, z: 0.040866133}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1518398846}
   m_Father: {fileID: 2140784352}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32227,14 +32262,14 @@ MonoBehaviour:
   dialogueManager: {fileID: 0}
   dialogues:
   - charSprites: {fileID: -1502730524, guid: 04c8bc5c8610eff4089efeb19bac7fa3, type: 3}
-    charNum: 1
-    sentences: "\uC9C0\uC5F0: OO\uC544 \uB0B4\uAC00 \uBC00\uC5B4\uC904\uAC8C"
+    charNum: -1
+    sentences: "OO\uC544 \uB0B4\uAC00 \uBC00\uC5B4\uC904\uAC8C"
     choice: 0
     answers_0: 
     answers_1: 
   - charSprites: {fileID: -2051136904, guid: de4c2f4d38977e54ab03f2b41751b28e, type: 3}
-    charNum: 0
-    sentences: "\uD558\uB098: \uC751 \uACE0\uB9C8\uC6CC..."
+    charNum: -1
+    sentences: "\uC751 \uACE0\uB9C8\uC6CC..."
     choice: 0
     answers_0: 
     answers_1: 

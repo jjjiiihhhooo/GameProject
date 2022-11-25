@@ -99,12 +99,6 @@ public class chap4_PlayerMove_Puzzle1 : MonoBehaviour
             // 이동 방향 정수형으로 변환
             int iX = dirX == 1 ? 1 : (dirX == -1 ? -1 : 0);
             int iY = dirY == 1 ? -1 : (dirY == -1 ? 1 : 0);
-            //Debug.Log($"{posX + iX < 0 || posX + iX >= mapX}");
-            //Debug.Log($"{posY + iY < 0 || posY + iY >= mapY}");
-            //Debug.Log($"{mapSpawner.Map[posY + iY, posX + iX] == 1}");
-            //Debug.Log($"{c}. pos: {posX}, {posY} // dir: {dirX}, {dirY} // i: {iX}, {iY}");
-            //Debug.Log($"{c}. posTo: {posX + iX}, {posY + iY}");
-            //Debug.Log($"{c}. if ({!(posX + iX < 0 || posX + iX >= mapX || posY + iY < 0 || posY + iY >= mapY || mapSpawner.Map[posY + iY, posX + iX] == 1)})");
 
             // 맵 범위를 벗어나거나, 벽이 아닐 경우 or 목적지인 경우
             if (!(posX + iX < 0 || posX + iX >= mapX 

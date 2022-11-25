@@ -8,6 +8,7 @@ public class chap4_AlleyScene : MonoBehaviour
     [SerializeField] Transform playground;
     [SerializeField] Transform from;
     [SerializeField] chap4_ToB to;
+    [SerializeField] GameObject intro;
 
     GameObject player;
     Animator pAni;
@@ -41,7 +42,7 @@ public class chap4_AlleyScene : MonoBehaviour
         pAni.SetBool("Walk", false);
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         player.transform.position = playground.position;
-        player.GetComponent<PlayerMove>().inEvent = false;
+        intro.SetActive(true);
         mainCamera.GetComponent<CameraManager>().Bool();
         StopAllCoroutines();
     }
