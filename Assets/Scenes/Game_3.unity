@@ -4096,6 +4096,7 @@ GameObject:
   - component: {fileID: 771032833}
   - component: {fileID: 771032832}
   - component: {fileID: 771032831}
+  - component: {fileID: 771032834}
   m_Layer: 0
   m_Name: Door_node
   m_TagString: Untagged
@@ -4215,6 +4216,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &771032834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771032829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e5b44c64f017f42a6f2c874a8a5485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &833578196
 GameObject:
   m_ObjectHideFlags: 0
@@ -4582,6 +4595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveCount: 1
   playerMoveCount: 0
+  door: {fileID: 771032834}
   puzzle_player: {fileID: 410432132}
   puzzle_jiyeon: {fileID: 623685162}
   puzzle_jiyeon_image: {fileID: 2002921449}
@@ -6161,6 +6175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BlackSpace: {fileID: 904865723}
+  cameraManager: {fileID: 0}
 --- !u!1 &1117150824
 GameObject:
   m_ObjectHideFlags: 0
@@ -10324,6 +10339,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackSpace: {fileID: 904865723}
+  mapTransform: {fileID: 1956930569}
+  player: {fileID: 0}
+  cameraManager: {fileID: 0}
   fade: {fileID: 0}
 --- !u!4 &1944576585
 Transform:
