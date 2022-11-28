@@ -10,6 +10,8 @@ public class Mob : MonoBehaviour
     [SerializeField] private bool isStart;
     //[SerializeField] private TestChat testChat;
     [SerializeField] private GameObject blackMob;
+    [SerializeField] private GameObject rightWall;
+    [SerializeField] private GameObject right_arrow;
 
     [SerializeField] GameObject player;
     
@@ -67,6 +69,8 @@ public class Mob : MonoBehaviour
             {
                 mobReady = false;
                 audioSource.Play();
+                rightWall.SetActive(false);
+                right_arrow.SetActive(true);
                 StartCoroutine(MobStart()); // 검은 형체 등장
             }
         }

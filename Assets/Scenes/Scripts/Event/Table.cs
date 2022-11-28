@@ -12,6 +12,7 @@ public class Table : MonoBehaviour
     [SerializeField] private GameObject trigger;
     //[SerializeField] private GameObject bed;
     [SerializeField] private GameObject npc2_dialogue;
+    [SerializeField] private GameObject npc_dialogue;
     //[SerializeField] private TestChat npc2_testChat;
     public Rigidbody2D rigid;
 
@@ -27,6 +28,7 @@ public class Table : MonoBehaviour
         {
             isTable = true;
             box.isTrigger = true;
+            npc_dialogue.SetActive(false);
             npc2_dialogue.SetActive(true);
             //npc2_dialogue.GetComponent<DialogueBox>().SetDialogue();
             player.GetComponent<PlayerMove>().BedActive();

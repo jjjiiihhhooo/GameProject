@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Title_ButtonManager : MonoBehaviour
 {
     [SerializeField] private GameObject option_obj;
+    [SerializeField] private GameObject display_obj;
+    [SerializeField] private GameObject keyBoard_obj;
     [SerializeField] private SaveManager saveManager;
     private bool isOption;
 
@@ -13,6 +15,27 @@ public class Title_ButtonManager : MonoBehaviour
     {
         isOption = !isOption;
         option_obj.SetActive(isOption);
+    }
+
+    public void DisPlayBtn()
+    {
+        option_obj.SetActive(false);
+        keyBoard_obj.SetActive(false);
+        display_obj.SetActive(true);
+    }
+
+    public void KeyBoardBtn()
+    {
+        option_obj.SetActive(false);
+        keyBoard_obj.SetActive(true);
+        display_obj.SetActive(false);
+    }
+
+    public void Exit_Option()
+    {
+        option_obj.SetActive(false);
+        display_obj.SetActive(false);
+        keyBoard_obj.SetActive(false);
     }
 
     public void MapStart(int count)
