@@ -14,7 +14,6 @@ public class chap4_BlackMob : MonoBehaviour
     [SerializeField] Transform loc0;
     [SerializeField] Transform loc1;
     [SerializeField] Transform loc2;
-    [SerializeField] Transform loc3;
     [SerializeField] Animator ani;
 
     int posX = -1;
@@ -30,10 +29,6 @@ public class chap4_BlackMob : MonoBehaviour
     float nightSpeed;
     float currentSpeed;
 
-    /// 
-    //float t1 = 0;
-    //bool t2;
-
     void Start()
     {
         basicSpeed = (goalSize - blackMob.transform.localScale.x) / time;
@@ -46,19 +41,11 @@ public class chap4_BlackMob : MonoBehaviour
 
     void Update()
     {
-        //if (t2)
-        //    t1 += Time.deltaTime;
-        //if (posX == 8 && posY == 6)
-        //{
-        //    Debug.Log(t1);
-        //    t1 = 0;
-        //}
         if (posX == 12 && posY == 6)
         {
             SetPosN();
             blackMob.SetActive(true);
             phase++;
-            //t2 = true;
         }
         else if (phase == 1 && single)
         {
@@ -72,14 +59,7 @@ public class chap4_BlackMob : MonoBehaviour
             speed = (Vector2.Distance(loc1.position, loc2.position)) / time1;
             StartCoroutine(BlackMobMove(loc2, speed));
         }
-        else if (phase == 3 && single)
-        {
-            single = false;
-            ani.SetFloat("DirX", 1);
-            speed = (Vector2.Distance(loc2.position, loc3.position)) / time2;
-            StartCoroutine(BlackMobMove(loc3, speed));
-        }
-        else if(phase == 4 && single)
+        else if(phase == 3 && single)
         {
             phase++;
             ani.SetFloat("DirX", -1);

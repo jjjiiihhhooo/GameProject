@@ -9,6 +9,7 @@ public class PlayerMove : MoveManager
     [SerializeField] private float vertical;
     [SerializeField] private float horizontal;
     [SerializeField] private float runSpeed;
+    [SerializeField] chap4_NoteManager NM;
     public bool isMove = true;
     [SerializeField] private Bed bed;
     //private ChatManager theChatManager;
@@ -41,7 +42,7 @@ public class PlayerMove : MoveManager
     private void Update()
     {
         //canMove = !dialogueManager.onDialogue && !theChatManager.isChat2 && !theChoiceManager.isChoice2 && !inEvent ? true : false;
-        canMove = !dialogueManager.onDialogue && !inEvent ? true : false; ///
+        canMove = !dialogueManager.onDialogue && !NM.onDialogue && !inEvent ? true : false; ///
 
         //Debug.Log("canMove: " + canMove);
         //Debug.Log(theChatManager.isChat2);

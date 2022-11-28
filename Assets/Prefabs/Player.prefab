@@ -107,7 +107,9 @@ MonoBehaviour:
   vertical: 0
   horizontal: 0
   runSpeed: 6
-  theTestChat: {fileID: 0}
+  isMove: 1
+  bed: {fileID: 0}
+  inEvent: 0
 --- !u!50 &1517170844041911010
 Rigidbody2D:
   serializedVersion: 4
