@@ -36,8 +36,8 @@ public class PuzzleMove : MonoBehaviour
                 table.sketchbook.SetActive(false);
 
                 //testChat.ImageUpdate();
-                npc_idle_obj.SetActive(false);
-                npc_idle_obj2.SetActive(true);
+                //npc_idle_obj.SetActive(false);
+                //npc_idle_obj2.SetActive(true);
                 fade.SetActive(true);
                 fade2.SetActive(true);
                 inventory.ItemReset();

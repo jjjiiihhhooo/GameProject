@@ -13,6 +13,7 @@ public class BlackSpace : MonoBehaviour
     private PlayerMove player;
     private CameraManager cameraManager;
     private chap3_manager manager;
+    [SerializeField] private chap3_door door;
     [SerializeField] private GameObject puzzle_player;
     [SerializeField] private GameObject puzzle_jiyeon;
     [SerializeField] private GameObject puzzle_jiyeon_image;
@@ -93,7 +94,7 @@ public class BlackSpace : MonoBehaviour
                 ResetPosition();
             }
             puzzle_mob.transform.position = mapNodes[count].transform.position;
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.4f);
             count--;
         }
         
@@ -205,14 +206,15 @@ public class BlackSpace : MonoBehaviour
 
     private void SetActiveNode()
     {
+        
         for(int i = 0; i < mapNodes.Length - 1; i++)
         {
             Renderer renderer = mapNodes[i].GetComponent<Renderer>();
             renderer.enabled = true;
         }
-
         Renderer renderer1 = puzzle_mob.GetComponentInChildren<Renderer>();
         renderer1.enabled = true;
+
     }
 
     private void Update()
@@ -245,6 +247,10 @@ public class BlackSpace : MonoBehaviour
             StartCoroutine(MobMoveCoroutine());
         }
 
+        if(playerMoveCount == 0 && isTurn)
+        {
+            SceneManager.LoadScene("Game_4");
+        }
     }
 
 
