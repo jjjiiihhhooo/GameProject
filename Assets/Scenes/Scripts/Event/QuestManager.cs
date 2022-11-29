@@ -19,7 +19,7 @@ public class QuestManager : MonoBehaviour
     {
         questcount += 1;
         qusetText.SetActive(true);
-        string a = "���̱ⱸ Ÿ�� [4/" + questcount + "]";
+        string a = "놀이기구 타기 [4/" + questcount + "]";
         quest_Text.text = a;
     }    
 
@@ -39,9 +39,9 @@ public class QuestManager : MonoBehaviour
         table.pieceCount++;
 
 
-        if(table.pieceCount >=4 && sceneChanger.currentScene == "Main")
+        //if(table.pieceCount >=4 && sceneChanger.currentScene == "Main")
 
-        string a = "������ ���� ���� [4/" + table.pieceCount + "]";
+        string a = "찢어진 종이조각 [4/" + table.pieceCount + "]";
         quest_Text.text = a;
 
         if(table.pieceCount >=4)
