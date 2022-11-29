@@ -15,6 +15,7 @@ public class QuestInventory : MonoBehaviour
 
     private void Awake()
     {
+
     }
 
     public void ItemChange(string _item, Sprite _image)
@@ -25,7 +26,7 @@ public class QuestInventory : MonoBehaviour
             if (slot_obj[i].GetComponent<Slot>().ex == null)
             {
                 slot_obj[i].GetComponent<Slot>().ex = _image;
-                //slot_obj[i].GetComponent<Slot>().item_text.text = _item;
+                slot_obj[i].GetComponent<Slot>().slotData.item_text = _item;
                 slot_obj[i].GetComponent<Slot>().ChangeImage();
                 item[i] = slot_obj[i].GetComponent<Slot>();
                 itemList[i] = item[i];

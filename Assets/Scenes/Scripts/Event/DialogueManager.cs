@@ -17,18 +17,18 @@ public class DialogueManager : MonoBehaviour
 
     public bool onDialogue = false;
     public bool isEnd = false;
-    bool single;
-    bool GetKey = false; // 키를 입력 받을 수 있는 경우
+     bool single;
+     bool GetKey = false; // 키를 입력 받을 수 있는 경우
     //====================================== 대화 관련 필드 ==============================================
 
-    [SerializeField] Text text;                             // sentences
-    [SerializeField] SpriteRenderer rendererLeft;           // Sprites
-    [SerializeField] SpriteRenderer rendererRight;          // Sprites
-
-    [SerializeField] Animator aniLeft;                      // 좌측 스프라이트
-    [SerializeField] Animator aniRight;                     // 우측 스프라이트
-    [SerializeField] Animator aniTopPanel;
-    [SerializeField] Animator aniBotPanel;
+    [SerializeField] public Text text;                             // sentences
+    [SerializeField] public SpriteRenderer rendererLeft;           // Sprites
+    [SerializeField] public SpriteRenderer rendererRight;          // Sprites
+                     
+    [SerializeField] public Animator aniLeft;                      // 좌측 스프라이트
+    [SerializeField] public Animator aniRight;                     // 우측 스프라이트
+    [SerializeField] public Animator aniTopPanel;
+    [SerializeField] public Animator aniBotPanel;
 
     List<string> sentenceList;
     List<Sprite> spriteList;
@@ -70,7 +70,7 @@ public class DialogueManager : MonoBehaviour
         isChoice = new List<bool>();
     }
 
-    private void Update()
+    void Update()
     {
         onDialogue = Talking || Choosing ? true : false;
 

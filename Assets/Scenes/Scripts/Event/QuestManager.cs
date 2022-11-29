@@ -24,13 +24,19 @@ public class QuestManager : MonoBehaviour
     }    
 
 
+    SceneChanger sceneChanger;
+
+    private void Start()
+    {
+        sceneChanger = FindObjectOfType<SceneChanger>();
+    }
+
     public void ChangeItem(string _item, Sprite _image)
     {
         questItem = _item;
         questImage = _image;
         theQuestInventory.ItemChange(questItem, questImage);
         table.pieceCount++;
-<<<<<<< HEAD
 
 
         if(table.pieceCount >=4 && sceneChanger.currentScene == "Main")
@@ -40,9 +46,6 @@ public class QuestManager : MonoBehaviour
 
         if(table.pieceCount >=4)
 
-=======
-        if(table.pieceCount >=4)
->>>>>>> parent of 6c5fb86 (HSW 2022.11.28)
         {
             table.AcitveBook();
             field_book.SetActive(false);
