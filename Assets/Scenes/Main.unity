@@ -3052,6 +3052,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202264100}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
 --- !u!1 &211363776
 GameObject:
   m_ObjectHideFlags: 0
@@ -3088,6 +3089,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of 6c5fb86 (HSW 2022.11.28)
 --- !u!1 &220083695
 GameObject:
   m_ObjectHideFlags: 0
@@ -8329,7 +8332,10 @@ RectTransform:
   - {fileID: 121380820}
   - {fileID: 1134638655}
   - {fileID: 1643240303}
+<<<<<<< HEAD
   - {fileID: 905731305}
+=======
+>>>>>>> parent of 6c5fb86 (HSW 2022.11.28)
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

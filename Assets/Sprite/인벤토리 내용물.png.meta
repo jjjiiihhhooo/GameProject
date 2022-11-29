@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uC778\uBCA4\uD1A0\uB9AC \uC885\uC774 \uBC30\uACBD"
+      name: "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_0"
       rect:
         serializedVersion: 2
         x: 205
@@ -159,7 +159,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_hairPin"
+      name: "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_3"
       rect:
         serializedVersion: 2
         x: 4014
@@ -180,7 +180,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Note_blue
+      name: "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_6"
       rect:
         serializedVersion: 2
         x: 2770
@@ -222,7 +222,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Note_purple
+      name: "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_29"
       rect:
         serializedVersion: 2
         x: 2580
@@ -243,7 +243,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Note_red
+      name: "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_30"
       rect:
         serializedVersion: 2
         x: 4067
@@ -306,7 +306,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Note_yellow
+      name: "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_46"
       rect:
         serializedVersion: 2
         x: 1272
@@ -327,7 +327,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Note_pink
+      name: "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_54"
       rect:
         serializedVersion: 2
         x: 4067
@@ -348,7 +348,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Note_green
+      name: "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_60"
       rect:
         serializedVersion: 2
         x: 2571
@@ -395,29 +395,31 @@ TextureImporter:
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_47": -348488064
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_22": 266650102
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_42": 1559001791
+      "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_3": 1748980287
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_50": -1076810631
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_27": 919375837
+      "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_30": -386618873
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_67": -1322520824
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_28": -1485327410
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_16": 1821224139
-      "\uC778\uBCA4\uD1A0\uB9AC \uC885\uC774 \uBC30\uACBD": 242859749
+      "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_46": -1636356059
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_23": -1421697848
+      "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_29": -973305693
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_56": -842287240
-      "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_hairPin": 1748980287
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_36": 370965778
-      Note_green: -1013838732
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_61": 384188606
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_34": 1555557521
+      "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_60": -1013838732
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_63": -388940359
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_2": -358304566
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_19": -310019967
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_31": 807173560
+      "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_54": -1959195621
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_37": -1024061905
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_7": -1160856530
-      Note_yellow: -1636356059
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_13": -1124703499
-      Note_red: -386618873
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_26": 213531537
+      "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_0": 242859749
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_25": 1777640056
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_21": 2038919960
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_58": -1334151814
@@ -428,21 +430,19 @@ TextureImporter:
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_45": 993211995
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_59": 952694053
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_9": -744903824
-      Note_purple: -973305693
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_5": -222499129
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_20": 190878393
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_10": -1650110491
-      Note_pink: -1959195621
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_24": -1769032888
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_11": 800693468
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_4": -480188678
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_17": 333845652
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_18": -450517989
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_38": -740300207
-      "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_40": -2044579720
+      "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_6": -658911748
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_64": -613004269
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_12": 243177271
-      Note_blue: -658911748
+      "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_40": -2044579720
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_33": 1540593517
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_41": -514487075
       "\uC778\uBCA4\uD1A0\uB9AC \uB0B4\uC6A9\uBB3C_65": 2057327978

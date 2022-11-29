@@ -7,9 +7,6 @@ public class chap4_Eye : MonoBehaviour
     [SerializeField] GameObject white; // ÈòÀÚ
     [SerializeField] GameObject black; // °ËÀºÀÚ
     [SerializeField] GameObject eyelid; // ´«²¨Ç®
-    GameObject player; 
-    GameObject canvas;
-    ActiveGameOver gameOver;
     public bool isOpen = false;
     bool open;
     bool single;
@@ -21,11 +18,8 @@ public class chap4_Eye : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
         localPos = this.transform.position;
-        canvas = GameObject.FindWithTag("Canvas");
-        gameOver = canvas.GetComponent<ActiveGameOver>();
-        // new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y);
+        //new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y);
     }
 
     void Update()
@@ -76,14 +70,5 @@ public class chap4_Eye : MonoBehaviour
         yield return null;
 
         single = false;
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "c4_p1" && isOpen)
-        {
-            gameOver.SetActive(true);
-            player.GetComponent<PlayerMove>().inEvent = false;
-        }
     }
 }

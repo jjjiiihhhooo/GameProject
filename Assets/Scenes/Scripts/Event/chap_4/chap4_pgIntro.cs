@@ -5,7 +5,6 @@ using UnityEngine;
 public class chap4_pgIntro : MonoBehaviour
 {
     [SerializeField] GameObject JY;
-    [SerializeField] GameObject RanBox;
     GameObject player;
 
     float speed = 1.0f;
@@ -37,8 +36,8 @@ public class chap4_pgIntro : MonoBehaviour
 
         while (player.transform.position.y < 0)
         {
-            player.GetComponent<Rigidbody2D>().velocity = Vector3.up * speed;
-            JY.GetComponent<Rigidbody2D>().velocity = Vector3.up * speed;
+            player.GetComponent<Rigidbody2D>().velocity = Vector3.up * speed * Time.deltaTime;
+            JY.GetComponent<Rigidbody2D>().velocity = Vector3.up * speed * Time.deltaTime;
             yield return null;
         }
 
@@ -58,7 +57,5 @@ public class chap4_pgIntro : MonoBehaviour
 
         JY.GetComponent<DialogueBox>().SetDialogue();
         player.GetComponent<PlayerMove>().inEvent = false;
-
-        RanBox.SetActive(true);
     }
 }

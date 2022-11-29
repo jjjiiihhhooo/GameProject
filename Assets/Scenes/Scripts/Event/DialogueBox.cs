@@ -2,6 +2,7 @@ using System.Collections;
 using System.Threading;
 using UnityEngine;
 using System;
+using static DialogueBox;
 using Unity.VisualScripting;
 
 public class DialogueBox : MonoBehaviour
@@ -10,31 +11,25 @@ public class DialogueBox : MonoBehaviour
     public Dialogue[] dialogues;
 
     bool canOutput; // 종합적인 출력 가능 여부
-
-    //---------------------------------------------------------------------------------확인용
-
-    [HideInInspector] public bool isTrigger = false; // 플레이어가 닿았는지
-    [HideInInspector] public bool turnOn = true; // 복수의 DialogueBox 컴포넌트가 존재할 경우 게임 오브젝트에서 제어
-
-    // 각각 대화 현재 진행 여부, 시작, 종료 상태를 나타냄.
-    [HideInInspector] public bool isLog;
-    [HideInInspector] public bool isStarted; // 한 번이라도 대화가 호출되면 계속 true
-    [HideInInspector] public bool isEnd; // 한 번이라도 대화가 호출된 이후 종료된 적이 있으면 계속 true
-    [HideInInspector] public bool noMore;
-
-    //---------------------------------------------------------------------------------확인용
-
-    //public bool isTrigger = false; // 플레이어가 닿았는지
-    //public bool turnOn = true; // 복수의 DialogueBox 컴포넌트가 존재할 경우 게임 오브젝트에서 제어
+    //[HideInInspector] public bool isTrigger = false; // 플레이어가 닿았는지
+    //[HideInInspector] public bool turnOn = true; // 복수의 DialogueBox 컴포넌트가 존재할 경우 게임 오브젝트에서 제어
 
     //// 각각 대화 현재 진행 여부, 시작, 종료 상태를 나타냄.
-    //public bool isLog;
-    //public bool isStarted; // 한 번이라도 대화가 호출되면 계속 true
-    //public bool isEnd; // 한 번이라도 대화가 호출된 이후 종료된 적이 있으면 계속 true
-    //public bool noMore;
+    //[HideInInspector] public bool isLog;
+    //[HideInInspector] public bool isStarted; // 한 번이라도 대화가 호출되면 계속 true
+    //[HideInInspector] public bool isEnd; // 한 번이라도 대화가 호출된 이후 종료된 적이 있으면 계속 true
+    //[HideInInspector] public bool noMore;
 
-    //---------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------확인용
 
+    public bool isTrigger = false; // 플레이어가 닿았는지
+    public bool turnOn = true; // 복수의 DialogueBox 컴포넌트가 존재할 경우 게임 오브젝트에서 제어
+
+    // 각각 대화 현재 진행 여부, 시작, 종료 상태를 나타냄.
+    public bool isLog;
+    public bool isStarted; // 한 번이라도 대화가 호출되면 계속 true
+    public bool isEnd; // 한 번이라도 대화가 호출된 이후 종료된 적이 있으면 계속 true
+    public bool noMore;
     bool start;
 
     // 대화 반복 출력 여부
@@ -52,14 +47,14 @@ public class DialogueBox : MonoBehaviour
     int conLenth;
 
     public bool isContinue;
-
+    
     void Start()
     {
         dialogueManager = FindObjectOfType<DialogueManager>();
         conLenth = breakConditions.Length;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
@@ -67,7 +62,7 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Player")
         {

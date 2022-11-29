@@ -5,6 +5,7 @@ using UnityEngine;
 public class chap4_MapSpawner : MonoBehaviour
 {
     GameObject player;
+    bool singleCall_1 = true;
     [SerializeField] Transform O_point; // 좌표 좌측 상단
     [SerializeField] Transform P_point; // 좌표 우측 하단
 
@@ -14,16 +15,10 @@ public class chap4_MapSpawner : MonoBehaviour
 
     [SerializeField] GameObject blink;
     [SerializeField] GameObject night;
-
-    [SerializeField] GameObject sun;
-    [SerializeField] GameObject moon;
-
     chap4_PlayerMove_Puzzle1 PM;
+    Animator blackAni;
     bool getReady;
     bool singleCall = true;
-    bool singleCall_1 = true;
-
-    [HideInInspector] public bool mapDelete;
 
     // 맵의 가로x세로 값
     [SerializeField] int X;
@@ -46,7 +41,6 @@ public class chap4_MapSpawner : MonoBehaviour
     List<GameObject> mapInstance = new List<GameObject>();
     int j = 0;
 
-    #region Maps
     // 1 ~ 4 : 일반
     // 5 ~ 8 : 트롤
 
@@ -63,7 +57,7 @@ public class chap4_MapSpawner : MonoBehaviour
     //{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
     //{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
     //{ 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1}
-
+    
     int[,] map1 = { // 검 // 낮 1
     { 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0},
     { 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
@@ -191,12 +185,12 @@ public class chap4_MapSpawner : MonoBehaviour
     { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
     { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 };
-    #endregion
 
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         PM = GetComponent<chap4_PlayerMove_Puzzle1>();
+        blackAni = eye.GetComponent<Animator>();
         map = new int[Y, X];
         width = (Mathf.Abs(O_point.position.x - P_point.position.x) / (X - 1));
         height = (Mathf.Abs(O_point.position.y - P_point.position.y) / (Y - 1));
@@ -221,12 +215,6 @@ public class chap4_MapSpawner : MonoBehaviour
                 wait = 1.0f;
             }
             StartCoroutine(DrawMap(mapArray[i%mapArray.Length]));
-        }
-        else if (mapDelete && !getReady)
-        {
-            mapDelete = false;
-            foreach (GameObject toDestroy in mapInstance) Destroy(toDestroy);
-            mapInstance.Clear();
         }
     }
 
@@ -279,15 +267,11 @@ public class chap4_MapSpawner : MonoBehaviour
         // 암전
         if (i % 2 == 1)
         {
-            sun.SetActive(false);
-            moon.SetActive(true);
             night.SetActive(true);
             //if(!blackObject.activeSelf) blackObject.SetActive(true);
         }
         else if (i % 2 == 0)
         {
-            sun.SetActive(true);
-            moon.SetActive(false);
             night.SetActive(false);
             //if (blackObject.activeSelf) blackObject.SetActive(false);
         }

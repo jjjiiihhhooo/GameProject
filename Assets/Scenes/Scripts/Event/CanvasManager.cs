@@ -6,9 +6,6 @@ public class CanvasManager : MonoBehaviour
 {
     public static CanvasManager instance;
 
-    public bool isGameOver;
-    [SerializeField] GameObject gameOver;
-
     private void Awake()
     {
         if (instance == null)
@@ -21,14 +18,6 @@ public class CanvasManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-    //private void Update()
-    //{
-    //    if (isGameOver)
-    //    {
-    //        gameOver.SetActive(true);
-    //    }
-    //}
 
     public GameObject GetChild(string name)
     {

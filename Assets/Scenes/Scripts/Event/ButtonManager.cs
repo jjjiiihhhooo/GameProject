@@ -31,7 +31,7 @@ public class ButtonManager : MonoBehaviour
 
     private void SetActiveOption()
     {
-        if (option_obj != null)
+        if(option_obj != null)
         {
             isOption = !isOption;
             option_obj.SetActive(isOption);
@@ -40,8 +40,8 @@ public class ButtonManager : MonoBehaviour
 
     private void InputButton(int _count)
     {
-        //if (menu_obj != null)
-        //    SetActiveMenu();
+        if(menu_obj != null)
+            SetActiveMenu();
 
         if (_count == 0)
         {
