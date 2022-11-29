@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Threading;
-using UnityEngine;
 using System;
-using Unity.VisualScripting;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class DialogueBox : MonoBehaviour
+public class chap4_NoteBox : MonoBehaviour
 {
-    [HideInInspector] public DialogueManager dialogueManager;
-    public Dialogue[] dialogues;
+    [HideInInspector] public chap4_NoteManager noteManager;
+    public chap4_Note[] notes;
 
-    bool canOutput; // 종합적인 출력 가능 여부
+    protected bool canOutput; // 종합적인 출력 가능 여부
 
     //---------------------------------------------------------------------------------확인용
 
@@ -35,7 +34,7 @@ public class DialogueBox : MonoBehaviour
 
     //---------------------------------------------------------------------------------
 
-    bool start;
+    protected bool start;
 
     // 대화 반복 출력 여부
     // breakConditions 에 입력된 값이 충족되면, 더이상 대화/ 선택창을 반복해서 띄우지 않음(isRepeat = false;)
@@ -46,20 +45,21 @@ public class DialogueBox : MonoBehaviour
         public int _value;
         public bool _isClear;
     }
-    [SerializeField] BreakCondition[] breakConditions;
+    [SerializeField]
+    protected BreakCondition[] breakConditions;
     public bool isRepeat;
-    int count = 0;
-    int conLenth;
+    protected int count = 0;
+    protected int conLenth;
 
     public bool isContinue;
 
-    void Start()
+    protected virtual void Start()
     {
-        dialogueManager = FindObjectOfType<DialogueManager>();
+        noteManager = FindObjectOfType<chap4_NoteManager>();
         conLenth = breakConditions.Length;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
@@ -67,7 +67,7 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    protected virtual void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
@@ -75,12 +75,12 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
-    void Update()
+    protected virtual void Update()
     {
-        if (dialogueManager.isEnd && isStarted && !isEnd)
+        if (noteManager.isEnd && isStarted && !isEnd)
         {
             isEnd = true;
-            dialogueManager.isEnd = false;
+            noteManager.isEnd = false;
         }
 
         if (isLog && !GetBoolLog())
@@ -101,11 +101,15 @@ public class DialogueBox : MonoBehaviour
 
         if (start && this.isRepeat)
         {
+            count = 0;
             for (int i = 0; i < conLenth; i++)
             {
-                if (dialogueManager.result[breakConditions[i]._index] == breakConditions[i]._value)
+                if (noteManager.result[breakConditions[i]._index] == breakConditions[i]._value)
                 {
                     breakConditions[i]._isClear = true;
+                }
+                if(breakConditions[i]._isClear == true)
+                {
                     count++;
                     if (count == conLenth)
                     {
@@ -119,18 +123,19 @@ public class DialogueBox : MonoBehaviour
 
     public void SetDialogue()
     {
-        if(!noMore)
+        if (!noMore)
         {
-            dialogueManager.Talking = true;
+            noteManager.Talking = true;
             isTrigger = false;
             isStarted = true;
-            dialogueManager.UpdateDialogue(dialogues);
+            noteManager.UpdateDialogue(notes);
             isLog = true;
         }
     }
 
     public bool GetBoolLog()
     {
-        return dialogueManager.onDialogue;
+        return noteManager.onDialogue;
     }
 }
+
