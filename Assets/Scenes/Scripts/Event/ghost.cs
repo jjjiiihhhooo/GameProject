@@ -10,6 +10,7 @@ public class ghost : MonoBehaviour
     [SerializeField] private Mob mob;
     [SerializeField] private TestChat testChat;
 
+
     bool getCount = false; ///
 
 

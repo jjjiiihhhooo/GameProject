@@ -40,7 +40,7 @@ public class QuestBox : MonoBehaviour
     [SerializeField] LogCondition[] logConditions;
 
 
-    private void Start()
+    private void OnEnable()
     {
         dialogueBoxes = GetComponents<DialogueBox>();
         if(theQuestManager == null)
@@ -108,11 +108,14 @@ public class QuestBox : MonoBehaviour
                     fade.SetActive(true);
                     player.transform.position = mapTransform2.position;
                     main_camera.Bool();
+                    theQuestManager.questcount = -1;
+                    theQuestManager.chap2_questText();
                     break;
                 case 4:
                     if (quest_image != null)
                         theQuestManager.ChangeItem(quest_item, quest_image);
                     this.gameObject.SetActive(false);
+
                     break;
             }
         }

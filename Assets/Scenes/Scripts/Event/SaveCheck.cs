@@ -78,12 +78,14 @@ public class SaveCheck : MonoBehaviour
 
     private void SaveChatFalse()
     {
-        saveChat.SetActive(false);
+        if (saveChat != null)
+            saveChat.SetActive(false);
     }
 
     private void SaveChatTrue()
     {
-        saveChat.SetActive(true);
+        if(saveChat != null)
+            saveChat.SetActive(true);
         Invoke("SaveChatFalse", 2f);
     }
 }
