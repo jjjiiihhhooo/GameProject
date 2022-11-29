@@ -12,6 +12,7 @@ public class Mob : MonoBehaviour
     [SerializeField] private GameObject blackMob;
     [SerializeField] private GameObject rightWall;
     [SerializeField] private GameObject right_arrow;
+    [SerializeField] private QuestManager questManager;
 
     [SerializeField] GameObject player;
     
@@ -26,11 +27,13 @@ public class Mob : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         dialogueBox = GetComponent<DialogueBox>();
+        questManager = FindObjectOfType<QuestManager>();
         musicPlayer = GameObject.FindWithTag("Canvas").transform.Find("SoundManager").gameObject.GetComponent<MusicPlayer>();
     }
     public void Count() // 각 지연과의 대화로 호출
     {
         count++;
+        questManager.chap2_questText();
     }
     public void Bool()
     {
@@ -71,6 +74,7 @@ public class Mob : MonoBehaviour
                 audioSource.Play();
                 rightWall.SetActive(false);
                 right_arrow.SetActive(true);
+                questManager.qusetText.SetActive(false);
                 StartCoroutine(MobStart()); // 검은 형체 등장
             }
         }
