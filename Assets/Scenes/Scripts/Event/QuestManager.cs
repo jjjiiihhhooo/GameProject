@@ -44,7 +44,7 @@ public class QuestManager : MonoBehaviour
         string a = "찢어진 종이조각 [4/" + table.pieceCount + "]";
         quest_Text.text = a;
 
-        if(table.pieceCount >=4)
+        if(table.pieceCount >= 4 && sceneChanger.currentScene == "Main")
 
         {
             table.AcitveBook();
