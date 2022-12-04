@@ -13,6 +13,7 @@ public class chap4_NoteManager : MonoBehaviour
     bool GetKey = false; // 키를 입력 받을 수 있는 경우
     string chosenSTC;
     int preCount = 0;
+    public int tryNum = 0;
 
     //====================================== 대화 관련 필드 ==============================================
 
@@ -131,6 +132,7 @@ public class chap4_NoteManager : MonoBehaviour
                 // result[n]에 결과값 저장. ( n = 해당 질문이 있던 dialogue 인덱스)
                 result[logCount - 1] = noteCount;
                 givenNum[noteCount] = true;
+                tryNum++;
 
                 if (logCount >= logLength)
                 {

@@ -25,6 +25,7 @@ public class chap4_JY_playground : MonoBehaviour
             giveNote.SetActive(true);
         }
 
+        // 올바른 쪽지를 주었을 때
         if (NB.noMore)
         {
             this.gameObject.SetActive(false);  

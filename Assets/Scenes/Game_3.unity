@@ -5880,6 +5880,7 @@ GameObject:
   - component: {fileID: 1042981732}
   - component: {fileID: 1042981731}
   - component: {fileID: 1042981739}
+  - component: {fileID: 1042981740}
   m_Layer: 0
   m_Name: jiyeon_chap3
   m_TagString: Untagged
@@ -6176,6 +6177,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BlackSpace: {fileID: 904865723}
   cameraManager: {fileID: 0}
+--- !u!114 &1042981740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042981729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cfada6686825ce4bbca9be6cdaf0a52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1117150824
 GameObject:
   m_ObjectHideFlags: 0

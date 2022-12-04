@@ -7,8 +7,9 @@ public class chap4_NoteBox : MonoBehaviour
 {
     [HideInInspector] public chap4_NoteManager noteManager;
     public chap4_Note[] notes;
+    SceneChanger sceneChanger;
 
-    protected bool canOutput; // 종합적인 출력 가능 여부
+    bool canOutput; // 종합적인 출력 가능 여부
 
     //---------------------------------------------------------------------------------확인용
 
@@ -34,7 +35,7 @@ public class chap4_NoteBox : MonoBehaviour
 
     //---------------------------------------------------------------------------------
 
-    protected bool start;
+    bool start;
 
     // 대화 반복 출력 여부
     // breakConditions 에 입력된 값이 충족되면, 더이상 대화/ 선택창을 반복해서 띄우지 않음(isRepeat = false;)
@@ -46,20 +47,21 @@ public class chap4_NoteBox : MonoBehaviour
         public bool _isClear;
     }
     [SerializeField]
-    protected BreakCondition[] breakConditions;
+    BreakCondition[] breakConditions;
     public bool isRepeat;
-    protected int count = 0;
-    protected int conLenth;
+    int count = 0;
+    int conLenth;
 
     public bool isContinue;
 
-    protected virtual void Start()
+    void Start()
     {
+        sceneChanger = FindObjectOfType<SceneChanger>();
         noteManager = FindObjectOfType<chap4_NoteManager>();
         conLenth = breakConditions.Length;
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
@@ -67,7 +69,7 @@ public class chap4_NoteBox : MonoBehaviour
         }
     }
 
-    protected virtual void OnTriggerExit2D(Collider2D other)
+    void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
@@ -75,7 +77,7 @@ public class chap4_NoteBox : MonoBehaviour
         }
     }
 
-    protected virtual void Update()
+    void Update()
     {
         if (noteManager.isEnd && isStarted && !isEnd)
         {
@@ -101,7 +103,7 @@ public class chap4_NoteBox : MonoBehaviour
 
         if (start && this.isRepeat)
         {
-            count = 0;
+                count = 0;
             for (int i = 0; i < conLenth; i++)
             {
                 if (noteManager.result[breakConditions[i]._index] == breakConditions[i]._value)
@@ -114,7 +116,13 @@ public class chap4_NoteBox : MonoBehaviour
                     if (count == conLenth)
                     {
                         isRepeat = false;
+                        sceneChanger.chap4JY = true;
                         count = 0;
+                    }
+                    else if (noteManager.tryNum > 2 && isLog)
+                    {
+                        turnOn = false;
+                        noMore= true;
                     }
                 }
             }
