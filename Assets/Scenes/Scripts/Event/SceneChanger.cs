@@ -7,7 +7,7 @@ public class SceneChanger : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject mainCamera;
 
-    public string currentScene;
+    public string currentScene = "Main";
 
     void Start()
     {

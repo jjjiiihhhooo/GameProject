@@ -17,6 +17,7 @@ TagManager:
   - QuestManager
   - GameOver_Chase
   - c4_p1
+  - QI
   layers:
   - Default
   - TransparentFX

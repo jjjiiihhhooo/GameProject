@@ -47,20 +47,20 @@ public class ButtonManager : MonoBehaviour
         {
             SetActiveOption();
         }
-        else if(_count == 1)
+        else if (_count == 1)
         {
             SceneManager.LoadScene("Title");
         }
-        else if(_count == 2)
+        else if (_count == 2)
         {
             saveManager.IsLoad();
         }
-        else if(_count == 3)
+        else if (_count == 3)
         {
             gameOver.SetActive(false);
             ReloadScene();
         }
-        else
+        else if (_count == 4)
         {
             Application.Quit();
         }

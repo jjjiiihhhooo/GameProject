@@ -51,6 +51,7 @@ public class chap4_NoteManager : MonoBehaviour
     int noteLength = 6;
     int noteCount;
     float aniNum = 0;
+    bool[] givenNum = new bool[6];
     public int[] result; // 결과값 저장. 초기값은 -1이므로 해당 값이 출력된다면, 선택 결과값이 없는 것이다.
     bool[] note;
 
@@ -58,6 +59,9 @@ public class chap4_NoteManager : MonoBehaviour
 
     void Start()
     {
+        for(int i = 0; i < givenNum.Length; i++)
+            givenNum[i] = false;
+
         sentenceList = new List<string>();
         spriteList = new List<Sprite>();
         isNote = new List<bool>();
@@ -126,6 +130,7 @@ public class chap4_NoteManager : MonoBehaviour
 
                 // result[n]에 결과값 저장. ( n = 해당 질문이 있던 dialogue 인덱스)
                 result[logCount - 1] = noteCount;
+                givenNum[noteCount] = true;
 
                 if (logCount >= logLength)
                 {
@@ -327,6 +332,16 @@ public class chap4_NoteManager : MonoBehaviour
     void Chosen()
     {
         chosenSTC = "";
+
+        while (givenNum[noteCount])
+        {
+            noteCount++;
+            if(noteCount > 5)
+                noteCount = 0;
+        }
+
+
+
         switch (noteCount)
         {
             case 0:

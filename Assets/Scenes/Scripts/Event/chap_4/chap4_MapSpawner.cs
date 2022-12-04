@@ -8,6 +8,8 @@ public class chap4_MapSpawner : MonoBehaviour
     [SerializeField] Transform O_point; // ÁÂÇ¥ ÁÂÃø »ó´Ü
     [SerializeField] Transform P_point; // ÁÂÇ¥ ¿ìÃø ÇÏ´Ü
 
+    [SerializeField] GameObject blackMob;
+
     [SerializeField] GameObject eye;
     [SerializeField] GameObject obstacle;
     [SerializeField] GameObject wall;
@@ -227,6 +229,7 @@ public class chap4_MapSpawner : MonoBehaviour
             mapDelete = false;
             foreach (GameObject toDestroy in mapInstance) Destroy(toDestroy);
             mapInstance.Clear();
+            blackMob.SetActive(false);
         }
     }
 

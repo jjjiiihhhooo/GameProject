@@ -7,11 +7,16 @@ using UnityEngine.UI;
 public class QuestInventory : MonoBehaviour
 {
     public GameObject[] slot_obj;
+    public GameObject[] noteLog;
+
     [SerializeField] private QuestManager theQuestManager;
     [SerializeField] private List<Slot> item;
     [SerializeField] private Sprite sprite;
     [SerializeField] private Sprite idleSprite;
     public List<Slot> itemList;
+
+    [SerializeField] chap4_NoteButton noteBtn;
+    public Dialogue[] dialogues;
 
     private void Awake()
     {
@@ -23,8 +28,9 @@ public class QuestInventory : MonoBehaviour
 
         for (int i = 0; i < slot_obj.Length; i++)
         {
-            if (slot_obj[i].GetComponent<Slot>().ex == null)
+            if (slot_obj[i].GetComponent<Slot>().ex == null || slot_obj[i].GetComponent<Slot>().ex == idleSprite)
             {
+                noteBtn.ChangeLog(i, dialogues);
                 slot_obj[i].GetComponent<Slot>().ex = _image;
                 slot_obj[i].GetComponent<Slot>().slotData.item_text = _item;
                 slot_obj[i].GetComponent<Slot>().ChangeImage();
@@ -43,6 +49,7 @@ public class QuestInventory : MonoBehaviour
             slot_obj[i].GetComponent<Slot>().ex = idleSprite;
             slot_obj[i].GetComponent<Slot>().ChangeImage();
             slot_obj[i].GetComponent<Image>().sprite = idleSprite;
+            noteBtn.note[i] = false;
         }
     }
 

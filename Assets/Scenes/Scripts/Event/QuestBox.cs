@@ -17,6 +17,8 @@ public class QuestBox : MonoBehaviour
 
     DialogueBox[] dialogueBoxes;
 
+    chap4_NoteLog noteLog;
+
     // 아래의 LogCondition 중, LogCondition[ConNum]이 일치하면 Action(ActNum) 실행
     [Serializable]
     public struct ActionCondition

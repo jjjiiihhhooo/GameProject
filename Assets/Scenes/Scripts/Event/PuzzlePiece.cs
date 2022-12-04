@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PuzzlePiece : MonoBehaviour
@@ -7,6 +8,7 @@ public class PuzzlePiece : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Puzzle puzzle;
     [SerializeField] private PuzzleMove puzzleMove;
+    [SerializeField] GameObject Book;
 
     public Vector3 LoadedPos;
     private float startPosx;
@@ -16,9 +18,12 @@ public class PuzzlePiece : MonoBehaviour
     public float timeLinePosY;
     public int check = 0;
 
+    AudioSource[] audioSource = new AudioSource[2];
+
     private void Start()
     {
         LoadedPos = this.transform.position;
+        audioSource = Book.GetComponents<AudioSource>();
     }
 
     private void Update()
@@ -63,11 +68,15 @@ public class PuzzlePiece : MonoBehaviour
 
         if (isInLine)
         {
+            audioSource[0].Play();
             puzzleMove.PuzzleMoving();
             this.gameObject.transform.position = new Vector3(this.gameObject.transform.localPosition.x, timeLinePosY, 0);
         }
         else
+        {
+            audioSource[1].Play();
             this.gameObject.transform.position = this.LoadedPos;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

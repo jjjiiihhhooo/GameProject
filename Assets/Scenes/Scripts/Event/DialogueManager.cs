@@ -17,14 +17,14 @@ public class DialogueManager : MonoBehaviour
 
     public bool onDialogue = false;
     public bool isEnd = false;
-     bool single;
-     bool GetKey = false; // 키를 입력 받을 수 있는 경우
+    bool single;
+    bool GetKey = false; // 키를 입력 받을 수 있는 경우
     //====================================== 대화 관련 필드 ==============================================
 
     [SerializeField] public Text text;                             // sentences
     [SerializeField] public SpriteRenderer rendererLeft;           // Sprites
     [SerializeField] public SpriteRenderer rendererRight;          // Sprites
-                     
+
     [SerializeField] public Animator aniLeft;                      // 좌측 스프라이트
     [SerializeField] public Animator aniRight;                     // 우측 스프라이트
     [SerializeField] public Animator aniTopPanel;
@@ -159,7 +159,7 @@ public class DialogueManager : MonoBehaviour
             answerList_1.Add(_dialogue[i].answers_1);
             isChoice.Add(_dialogue[i].choice);
             _choice[i] = _dialogue[i].choice;
-            if(single)
+            if (single)
                 result[i] = -1;
         }
         single = false;
@@ -188,7 +188,7 @@ public class DialogueManager : MonoBehaviour
 
         // 첫 번째 이후 대화
         // 화자에 따라 다른 스프라이트가 어두워짐
-        if (logCount > 0)
+        if (logCount > 0 && !(logCount >= logLength))
         {
             // 화자가 변경되었을 때
             if (CharNum[logCount] != CharNum[logCount - 1])
@@ -214,7 +214,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         // 대화일 경우
-        if (!isChoice[logCount])
+        if (!isChoice[logCount] && !(logCount >= logLength))
         {
             // 첫 번째 이후 대화
             if (logCount > 0)
@@ -238,34 +238,38 @@ public class DialogueManager : MonoBehaviour
             }
 
             // 화자가 하나일 때
-            if (CharNum[logCount] == 0)
+            if (!(logCount >= logLength))
             {
-                if (aniLeft.GetBool("GetDark"))
-                    aniLeft.SetBool("GetDark", false);
-                rendererLeft.GetComponent<SpriteRenderer>().sprite = spriteList[logCount];
-                if (!aniLeft.GetBool("Appear"))
-                    aniLeft.SetBool("Appear", true);
-                yield return new WaitForSeconds(0.25f);
-            }
-            // 화자가 지연일 때
-            else if (CharNum[logCount] == 1)
-            {
-                if (aniRight.GetBool("GetDark"))
-                    aniRight.SetBool("GetDark", false);
-                rendererRight.GetComponent<SpriteRenderer>().sprite = spriteList[logCount];
-                if (!aniRight.GetBool("Appear"))
-                    aniRight.SetBool("Appear", true);
-                yield return new WaitForSeconds(0.25f);
-            }
-            // 대화 내용 한글자씩 출력
-            for (int i = 0; i < sentenceList[logCount].Length; i++)
-            {
-                text.text += sentenceList[logCount][i];
-                yield return new WaitForSeconds(0.01f);
+                if (CharNum[logCount] == 0)
+                {
+                    if (aniLeft.GetBool("GetDark"))
+                        aniLeft.SetBool("GetDark", false);
+                    rendererLeft.GetComponent<SpriteRenderer>().sprite = spriteList[logCount];
+                    if (!aniLeft.GetBool("Appear"))
+                        aniLeft.SetBool("Appear", true);
+                    yield return new WaitForSeconds(0.25f);
+                }
+                // 화자가 지연일 때
+                else if (CharNum[logCount] == 1)
+                {
+                    if (aniRight.GetBool("GetDark"))
+                        aniRight.SetBool("GetDark", false);
+                    rendererRight.GetComponent<SpriteRenderer>().sprite = spriteList[logCount];
+                    if (!aniRight.GetBool("Appear"))
+                        aniRight.SetBool("Appear", true);
+                    yield return new WaitForSeconds(0.25f);
+                }
+                // 대화 내용 한글자씩 출력
+                for (int i = 0; i < sentenceList[logCount].Length; i++)
+                {
+                    text.text += sentenceList[logCount][i];
+                    yield return new WaitForSeconds(0.01f);
+                }
+
             }
         }
         // 선택일 경우
-        else if (isChoice[logCount])
+        else if (isChoice[logCount] && !(logCount >= logLength))
         {
             answerCount = 0;
             result[logCount] = -1;
@@ -296,7 +300,7 @@ public class DialogueManager : MonoBehaviour
     {
         text.text = "";
         answer_Text0.text = "";
-        answer_Text1.text = ""; 
+        answer_Text1.text = "";
         logCount = 0;
         CharNum = Enumerable.Repeat<int>(0, CharNum.Length).ToArray<int>();
         sentenceList.Clear();
@@ -322,7 +326,7 @@ public class DialogueManager : MonoBehaviour
     public bool[] GetIsChoice(int length)
     {
         bool[] _BoolArray = new bool[length];
-        for(int i = 0; i < length; i++)
+        for (int i = 0; i < length; i++)
         {
             _BoolArray[i] = _choice[i];
         }
