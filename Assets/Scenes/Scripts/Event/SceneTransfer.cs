@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransfer : MonoBehaviour
 {
-    private SceneChanger sceneChanger;
+    SceneChanger sceneChanger;
     public string transferScene;
+    [SerializeField] bool collOff;
 
     void Start()
     {
@@ -15,10 +16,15 @@ public class SceneTransfer : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && !collOff)
         {
-            sceneChanger.currentScene = transferScene;
-            SceneManager.LoadScene(transferScene);
+            TransScene(transferScene);
         }
+    }
+
+    public void TransScene(string _scene)
+    {
+        sceneChanger.currentScene = _scene;
+        SceneManager.LoadScene(_scene);
     }
 }

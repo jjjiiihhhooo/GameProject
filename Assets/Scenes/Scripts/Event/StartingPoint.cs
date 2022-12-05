@@ -6,7 +6,7 @@ public class StartingPoint : MonoBehaviour
 {
     GameObject player;
     SceneChanger sceneChanger;
-    [SerializeField] private CameraManager cameraManager;
+    CameraManager cameraManager;
     public string startPoint;
 
     void Start()
@@ -14,6 +14,7 @@ public class StartingPoint : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         sceneChanger = FindObjectOfType<SceneChanger>();
         cameraManager = FindObjectOfType<CameraManager>();
+
         cameraManager.Transform(this.gameObject.transform);
         player.GetComponent<PlayerMove>().isMove = true;
         if (startPoint == sceneChanger.currentScene)
