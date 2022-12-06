@@ -11,11 +11,12 @@ public class Bed : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Transform room_transform;
     DialogueBox dialogueBox;
+    PlayerMove PM;
 
-    private void Awake()
+    private void Start()
     {
         dialogueBox = GetComponent<DialogueBox>();
-        player = GameObject.FindWithTag("Player");
+        //player = GameObject.FindWithTag("Player");
         isActive = true;
         if (check == 1)
         {
@@ -25,14 +26,13 @@ public class Bed : MonoBehaviour
 
     private void Update()
     {
-        if(this.isBed && Input.GetKeyDown(KeyCode.Space))
+        if(this.isBed && dialogueBox.isLog)
         {
             if(check == 1)
             {
-                player.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
                 isBed = false;
-                player.GetComponent<PlayerMove>().isMove = true;
-                player.transform.position = room_transform.position;
+                PM.isMove = true;
+                player.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0.0f));
             }
         }
 
@@ -40,12 +40,14 @@ public class Bed : MonoBehaviour
 
     public void BedTransform()
     {
-        if(isActive)
+        PM = player.GetComponent<PlayerMove>();
+
+        if (isActive)
         {
             isBed = true;
             player.transform.position = room_transform.position;
             player.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
-            player.GetComponent<PlayerMove>().isMove = false;
+            PM.isMove = false;
             isActive = false;
         }
     }
