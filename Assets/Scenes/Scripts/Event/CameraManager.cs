@@ -30,7 +30,7 @@ public class CameraManager : MonoBehaviour
         {
             if (target_obj.gameObject != null && !isChase)
             {
-                targetPosition.Set(target_obj.transform.position.x, target_obj.transform.position.y, this.transform.position.z);
+                targetPosition.Set(target_obj.transform.position.x, target_obj.transform.position.y, -1.0f);
 
 
                 this.transform.position = targetPosition;

@@ -18,7 +18,7 @@ public class PushPlayer : MonoBehaviour
     {
         mobAnimator = blackMob.GetComponent<Animator>();
         soundManager = GetComponent<SoundManager>();
-        player = GameObject.FindWithTag("Player");
+        player = GameObject.Find("Player");
         playerMove = player.GetComponent<PlayerMove>();
         playerAnimator = player.GetComponent<Animator>();
     }

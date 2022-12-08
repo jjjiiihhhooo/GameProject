@@ -30,19 +30,23 @@ public class ChaseScene : MonoBehaviour
     public float ySpeed = 10; // 플레이어의 y축 이동 속도
 
     public Vector3 mobLocation;
-    public Vector3 cameraLocation;
+    //public Vector3 cameraLocation;
+
+    PlayerMove PM;
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        player = GameObject.Find("Player");
+        Debug.Log(player.name);
+        PM = player.GetComponent<PlayerMove>();
         mainCamera = GameObject.FindWithTag("MainCamera");
         chaseAnimator = player.GetComponent<Animator>();
 
         isChase = true;
         mainCamera.GetComponent<CameraManager>().isChase = true;
 
-        player.GetComponent<PlayerMove>().inEvent = true;
-        cameraLocation = mapTransform.position + new Vector3(6, 2, -1);
+        PM.inEvent = true;
+        //cameraLocation = mapTransform.position + new Vector3(6, 2, -1);
         mobLocation = mapTransform.position + new Vector3(-9, -1.5f, 0);
         length = backGround.Length;
 
@@ -63,6 +67,7 @@ public class ChaseScene : MonoBehaviour
         }
         else if (!isChase && singleCall_1)
         {
+            Debug.Log("pp");
             singleCall_1 = false;
             pushScene.EndOfAlley();
         }

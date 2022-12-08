@@ -17,9 +17,13 @@ public class PlayerMove : MoveManager
     //private ChoiceManager theChoiceManager;
     public bool inEvent = false;
     private bool canMove;
+
+    Rigidbody2D rigid;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        rigid = GetComponent<Rigidbody2D>();
         //theChatManager = FindObjectOfType<ChatManager>();
         dialogueManager = FindObjectOfType<DialogueManager>();
         //theChoiceManager = FindObjectOfType<ChoiceManager>();
@@ -42,21 +46,45 @@ public class PlayerMove : MoveManager
     private void Update()
     {
         //canMove = !dialogueManager.onDialogue && !theChatManager.isChat2 && !theChoiceManager.isChoice2 && !inEvent ? true : false;
-        canMove = !dialogueManager.onDialogue && !NM.onDialogue && !inEvent ? true : false; ///
+        canMove = !dialogueManager.onDialogue && !NM.onDialogue && !inEvent ? true : false;
 
-        //Debug.Log("canMove: " + canMove);
-        //Debug.Log(theChatManager.isChat2);
-        //Debug.Log(theChoiceManager.isChoice2);
-        //Debug.Log(chaseScene.isChase);
-        //Debug.Log(inEvent);
-        if (isMove && canMove) ///
+        if (isMove && canMove)
         {
+            //if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
+            //{
+            //isMove = false;
+            //StartCoroutine(MoveCoroutine());
+
             if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
             {
-                isMove = false;
-                StartCoroutine(MoveCoroutine());
+                animator.SetBool("Walk", true);
+                vertical = Input.GetAxisRaw("Vertical");
+                horizontal = Input.GetAxisRaw("Horizontal");
+                Vector2 moveVector;
+                moveVector.x = horizontal;
+                moveVector.y = vertical;
+                vector = moveVector; // (1, 0)
+                if (vector.x != 0)
+                    vector.y = 0;
+                else if (vector.y != 0)
+                    vector.x = 0;
+                animator.SetFloat("DirX", vector.x);
+                animator.SetFloat("DirY", vector.y);
+                //animator.SetBool("Walk", true);
+
+                //transform.Translate(vector * speed * Time.deltaTime); // speed/1s
+                rigid.velocity = vector * speed;
+
             }
+            else
+            {
+                animator.SetBool("Walk", false);
+                rigid.velocity = Vector2.zero;
+            }
+            //}
         }
+        else
+            rigid.velocity = Vector2.zero;
     }
     private IEnumerator MoveCoroutine()
     {
@@ -78,7 +106,8 @@ public class PlayerMove : MoveManager
 
             while (walkCount < walkCheck)
             {
-                transform.Translate(vector * speed * Time.deltaTime); // speed/1s
+                //transform.Translate(vector * speed * Time.deltaTime); // speed/1s
+                rigid.velocity = vector * speed;
                 walkCount++;
                 yield return new WaitForSeconds(Time.deltaTime);
             }

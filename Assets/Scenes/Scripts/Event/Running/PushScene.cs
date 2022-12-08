@@ -18,7 +18,7 @@ public class PushScene : MonoBehaviour
     {
         audioSource = GameObject.FindWithTag("Canvas").transform.Find("SoundManager").gameObject.GetComponent<AudioSource>();
         chaseScene = FindObjectOfType<ChaseScene>();
-        player = GameObject.FindWithTag("Player");
+        player = GameObject.Find("Player");
         mainCamera = GameObject.FindWithTag("MainCamera");
         animator = player.GetComponent<Animator>();
 
@@ -27,8 +27,7 @@ public class PushScene : MonoBehaviour
 
     public void EndOfAlley()
     {
-        if (speedDecrease <= 0)
-            speedDecrease = 0.1f;
+        player.GetComponent<Rigidbody2D>().velocity = Vector2.right * moveSpeed;
         StartCoroutine(StopRun()); // 플레이어가 화면 전환 이후에 달리기를 멈춤
     }
 
@@ -39,8 +38,9 @@ public class PushScene : MonoBehaviour
 
         while (currentSpeed > 0)
         {
-            player.transform.Translate(currentSpeed * Time.deltaTime, 0, 0);
-            yield return new WaitForSeconds(Time.deltaTime);
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.right * currentSpeed;
+            //player.transform.Translate(currentSpeed * Time.deltaTime, 0, 0);
+            yield return null;
             currentSpeed -= speedDecrease;
             if (audioSource.volume > 0)
                 audioSource.volume -= 0.01f;
