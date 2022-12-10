@@ -13,7 +13,7 @@ public class PlayerMove : MoveManager
     public bool isMove = true;
     [SerializeField] private Bed bed;
     //private ChatManager theChatManager;
-    DialogueManager dialogueManager;
+    [SerializeField] DialogueManager dialogueManager;
     //private ChoiceManager theChoiceManager;
     public bool inEvent = false;
     private bool canMove;
@@ -21,20 +21,24 @@ public class PlayerMove : MoveManager
     {
         animator = GetComponent<Animator>();
         //theChatManager = FindObjectOfType<ChatManager>();
-        dialogueManager = FindObjectOfType<DialogueManager>();
+        if(dialogueManager == null)
+            dialogueManager = FindObjectOfType<DialogueManager>();
         //theChoiceManager = FindObjectOfType<ChoiceManager>();
-        bed.BedTransform();
 
-        if (instance == null)
-        {
-            DontDestroyOnLoad(this.gameObject);
-            instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        if(bed != null)
+            bed.BedTransform();
+
+        //if (instance == null)
+        //{
+        //    DontDestroyOnLoad(this.gameObject);
+        //    instance = this;
+        //}
+        //else
+        //{
+        //    Destroy(this.gameObject);
+        //}
     }
+
     public void BedActive()
     {
         bed.gameObject.SetActive(false);

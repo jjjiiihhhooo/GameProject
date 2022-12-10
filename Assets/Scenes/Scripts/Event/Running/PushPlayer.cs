@@ -10,17 +10,17 @@ public class PushPlayer : MonoBehaviour
     private Animator mobAnimator;
     private SoundManager soundManager;
     private float mobSpeed = 5.0f;
-    private GameObject player;
-    private PlayerMove playerMove;
-    private Animator playerAnimator;
+    [SerializeField] private GameObject player;
+    [SerializeField] private PlayerMove playerMove;
+    [SerializeField] private Animator playerAnimator;
 
     void Start()
     {
         mobAnimator = blackMob.GetComponent<Animator>();
         soundManager = GetComponent<SoundManager>();
-        player = GameObject.FindWithTag("Player");
-        playerMove = player.GetComponent<PlayerMove>();
-        playerAnimator = player.GetComponent<Animator>();
+        //player = GameObject.FindWithTag("Player");
+        //playerMove = player.GetComponent<PlayerMove>();
+        //playerAnimator = player.GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D other) // 지연이에게 다가가면

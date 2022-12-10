@@ -6,10 +6,10 @@ public class PushScene : MonoBehaviour
 {
     [SerializeField] ChaseScene chaseScene;
     [SerializeField] Transform mapTransform;
-    private GameObject player;
-    private GameObject mainCamera;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject mainCamera;
     Animator animator;
-    AudioSource audioSource;
+    [SerializeField] AudioSource audioSource;
     public float moveSpeed;
     public float speedDecrease;
     private float currentSpeed;
@@ -18,8 +18,10 @@ public class PushScene : MonoBehaviour
     {
         audioSource = GameObject.FindWithTag("Canvas").transform.Find("SoundManager").gameObject.GetComponent<AudioSource>();
         chaseScene = FindObjectOfType<ChaseScene>();
-        player = GameObject.FindWithTag("Player");
-        mainCamera = GameObject.FindWithTag("MainCamera");
+        //if(player == null)
+        //    player = GameObject.FindWithTag("Player");
+        //if(mainCamera == null)
+        //    mainCamera = GameObject.FindWithTag("MainCamera");
         animator = player.GetComponent<Animator>();
 
         currentSpeed = moveSpeed;
@@ -35,6 +37,7 @@ public class PushScene : MonoBehaviour
     private IEnumerator StopRun()
     {
         mainCamera.GetComponent<CameraManager>().isChase = false;
+        mainCamera.GetComponent<CameraManager>().Bool();
         player.transform.position = mapTransform.position;
 
         while (currentSpeed > 0)

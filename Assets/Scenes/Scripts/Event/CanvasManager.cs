@@ -11,15 +11,15 @@ public class CanvasManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            DontDestroyOnLoad(this.gameObject);
-            instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        //if (instance == null)
+        //{
+        //    DontDestroyOnLoad(this.gameObject);
+        //    instance = this;
+        //}
+        //else
+        //{
+        //    Destroy(this.gameObject);
+        //}
     }
 
     //private void Update()

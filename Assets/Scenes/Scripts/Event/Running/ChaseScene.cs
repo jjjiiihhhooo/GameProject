@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChaseScene : MonoBehaviour
 {
-    private GameObject player;
+    [SerializeField] private GameObject player;
     private GameObject mainCamera;
 
     [SerializeField] GameObject BlackMob;
@@ -13,8 +13,8 @@ public class ChaseScene : MonoBehaviour
     [SerializeField] Transform mapTransform; // ¸Ê À§Ä¡ ÁÂÇ¥
     [SerializeField] PushScene pushScene;
     Animator chaseAnimator;
-    private GameObject canvas;
-    private GameObject fade;
+    [SerializeField] private GameObject canvas;
+    [SerializeField] private GameObject fade;
     int length;
 
     public bool isChase = false;
@@ -34,7 +34,8 @@ public class ChaseScene : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        if(player == null)
+            player = GameObject.FindWithTag("Player");
         mainCamera = GameObject.FindWithTag("MainCamera");
         chaseAnimator = player.GetComponent<Animator>();
 
@@ -46,8 +47,11 @@ public class ChaseScene : MonoBehaviour
         mobLocation = mapTransform.position + new Vector3(-9, -1.5f, 0);
         length = backGround.Length;
 
-        canvas = GameObject.FindWithTag("Canvas");
-        fade = GameObject.Find("Canvas").transform.Find("Fade").gameObject;
+        
+        if (canvas == null)
+            canvas = GameObject.FindWithTag("Canvas");
+        if(fade == null)
+            fade = GameObject.Find("Canvas").transform.Find("Fade").gameObject;
     }
 
     void Update()

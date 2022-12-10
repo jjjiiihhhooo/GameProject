@@ -13,15 +13,15 @@ public class CameraManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            DontDestroyOnLoad(this.gameObject);
-            instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        //if (instance == null)
+        //{
+        //    DontDestroyOnLoad(this.gameObject);
+        //    instance = this;
+        //}
+        //else
+        //{
+        //    Destroy(this.gameObject);
+        //}
     }
 
     void Update()

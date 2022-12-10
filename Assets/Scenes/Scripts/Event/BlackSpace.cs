@@ -213,6 +213,7 @@ public class BlackSpace : MonoBehaviour
         }
         Renderer renderer1 = puzzle_mob.GetComponentInChildren<Renderer>();
         renderer1.enabled = true;
+        door.isDoor = true;
 
     }
 
