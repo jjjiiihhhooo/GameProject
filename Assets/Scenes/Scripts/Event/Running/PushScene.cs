@@ -6,10 +6,10 @@ public class PushScene : MonoBehaviour
 {
     [SerializeField] ChaseScene chaseScene;
     [SerializeField] Transform mapTransform;
-    private GameObject player;
-    private GameObject mainCamera;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject mainCamera;
     Animator animator;
-    AudioSource audioSource;
+    [SerializeField] AudioSource audioSource;
     public float moveSpeed;
     public float speedDecrease;
     private float currentSpeed;
@@ -18,8 +18,15 @@ public class PushScene : MonoBehaviour
     {
         audioSource = GameObject.FindWithTag("Canvas").transform.Find("SoundManager").gameObject.GetComponent<AudioSource>();
         chaseScene = FindObjectOfType<ChaseScene>();
-        player = GameObject.Find("Player");
-        mainCamera = GameObject.FindWithTag("MainCamera");
+
+        //player = GameObject.Find("Player");
+        //mainCamera = GameObject.FindWithTag("MainCamera");
+
+        //if(player == null)
+        //    player = GameObject.FindWithTag("Player");
+        //if(mainCamera == null)
+        //    mainCamera = GameObject.FindWithTag("MainCamera");
+
         animator = player.GetComponent<Animator>();
 
         currentSpeed = moveSpeed;
@@ -28,12 +35,13 @@ public class PushScene : MonoBehaviour
     public void EndOfAlley()
     {
         player.GetComponent<Rigidbody2D>().velocity = Vector2.right * moveSpeed;
-        StartCoroutine(StopRun()); // ÇÃ·¹ÀÌ¾î°¡ È­¸é ÀüÈ¯ ÀÌÈÄ¿¡ ´Þ¸®±â¸¦ ¸ØÃã
+        StartCoroutine(StopRun()); // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ È­ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½ï¿½ï¿½Ä¿ï¿½ ï¿½Þ¸ï¿½ï¿½â¸¦ ï¿½ï¿½ï¿½ï¿½
     }
 
     private IEnumerator StopRun()
     {
         mainCamera.GetComponent<CameraManager>().isChase = false;
+        mainCamera.GetComponent<CameraManager>().Bool();
         player.transform.position = mapTransform.position;
 
         while (currentSpeed > 0)

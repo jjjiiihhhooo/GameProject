@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class ChaseScene : MonoBehaviour
 {
-    private GameObject player;
+    [SerializeField] private GameObject player;
     private GameObject mainCamera;
 
     [SerializeField] GameObject BlackMob;
-    [SerializeField] GameObject black; // ÃÊ±â È­¸é ¿ÞÂÊÀÇ °ËÀº ºÎºÐ. ÇÃ·¹ÀÌ¾î°¡ È­¸é ¿ÞÂÊ¿¡¼­ºÎÅÍ ¿òÁ÷ÀÌ´Â Âø½Ã
-    [SerializeField] GameObject[] backGround = new GameObject[3]; //"·¯´×"ÀÇ ÀÌ¹ÌÁö¸¦ °¡Áø ¿ÀºêÁ§Æ® ¹è¿­
-    [SerializeField] Transform mapTransform; // ¸Ê À§Ä¡ ÁÂÇ¥
+    [SerializeField] GameObject black; // ï¿½Ê±ï¿½ È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½. ï¿½Ã·ï¿½ï¿½Ì¾î°¡ È­ï¿½ï¿½ ï¿½ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ï¿½
+    [SerializeField] GameObject[] backGround = new GameObject[3]; //"ï¿½ï¿½ï¿½ï¿½"ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½è¿­
+    [SerializeField] Transform mapTransform; // ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½Ç¥
     [SerializeField] PushScene pushScene;
     Animator chaseAnimator;
-    private GameObject canvas;
-    private GameObject fade;
+    [SerializeField] private GameObject canvas;
+    [SerializeField] private GameObject fade;
     int length;
 
     public bool isChase = false;
@@ -22,12 +22,12 @@ public class ChaseScene : MonoBehaviour
     private bool singleCall_0 = true;
     private bool singleCall_1 = true;
 
-    float width = 12.8f; // "·¯´×"ÀÇ xÆø
+    float width = 12.8f; // "ï¿½ï¿½ï¿½ï¿½"ï¿½ï¿½ xï¿½ï¿½
 
     float horizontal = 0;
     float vertical = 0;
-    public float xSpeed = 10; // ¹è°æÀÌ Áö³ªÄ¡´Â ¼Óµµ. »ó´ëÀû ÇÃ·¹ÀÌ¾î xÃà ÀÌµ¿ ¼Óµµ
-    public float ySpeed = 10; // ÇÃ·¹ÀÌ¾îÀÇ yÃà ÀÌµ¿ ¼Óµµ
+    public float xSpeed = 10; // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Óµï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ xï¿½ï¿½ ï¿½Ìµï¿½ ï¿½Óµï¿½
+    public float ySpeed = 10; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ yï¿½ï¿½ ï¿½Ìµï¿½ ï¿½Óµï¿½
 
     public Vector3 mobLocation;
     //public Vector3 cameraLocation;
@@ -36,8 +36,13 @@ public class ChaseScene : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player");
-        Debug.Log(player.name);
+
+        //player = GameObject.Find("Player");
+        //Debug.Log(player.name);
+
+        if(player == null)
+            player = GameObject.Find("Player");
+
         PM = player.GetComponent<PlayerMove>();
         mainCamera = GameObject.FindWithTag("MainCamera");
         chaseAnimator = player.GetComponent<Animator>();
@@ -50,8 +55,11 @@ public class ChaseScene : MonoBehaviour
         mobLocation = mapTransform.position + new Vector3(-9, -1.5f, 0);
         length = backGround.Length;
 
-        canvas = GameObject.FindWithTag("Canvas");
-        fade = GameObject.Find("Canvas").transform.Find("Fade").gameObject;
+        
+        if (canvas == null)
+            canvas = GameObject.FindWithTag("Canvas");
+        if(fade == null)
+            fade = GameObject.Find("Canvas").transform.Find("Fade").gameObject;
     }
 
     void Update()
@@ -76,16 +84,16 @@ public class ChaseScene : MonoBehaviour
     private IEnumerator MoveChase()
     {
         /*
-         * ÇÃ·¹ÀÌ¾îÀÇ °æ¿ì¿¡´Â ¾Ö´Ï¸ÞÀÌ¼ÇÀ» Ãâ·ÂÇÏ¸é¼­ À§Ä¡´Â yÃà ÀÌµ¿¸¸ ÇÑ´Ù. 
-         * ¹è°æÀº ÀÔ·ÂÇÑ horizontal°ª¿¡ µû¶ó xÃàÀ¸·Î ÄÁº£ÀÌ¾î º§Æ® ¹æ½ÄÃ³·³ ÀÌµ¿ÇÑ´Ù.
-         * ÀÌ¿¡ µû¶ó »ó´ëÀûÀ¸·Î ÇÃ·¹ÀÌ¾î°¡ ¹è°æ¿¡ ºñÇØ xÃàÀ¸·Î ¿òÁ÷ÀÌ´Â °Í °°ÀÌ º¸ÀÎ´Ù.
+         * ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¸é¼­ ï¿½ï¿½Ä¡ï¿½ï¿½ yï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½. 
+         * ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ horizontalï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Ñ´ï¿½.
+         * ï¿½Ì¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½æ¿¡ ï¿½ï¿½ï¿½ï¿½ xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î´ï¿½.
          */
 
         horizontal = EndChase? 1 :Input.GetAxisRaw("Horizontal");
         vertical = EndChase ? 0 : Input.GetAxisRaw("Vertical");
 
 
-        if (EndChase) // ÇÃ·¹ÀÌ¾î¸¦ y°ª Áß¾Ó¿¡ À§Ä¡, Å° ÀÔ·Â°ª Á¦ÇÑ
+        if (EndChase) // ï¿½Ã·ï¿½ï¿½Ì¾î¸¦ yï¿½ï¿½ ï¿½ß¾Ó¿ï¿½ ï¿½ï¿½Ä¡, Å° ï¿½Ô·Â°ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             if (player.transform.position.y > mapTransform.position.y)
                 while (isChase)
@@ -105,33 +113,33 @@ public class ChaseScene : MonoBehaviour
                 }
         }
 
-        // ÇÃ·¹ÀÌ¾î, ÀÔ·ÂÇÑ vertical°ª¿¡ µû¶ó y°ª¸¸ ÀÌµ¿
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½, ï¿½Ô·ï¿½ï¿½ï¿½ verticalï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ yï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         player.transform.Translate(0, vertical * xSpeed * Time.deltaTime, 0);
 
-        // Ä«¸Þ¶ó, ÀÔ·ÂÇÑ horizontal°ª¿¡ µû¶ó x°ª¸¸ ÀÌµ¿. È­¸é»ó ¿À¸¥ÂÊ 1/3 ÁöÁ¡¿¡ ÇÃ·¹ÀÌ¾î À§Ä¡
+        // Ä«ï¿½Þ¶ï¿½, ï¿½Ô·ï¿½ï¿½ï¿½ horizontalï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ xï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½. È­ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1/3 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½Ä¡
         if (mainCamera.transform.position.x >= mapTransform.position.x - 4)
             mainCamera.transform.Translate(-horizontal * ySpeed * Time.deltaTime, 0, 0);
 
-        // ¾Ö´Ï¸ÞÀÌ¼Ç, horizontal°ª¿¡ ÀÇÇØ¼­ Ãâ·Â
+        // ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½, horizontalï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½
         if (horizontal != 0)
             chaseAnimator.SetFloat("DirX", horizontal);
         chaseAnimator.SetBool("Walk", horizontal == 0 ? false : true);
 
-        // °ËÀºÇüÃ¼, ÀÔ·ÂÇÑ horizontal°ª¿¡ µû¶ó x°ª¸¸ ÀÌµ¿
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼, ï¿½Ô·ï¿½ï¿½ï¿½ horizontalï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ xï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         BlackMob.transform.Translate((1 - horizontal) * xSpeed * Time.deltaTime, 0, 0);
 
-        // °ËÀº ¹è°æ, ÀÔ·ÂÇÑ horizontal°ª¿¡ µû¶ó x°ª¸¸ ÀÌµ¿
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½Ô·ï¿½ï¿½ï¿½ horizontalï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ xï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         if (black.transform.position.x >= mapTransform.position.x - 1.8f * width)
             black.transform.Translate(-horizontal * ySpeed * Time.deltaTime, 0, 0);
         for (int i = 0; i < length; i++)
         {
             backGround[i].transform.Translate(-horizontal * ySpeed * Time.deltaTime, 0, 0);
 
-            if (backGround[i].transform.position.x <= mapTransform.position.x - (2.2f * width) + 0.1f) // backGround[i]°¡ Ä«¸Þ¶ó¿¡¼­ º¸ÀÌÁö ¾ÊÀ» Á¤µµ·Î ¹Ð·Á³µÀ» ¶§
+            if (backGround[i].transform.position.x <= mapTransform.position.x - (2.2f * width) + 0.1f) // backGround[i]ï¿½ï¿½ Ä«ï¿½Þ¶ó¿¡¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
             {
                 float newX = mapTransform.position.x + (1.3f * width) - 0.2f;
 
-                backGround[i].transform.position = new Vector3(newX, this.transform.position.y, 0); // ÇØ´ç ¿ÀºêÁ§Æ®¸¦ È­¸é ¿À¸¥ÂÊ¿¡ ¿Å±è
+                backGround[i].transform.position = new Vector3(newX, this.transform.position.y, 0); // ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ê¿ï¿½ ï¿½Å±ï¿½
             }
         }
         yield return null;
@@ -141,7 +149,7 @@ public class ChaseScene : MonoBehaviour
     {
         yield return new WaitForSeconds(4.0f);
         
-        // ÇÃ·¹ÀÌ¾î È­¸é ¹ÛÀ¸·Î ÀÌµ¿
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         for (float i = 0; i < 1.0f; i += Time.deltaTime)
         {
             player.transform.Translate(ySpeed * Time.deltaTime, 0, 0);

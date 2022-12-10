@@ -10,20 +10,26 @@ public class PushPlayer : MonoBehaviour
     private Animator mobAnimator;
     private SoundManager soundManager;
     private float mobSpeed = 5.0f;
-    private GameObject player;
-    private PlayerMove playerMove;
-    private Animator playerAnimator;
+    [SerializeField] private GameObject player;
+    [SerializeField] private PlayerMove playerMove;
+    [SerializeField] private Animator playerAnimator;
 
     void Start()
     {
         mobAnimator = blackMob.GetComponent<Animator>();
         soundManager = GetComponent<SoundManager>();
-        player = GameObject.Find("Player");
-        playerMove = player.GetComponent<PlayerMove>();
-        playerAnimator = player.GetComponent<Animator>();
+
+        //player = GameObject.Find("Player");
+        //playerMove = player.GetComponent<PlayerMove>();
+        //playerAnimator = player.GetComponent<Animator>();
+
+        //player = GameObject.FindWithTag("Player");
+        //playerMove = player.GetComponent<PlayerMove>();
+        //playerAnimator = player.GetComponent<Animator>();
+
     }
 
-    private void OnTriggerEnter2D(Collider2D other) // Áö¿¬ÀÌ¿¡°Ô ´Ù°¡°¡¸é
+    private void OnTriggerEnter2D(Collider2D other) // ï¿½ï¿½ï¿½ï¿½ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½Ù°ï¿½ï¿½ï¿½ï¿½ï¿½
     {
         if (other.tag == "Player")
         {
@@ -33,10 +39,10 @@ public class PushPlayer : MonoBehaviour
 
     private IEnumerator ActPush()
     {
-        // Áö¿¬ÀÌ°¡ ÇÃ·¹ÀÌ¾î¸¦ ¹ÐÄ§
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î¸¦ ï¿½ï¿½Ä§
         playerMove.inEvent = true;
         playerAnimator.SetFloat("DirX", 1);
-        soundManager.PlaySound(1, true, false, 1); // ¹ÐÄ¡´Â ¼Ò¸® Ãâ·Â
+        soundManager.PlaySound(1, true, false, 1); // ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ò¸ï¿½ ï¿½ï¿½ï¿½
         for (float i = 0; i < 0.5f; i += Time.deltaTime)
         {
             player.transform.Translate(-Time.deltaTime, 0, 0);
@@ -51,8 +57,8 @@ public class PushPlayer : MonoBehaviour
         playerAnimator.SetBool("Walk", false);
         yield return new WaitForSeconds(1.5f);
 
-        // °ËÀº ÇüÃ¼ µîÀå
-        soundManager.PlaySound(0, false, true, 1.8f); // ¹ß¼Ò¸® Ãâ·Â, ·çÇÁ
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
+        soundManager.PlaySound(0, false, true, 1.8f); // ï¿½ß¼Ò¸ï¿½ ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½
         blackMob.SetActive(true);
         mobAnimator.SetFloat("DirX", 1);
         while (Vector2.Distance(blackMob.transform.position, player.transform.position) > 8)
@@ -62,8 +68,8 @@ public class PushPlayer : MonoBehaviour
         }
         mobAnimator.SetBool("isWalk", false);
         soundManager.StopSound(0);
-        // ÁÖÀÎ°ø¿¡ Çô°¨±â;
-        // ¾À ·Îµå;
+        // ï¿½ï¿½ï¿½Î°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½;
+        // ï¿½ï¿½ ï¿½Îµï¿½;
         
 
         playerMove.inEvent = false;

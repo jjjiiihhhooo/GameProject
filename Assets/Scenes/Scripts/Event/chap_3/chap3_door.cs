@@ -6,19 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class chap3_door : MonoBehaviour
 {
-    //public bool isDoor = false;
+    public bool isDoor = false;
 
 
 
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if(other.tag == "chap3_player")
-    //    {
-    //        if (isDoor)
-    //        {
-    //            isDoor = false;
-    //            SceneManager.LoadScene("Game_4");
-    //        }
-    //    }
-    //}
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "chap3_player")
+        {
+            if (isDoor)
+            {
+                isDoor = false;
+                SceneManager.LoadScene("Game_4");
+            }
+        }
+    }
 }

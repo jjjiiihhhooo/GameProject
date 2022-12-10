@@ -12,16 +12,14 @@ public class chap3_manager : MonoBehaviour
 
     private void Awake()
     {
-        player = FindObjectOfType<PlayerMove>().gameObject;
-        cameraManager = FindObjectOfType<CameraManager>();
+        //player = FindObjectOfType<PlayerMove>().gameObject;
+        //cameraManager = FindObjectOfType<CameraManager>();
         player.transform.position = mapTransform.position;
         cameraManager.isCamera = false;
         cameraManager.Transform(mapTransform);
         if(fade != null)
         {
-        fade = FindObjectOfType<Fade>().gameObject;
-        fade.SetActive(true);
-
+            fade.SetActive(true);
         }
     }
 
