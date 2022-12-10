@@ -9895,7 +9895,6 @@ MonoBehaviour:
   xSpeed: 10
   ySpeed: 10
   mobLocation: {x: 0, y: 0, z: 0}
-  cameraLocation: {x: 0, y: 0, z: 0}
 --- !u!1 &1124346397
 GameObject:
   m_ObjectHideFlags: 0
@@ -18042,7 +18041,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0

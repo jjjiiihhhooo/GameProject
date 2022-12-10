@@ -23,7 +23,7 @@ public class RunningStartPoint : MonoBehaviour
 
         if (sceneChanger == null)
             sceneChanger = FindObjectOfType<SceneChanger>();
-        chaseScene = FindObjectOfType<ChaseScene>();
+        //chaseScene = FindObjectOfType<ChaseScene>();
         if(player == null)
             player = GameObject.FindWithTag("Player");
 
