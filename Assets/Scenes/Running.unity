@@ -3772,7 +3772,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7005e98434ec444449238aba5e329ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseScene: {fileID: 1922713182}
   startPoint: Running
   sceneChanger: {fileID: 1210178075}
   fade: {fileID: 1819873260}
@@ -4435,7 +4434,6 @@ MonoBehaviour:
   xSpeed: 10
   ySpeed: 10
   mobLocation: {x: 0, y: 0, z: 0}
-  cameraLocation: {x: 0, y: 0, z: 0}
 --- !u!4 &1922713183
 Transform:
   m_ObjectHideFlags: 0

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class StartingPoint : MonoBehaviour
 {
-    GameObject player;
+    [SerializeField] GameObject player;
     SceneChanger sceneChanger;
     CameraManager cameraManager;
     public string startPoint;
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        //player = GameObject.FindWithTag("Player");
         sceneChanger = FindObjectOfType<SceneChanger>();
         cameraManager = FindObjectOfType<CameraManager>();
 

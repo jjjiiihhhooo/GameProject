@@ -8,21 +8,19 @@ public class chap4_JY_playground : MonoBehaviour
     [SerializeField] GameObject ranbox;
     [SerializeField] GameObject giveNote;
 
-    GameObject player;
+    [SerializeField] GameObject player;
     SceneTransfer sceneTransfer;
     SceneChanger sceneChanger;
 
     chap4_NoteBox NB;
 
-    private void Start()
+    void Start()
     {
-        player = GameObject.FindWithTag("Player");
         NB = giveNote.GetComponent<chap4_NoteBox>();
         sceneTransfer = GetComponent<SceneTransfer>();
         sceneChanger = FindObjectOfType<SceneChanger>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(count == 6)
@@ -59,7 +57,7 @@ public class chap4_JY_playground : MonoBehaviour
         // 히든
         if (sceneChanger.chap3JY && sceneChanger.chap4JY)
         {
-            sceneTransfer.TransScene("Ending_Hidden2");
+            sceneTransfer.TransScene("Ending_Hidden1");
         }
         // 노말
         else if (sceneChanger.chap3JY && !sceneChanger.chap4JY)
@@ -74,7 +72,7 @@ public class chap4_JY_playground : MonoBehaviour
         // 배드
         else if(!sceneChanger.chap3JY && !sceneChanger.chap4JY)
         {
-            sceneTransfer.TransScene("Ending_Hidden2");
+            sceneTransfer.TransScene("Ending_Bad");
         }
     }
 }

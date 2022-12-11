@@ -10,17 +10,15 @@ public class chap4_AlleyScene : MonoBehaviour
     [SerializeField] chap4_ToB to;
     [SerializeField] GameObject intro;
 
-    GameObject player;
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject mainCamera;
     Animator pAni;
-    GameObject mainCamera;
 
     float speed = 8.0f;
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
         pAni = player.GetComponent<Animator>();
-        mainCamera = GameObject.FindWithTag("MainCamera");
         player.transform.position = from.position;
         mainCamera.transform.position = this.gameObject.transform.position + new Vector3(0,0,-1);
         player.GetComponent<PlayerMove>().inEvent= true;

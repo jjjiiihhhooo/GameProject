@@ -8,6 +8,7 @@ public class aa : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(gameObject.name);
         mainCamera = GameObject.FindWithTag("MainCamera");
         mainCamera.GetComponent<CameraManager>().isCamera = true;
     }

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class SceneChanger : MonoBehaviour
 {
-    [SerializeField] GameObject player;
-    [SerializeField] GameObject mainCamera;
+    public static SceneChanger instance;
+
+    //[SerializeField] GameObject player;
+    //[SerializeField] GameObject mainCamera;
 
     public string currentScene = "Main";
 
@@ -16,7 +18,14 @@ public class SceneChanger : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
-        mainCamera = GameObject.FindWithTag("MainCamera");
+        if (instance == null)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

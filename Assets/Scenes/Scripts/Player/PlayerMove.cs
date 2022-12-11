@@ -12,11 +12,11 @@ public class PlayerMove : MoveManager
     [SerializeField] chap4_NoteManager NM;
     public bool isMove = true;
     [SerializeField] private Bed bed;
-    //private ChatManager theChatManager;
     [SerializeField] DialogueManager dialogueManager;
-    //private ChoiceManager theChoiceManager;
     public bool inEvent = false;
     private bool canMove;
+
+    public bool indep = true;
 
     Rigidbody2D rigid;
 
@@ -24,10 +24,8 @@ public class PlayerMove : MoveManager
     {
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
-        //theChatManager = FindObjectOfType<ChatManager>();
         if(dialogueManager == null)
             dialogueManager = FindObjectOfType<DialogueManager>();
-        //theChoiceManager = FindObjectOfType<ChoiceManager>();
 
         if(bed != null)
             bed.BedTransform();
@@ -49,10 +47,12 @@ public class PlayerMove : MoveManager
     }
     private void Update()
     {
-        //canMove = !dialogueManager.onDialogue && !theChatManager.isChat2 && !theChoiceManager.isChoice2 && !inEvent ? true : false;
-        canMove = !dialogueManager.onDialogue && !NM.onDialogue && !inEvent ? true : false;
+        if (NM)
+            canMove = !dialogueManager.onDialogue && !NM.onDialogue && !inEvent ? true : false;
+        else
+            canMove = !dialogueManager.onDialogue && !inEvent ? true : false;
 
-        if (isMove && canMove)
+        if (canMove)
         {
             //if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
             //{
@@ -74,9 +74,6 @@ public class PlayerMove : MoveManager
                     vector.x = 0;
                 animator.SetFloat("DirX", vector.x);
                 animator.SetFloat("DirY", vector.y);
-                //animator.SetBool("Walk", true);
-
-                //transform.Translate(vector * speed * Time.deltaTime); // speed/1s
                 rigid.velocity = vector * speed;
 
             }
@@ -85,10 +82,15 @@ public class PlayerMove : MoveManager
                 animator.SetBool("Walk", false);
                 rigid.velocity = Vector2.zero;
             }
-            //}
         }
         else
-            rigid.velocity = Vector2.zero;
+        {
+            if(indep)
+            {
+                rigid.velocity = Vector2.zero;
+                animator.SetBool("Walk", false);
+            }
+        }
     }
     private IEnumerator MoveCoroutine()
     {
@@ -125,8 +127,4 @@ public class PlayerMove : MoveManager
     {
         return canMove;
     }
-    //public bool GetIsChat()
-    //{
-    //    return theChatManager.isChat2;
-    //}
 }

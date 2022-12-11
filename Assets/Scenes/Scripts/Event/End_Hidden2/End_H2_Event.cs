@@ -16,24 +16,20 @@ public class End_H2_Event : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        player = GameObject.Find("Player");
         
         cameraManager = FindObjectOfType<CameraManager>();
         cameraManager.isCamera = false;
         cameraManager.Transform(room.transform);
 
+        player.GetComponent<Animator>().SetFloat("DirX", 1);
+        player.GetComponent<Animator>().SetFloat("DirY", 0);
         player.GetComponent<PlayerMove>().isMove = true;
         player.GetComponent<PlayerMove>().inEvent = true;
         player.transform.position = this.gameObject.transform.position;
         dialogueBox = jY.GetComponent<DialogueBox>();
 
         StartCoroutine(EndEvent());
-    }
-
-    
-    void Update()
-    {
-        
     }
 
     IEnumerator EndEvent()

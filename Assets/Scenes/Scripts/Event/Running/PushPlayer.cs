@@ -61,7 +61,7 @@ public class PushPlayer : MonoBehaviour
         soundManager.PlaySound(0, false, true, 1.8f); // �߼Ҹ� ���, ����
         blackMob.SetActive(true);
         mobAnimator.SetFloat("DirX", 1);
-        while (Vector2.Distance(blackMob.transform.position, player.transform.position) > 8)
+        while (Vector2.Distance(blackMob.transform.position, player.transform.position) > 4)
         {
             blackMob.transform.Translate(mobSpeed * Time.deltaTime, 0, 0);
             yield return null;

@@ -6,7 +6,7 @@ public class chap4_pgIntro : MonoBehaviour
 {
     [SerializeField] GameObject JY;
     [SerializeField] GameObject RanBox;
-    GameObject player;
+    [SerializeField] GameObject player;
 
     float speed = 1.0f;
 
@@ -16,7 +16,6 @@ public class chap4_pgIntro : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
         StartCoroutine(PlaygroundIntro());
     }
 
