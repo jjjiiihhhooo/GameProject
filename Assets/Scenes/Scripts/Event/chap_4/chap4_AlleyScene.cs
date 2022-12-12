@@ -42,6 +42,7 @@ public class chap4_AlleyScene : MonoBehaviour
         player.transform.position = playground.position;
         intro.SetActive(true);
         mainCamera.GetComponent<CameraManager>().Bool();
+        mainCamera.GetComponent<CameraManager>().target_obj = player;
         StopAllCoroutines();
     }
 }

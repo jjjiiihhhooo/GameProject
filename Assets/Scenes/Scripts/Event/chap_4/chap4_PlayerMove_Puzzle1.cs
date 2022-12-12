@@ -22,7 +22,7 @@ public class chap4_PlayerMove_Puzzle1 : MonoBehaviour
     int posY;
 
     chap4_MapSpawner mapSpawner;
-    GameObject player;
+    [SerializeField] GameObject player;
     Animator p_ani;
 
     // º¤ÅÍ ÀÔ·Â°ª
@@ -45,9 +45,11 @@ public class chap4_PlayerMove_Puzzle1 : MonoBehaviour
     int c = 0;
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        //player = GameObject.FindWithTag("Player");
         p_ani = player.GetComponent<Animator>();
         mapSpawner = GetComponent<chap4_MapSpawner>();
+        player.GetComponent<PlayerMove>().inEvent = true;
+        player.GetComponent<PlayerMove>().indep = false;
 
         mapX = mapSpawner.x; 
         mapY = mapSpawner.y;

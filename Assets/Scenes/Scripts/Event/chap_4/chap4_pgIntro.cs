@@ -9,24 +9,18 @@ public class chap4_pgIntro : MonoBehaviour
     [SerializeField] GameObject player;
 
     float speed = 1.0f;
-
     
     // 하나와 지연이 놀이터 중앙으로 간 이후, 지연이 대사를 읊는 장면
-    
 
     void Start()
     {
         StartCoroutine(PlaygroundIntro());
     }
 
-    void Update()
-    {
-        
-    }
-
     IEnumerator PlaygroundIntro()
     {
         // 하나, 지연 위로 이동
+        player.GetComponent<PlayerMove>().indep = false;
         player.GetComponent<Animator>().SetFloat("DirX", 0);
         player.GetComponent<Animator>().SetFloat("DirY", 1);
         player.GetComponent<Animator>().SetBool("Walk", true);
@@ -57,6 +51,7 @@ public class chap4_pgIntro : MonoBehaviour
 
         JY.GetComponent<DialogueBox>().SetDialogue();
         player.GetComponent<PlayerMove>().inEvent = false;
+        player.GetComponent<PlayerMove>().indep = true;
 
         RanBox.SetActive(true);
     }
