@@ -8,6 +8,8 @@ public class SoundManager : MonoBehaviour
 {
     AudioSource[] audioSource;
 
+    [SerializeField] private AudioSource mainSceneBGM;
+
     void Awake()
     {
         audioSource = GetComponents<AudioSource>();
@@ -33,5 +35,10 @@ public class SoundManager : MonoBehaviour
         if (audioSource[soundNum].clip == null)
             return;
         audioSource[soundNum].Stop();
+    }
+
+    public void SoundVolume(float volume)
+    {
+        mainSceneBGM.volume = volume;
     }
 }

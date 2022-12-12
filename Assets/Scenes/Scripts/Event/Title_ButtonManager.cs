@@ -8,6 +8,7 @@ public class Title_ButtonManager : MonoBehaviour
     [SerializeField] private GameObject option_obj;
     [SerializeField] private GameObject display_obj;
     [SerializeField] private GameObject keyBoard_obj;
+    [SerializeField] private GameObject sound_obj;
     [SerializeField] private SaveManager saveManager;
     private bool isOption;
 
@@ -21,6 +22,7 @@ public class Title_ButtonManager : MonoBehaviour
     {
         option_obj.SetActive(false);
         keyBoard_obj.SetActive(false);
+        sound_obj.SetActive(false);
         display_obj.SetActive(true);
     }
 
@@ -28,6 +30,15 @@ public class Title_ButtonManager : MonoBehaviour
     {
         option_obj.SetActive(false);
         keyBoard_obj.SetActive(true);
+        sound_obj.SetActive(false);
+        display_obj.SetActive(false);
+    }
+
+    public void SoundBtn()
+    {
+        option_obj.SetActive(false);
+        sound_obj.SetActive(true);
+        keyBoard_obj.SetActive(false);
         display_obj.SetActive(false);
     }
 
@@ -36,6 +47,7 @@ public class Title_ButtonManager : MonoBehaviour
         option_obj.SetActive(false);
         display_obj.SetActive(false);
         keyBoard_obj.SetActive(false);
+        sound_obj.SetActive(false);
     }
 
     public void MapStart(int count)
