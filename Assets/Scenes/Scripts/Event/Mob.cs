@@ -13,9 +13,13 @@ public class Mob : MonoBehaviour
     [SerializeField] private GameObject rightWall;
     [SerializeField] private GameObject right_arrow;
     [SerializeField] private QuestManager questManager;
+    Animator ani;
+    [SerializeField] CameraManager cm;
 
     [SerializeField] GameObject player;
-    
+
+    [SerializeField] GameObject mobP;
+
     DialogueBox dialogueBox;
     MusicPlayer musicPlayer;
     AudioSource audioSource;
@@ -29,6 +33,8 @@ public class Mob : MonoBehaviour
         dialogueBox = GetComponent<DialogueBox>();
         questManager = FindObjectOfType<QuestManager>();
         musicPlayer = GameObject.FindWithTag("Canvas").transform.Find("SoundManager").gameObject.GetComponent<MusicPlayer>();
+
+        ani = GetComponent<Animator>();
     }
     public void Count() // 각 지연과의 대화로 호출
     {
@@ -45,7 +51,8 @@ public class Mob : MonoBehaviour
 
     IEnumerator Moving()
     {
-        transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y - speed * Time.deltaTime, transform.position.z);
+        ani.SetBool("isWalk", true);
         yield return null;
     }
 
@@ -54,6 +61,7 @@ public class Mob : MonoBehaviour
         if (!isStart && count > 3 && player.transform.position.x > -50f && player.transform.position.x < -40f && player.transform.position.y > 9f && player.transform.position.x < 17f) // 모든 대화를 마치고 일정 영역 내에 있을 때
         {
             player.GetComponent<PlayerMove>().inEvent = true;
+            cm.target_obj = mobP;
             Bool();
         }
         if (!isTrigger)
@@ -62,7 +70,10 @@ public class Mob : MonoBehaviour
                 spaceDown = true;
 
             if (spaceDown) // ??아 집에 가자. 에서 space를 누르면
+            {
+                cm.target_obj = this.gameObject;
                 StartCoroutine(Moving());
+            }
         }
         if (mobReady)
         {
@@ -87,6 +98,8 @@ public class Mob : MonoBehaviour
         {
             player.GetComponent<Animator>().SetFloat("DirX", -1);
             isTrigger = true; // 해당 오브젝트 움직임을 멈춤
+            ani.SetBool("isWalk", false);
+            cm.target_obj = player;
             other.GetComponent<MobPar>().Chat(); // 아니...부러워서
             mobReady = true;
         }
@@ -94,6 +107,7 @@ public class Mob : MonoBehaviour
 
     private IEnumerator MobStart()
     {
+        cm.target_obj = blackMob;
         yield return new WaitForSeconds(0.5f);
         /*
          * 몹이 등장하고, 플레이어가 몹을 바라봄.
@@ -103,6 +117,7 @@ public class Mob : MonoBehaviour
         player.GetComponent<Animator>().SetFloat("DirX", -1);
         while(Vector2.Distance(blackMob.transform.position, player.transform.position) > 8)
             yield return null;
+        cm.target_obj = player;
         for (float i = 0; i < 0.5f; i += Time.deltaTime)
         {
             player.transform.Translate(Time.deltaTime, 0, 0);

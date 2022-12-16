@@ -8,6 +8,7 @@ public class End_Bad_Event : MonoBehaviour
     DialogueBox dialogueBox;
     [SerializeField] GameObject player;
     [SerializeField] GameObject blackWindow;
+    [SerializeField] GameObject DB;
     Animator ani;
 
     bool isColl;
@@ -49,6 +50,7 @@ public class End_Bad_Event : MonoBehaviour
         }
 
         blackWindow.SetActive(true);
+        DB.SetActive(true);
         player.SetActive(false);
         this.gameObject.SetActive(false);
     }

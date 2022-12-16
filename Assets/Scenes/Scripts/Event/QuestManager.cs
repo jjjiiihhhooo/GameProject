@@ -14,12 +14,15 @@ public class QuestManager : MonoBehaviour
     public Text quest_Text;
     public GameObject qusetText;
     public int questcount;
+    string a;
+
+    [SerializeField] bool Bool;
 
     public void chap2_questText()
     {
         questcount += 1;
         qusetText.SetActive(true);
-        string a = "놀이기구 타기 [4/" + questcount + "]";
+        string a = "놀이기구 타기 [" + questcount + "/4]";
         quest_Text.text = a;
     }    
 
@@ -36,21 +39,20 @@ public class QuestManager : MonoBehaviour
         questItem = _item;
         questImage = _image;
         theQuestInventory.ItemChange(questItem, questImage);
-        table.pieceCount++;
-
-
-        //if(table.pieceCount >=4 && sceneChanger.currentScene == "Main")
-
-        string a = "찢어진 종이조각 [4/" + table.pieceCount + "]";
-        quest_Text.text = a;
-
-        if(table.pieceCount >= 4 && sceneChanger.currentScene == "Main")
-
+        if (Bool)
         {
-            table.AcitveBook();
-            field_book.SetActive(false);
-            qusetText.SetActive(false);
+            table.pieceCount++;
+            a = "찢어진 종이조각 [" + table.pieceCount + "/4]";
+            quest_Text.text = a;
 
+            if (table.pieceCount >= 4 && sceneChanger.currentScene == "Main")
+            {
+                a = "찢어진 종이조각 [" + table.pieceCount + "/4]";
+                quest_Text.text = a;
+                table.AcitveBook();
+                field_book.SetActive(false);
+                qusetText.SetActive(false);
+            }
         }
     }
 

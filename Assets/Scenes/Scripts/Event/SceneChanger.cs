@@ -10,6 +10,7 @@ public class SceneChanger : MonoBehaviour
     //[SerializeField] GameObject mainCamera;
 
     public string currentScene = "Main";
+    [SerializeField] bool DontDestroy;
 
     // chap3에서 지연과 같이 갔는지
     public bool chap3JY;
@@ -18,14 +19,17 @@ public class SceneChanger : MonoBehaviour
 
     void Start()
     {
-        if (instance == null)
+        if (DontDestroy)
         {
-            DontDestroyOnLoad(this.gameObject);
-            instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
+            if (instance == null)
+            {
+                DontDestroyOnLoad(this.gameObject);
+                instance = this;
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }

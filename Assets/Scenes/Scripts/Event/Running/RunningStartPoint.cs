@@ -33,7 +33,6 @@ public class RunningStartPoint : MonoBehaviour
         {
             player.transform.position = new Vector3(-1, -1.5f, 0);
             mainCamera.transform.position = this.transform.position + new Vector3(6, 2, -1);
-            Debug.Log($"{player.transform.position.x}/{player.transform.position.y}/{player.transform.position.z}");
         }
     }
 }

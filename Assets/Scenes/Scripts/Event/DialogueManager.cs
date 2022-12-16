@@ -18,7 +18,7 @@ public class DialogueManager : MonoBehaviour
     public bool onDialogue = false;
     public bool isEnd = false;
     bool single;
-    bool GetKey = false; // 키를 입력 받을 수 있는 경우
+    public bool GetKey = false; // 키를 입력 받을 수 있는 경우
     //====================================== 대화 관련 필드 ==============================================
 
     [SerializeField] public Text text;                             // sentences
@@ -88,7 +88,6 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                if (!isChoice[logCount]) text.text = "";
                 StartCoroutine(this.StartDialogue());
             }
         }
@@ -169,6 +168,7 @@ public class DialogueManager : MonoBehaviour
     // 대화 호출
     IEnumerator StartDialogue()
     {
+        if (!isChoice[logCount]) text.text = "";
         // 첫 대화
         if (logCount == 0 && !isChoice[0])
         {
@@ -296,7 +296,7 @@ public class DialogueManager : MonoBehaviour
     }
 
     // 대화 탈출
-    void ExitDialogue()
+    public void ExitDialogue()
     {
         text.text = "";
         answer_Text0.text = "";
@@ -331,5 +331,10 @@ public class DialogueManager : MonoBehaviour
             _BoolArray[i] = _choice[i];
         }
         return _BoolArray;
+    }
+
+    public void StartLog()
+    {
+        StartCoroutine(StartDialogue());
     }
 }

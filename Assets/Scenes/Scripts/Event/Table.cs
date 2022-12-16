@@ -14,17 +14,44 @@ public class Table : MonoBehaviour
     [SerializeField] private GameObject npc2_dialogue;
     [SerializeField] private GameObject npc_dialogue;
     //[SerializeField] private TestChat npc2_testChat;
-    public Rigidbody2D rigid;
+    Rigidbody2D rigid;
 
     private void Start()
     {
-        rigid.mass = 1000;
+        rigid = GetComponent<Rigidbody2D>();
+        //CanMove();
     }
 
+    void Update()
+    {
+        if (rigid.velocity.x > 0)
+        {
+            rigid.velocity = new Vector2(rigid.velocity.x - 0.1f, rigid.velocity.y);
+            if (rigid.velocity.x > 0.1f && rigid.velocity.x < -0.1f) rigid.velocity = Vector2.zero;
+        }
+        else if (rigid.velocity.x < 0)
+        {
+            rigid.velocity = new Vector2(rigid.velocity.x + 0.1f, rigid.velocity.y);
+            if (rigid.velocity.x > 0.1f && rigid.velocity.x < -0.1f) rigid.velocity = Vector2.zero;
+        }
+        else if (rigid.velocity.x == 0) rigid.velocity = Vector2.zero;
+
+        if (rigid.velocity.y > 0)
+        {
+            rigid.velocity = new Vector2(rigid.velocity.x, rigid.velocity.y - 0.1f);
+            if (rigid.velocity.y > 0.1f && rigid.velocity.y < -0.1f) rigid.velocity = Vector2.zero;
+        }
+        else if (rigid.velocity.y < 0)
+        {
+            rigid.velocity = new Vector2(rigid.velocity.x, rigid.velocity.y + 0.1f);
+            if (rigid.velocity.y > 0.1f && rigid.velocity.y < -0.1f) rigid.velocity = Vector2.zero;
+        }
+        else if (rigid.velocity.y == 0) rigid.velocity = Vector2.zero;
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Trigger")
+        if (other.tag == "Trigger")
         {
             isTable = true;
             box.isTrigger = true;
@@ -38,7 +65,7 @@ public class Table : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(other.tag == "Trigger")
+        if (other.tag == "Trigger")
         {
             isTable = false;
         }
@@ -49,4 +76,8 @@ public class Table : MonoBehaviour
         sketchbook.SetActive(true);
     }
 
+    public void CanMove()
+    {
+        rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
 }

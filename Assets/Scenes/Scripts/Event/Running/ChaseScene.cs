@@ -75,7 +75,6 @@ public class ChaseScene : MonoBehaviour
         }
         else if (!isChase && singleCall_1)
         {
-            Debug.Log("pp");
             singleCall_1 = false;
             pushScene.EndOfAlley();
         }

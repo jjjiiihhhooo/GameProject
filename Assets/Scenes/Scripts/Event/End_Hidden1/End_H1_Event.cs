@@ -9,11 +9,13 @@ public class End_H1_Event : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject hanaIllust;
     [SerializeField] GameObject fade;
+    DialogueManager DM;
     Animator ani;
 
     void Start()
     {
         dialogueBox = GetComponent<DialogueBox>();
+        DM = FindObjectOfType<DialogueManager>();
         ani = GetComponent<Animator>();
 
         ani.SetFloat("DirX", 1);
@@ -22,12 +24,27 @@ public class End_H1_Event : MonoBehaviour
         StartCoroutine(Event());
     }
 
-    IEnumerator Event()
+    void Update()
+    {
+        DM.GetKey = false;
+    }
+
+        IEnumerator Event()
     {
         yield return new WaitForSeconds(3.0f);
         dialogueBox.SetDialogue();
+        yield return new WaitForSeconds(2.0f);
+        DM.StartLog();
+        yield return new WaitForSeconds(2.0f);
+        DM.StartLog();
+        yield return new WaitForSeconds(2.0f);
+        DM.StartLog();
+        yield return new WaitForSeconds(2.0f);
+        DM.StartLog();
+        yield return new WaitForSeconds(2.0f);
+        DM.ExitDialogue();
 
-        while(!dialogueBox.noMore)
+        while (!dialogueBox.noMore)
         {
             yield return null;
         }

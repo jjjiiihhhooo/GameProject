@@ -7,14 +7,20 @@ public class End_Bad_BW : MonoBehaviour
     SpriteRenderer spr;
     Rigidbody2D rigid;
     [SerializeField] float time;
+    [SerializeField] GameObject DB;
+    [SerializeField] GameObject hang;
+    Rigidbody2D rigidDB;
     float color_r;
     float color_g;
     float color_b;
+
+    [SerializeField] FadeInOut fade;
 
     void Start()
     {
         spr= GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
+        rigidDB = DB.GetComponent<Rigidbody2D>();
         StartCoroutine(GetBright());
     }
 
@@ -35,9 +41,17 @@ public class End_Bad_BW : MonoBehaviour
         }
 
         rigid.velocity= Vector2.down;
+        rigidDB.velocity = Vector2.down;
 
-        yield return new WaitForSeconds(12);
+        yield return new WaitForSeconds(3);
 
+        fade.StartFade("out", "black", 5);
+
+        yield return new WaitForSeconds(8);
         rigid.velocity = Vector2.zero;
+        rigidDB.velocity = Vector2.zero;
+        hang.SetActive(true);
+
+        fade.StartFade("in", "black", 1);
     }
 }

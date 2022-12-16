@@ -20,12 +20,11 @@ public class QuestInventory : MonoBehaviour
 
     private void Awake()
     {
-
+        
     }
 
     public void ItemChange(string _item, Sprite _image)
     {
-
         for (int i = 0; i < slot_obj.Length; i++)
         {
             if (slot_obj[i].GetComponent<Slot>().ex == null || slot_obj[i].GetComponent<Slot>().ex == idleSprite)

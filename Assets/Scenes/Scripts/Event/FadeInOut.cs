@@ -22,7 +22,7 @@ public class FadeInOut : MonoBehaviour
         float timer = 0;
 
         if(_BlackOrWhite == "black")
-            spr.color= Color.black;
+            spr.color = Color.black;
         else if(_BlackOrWhite == "white")
             spr.color = Color.white;
 

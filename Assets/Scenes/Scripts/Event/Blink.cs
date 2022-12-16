@@ -46,8 +46,8 @@ public class Blink : MonoBehaviour
 
             while (timer <= time)
             {
-                top.transform.position = this.transform.position + new Vector3(0, (7 * timer * timer) / (time * time), 0);
-                bottom.transform.position = this.transform.position + new Vector3(0, (-7 * timer * timer) / (time * time), 0);
+                top.transform.position = this.transform.position + new Vector3(0, -7, 0) + new Vector3(0, (7 * timer * timer) / (time * time), 0);
+                bottom.transform.position = this.transform.position + new Vector3(0, 7, 0) + new Vector3(0, (-7 * timer * timer) / (time * time), 0);
 
                 timer += Time.deltaTime;
                 yield return new WaitForSeconds(Time.deltaTime);

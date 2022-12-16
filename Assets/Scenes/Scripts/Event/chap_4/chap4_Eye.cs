@@ -21,7 +21,7 @@ public class chap4_Eye : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        player = GameObject.Find("Player");
         localPos = this.transform.position;
         canvas = GameObject.FindWithTag("Canvas");
         gameOver = canvas.GetComponent<ActiveGameOver>();

@@ -73,7 +73,6 @@ public class PushPlayer : MonoBehaviour
         
 
         playerMove.inEvent = false;
-        Debug.Log("Done.");
         SceneManager.LoadScene("Game_3");
     }
 }

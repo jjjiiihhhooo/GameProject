@@ -32,9 +32,8 @@ public class PuzzleMove : MonoBehaviour
                 books[count].SetActive(true);
             else
             {
-                table.rigid.mass = 1;
                 table.sketchbook.SetActive(false);
-
+                table.CanMove();
                 //testChat.ImageUpdate();
                 //npc_idle_obj.SetActive(false);
                 //npc_idle_obj2.SetActive(true);

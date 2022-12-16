@@ -45,7 +45,7 @@ public class QuestBox : MonoBehaviour
     private void OnEnable()
     {
         dialogueBoxes = GetComponents<DialogueBox>();
-        if(theQuestManager == null)
+        if (theQuestManager == null)
             theQuestManager = GameObject.FindWithTag("QuestManager").GetComponent<QuestManager>();
     }
 
@@ -63,7 +63,7 @@ public class QuestBox : MonoBehaviour
         {
             if (dialogueBoxes[logConditions[i]._logCheck].isLog)
             {
-                if(logConditions[i]._isNoMore && dialogueBoxes[logConditions[i]._logCheck].noMore)
+                if (logConditions[i]._isNoMore && dialogueBoxes[logConditions[i]._logCheck].noMore)
                     logConditions[i]._isClear = true; // logConditions[i] 조건 달성!
                 if (dialogueBoxes[logConditions[i]._logCheck].dialogueManager.result[logConditions[i]._index] == logConditions[i]._value)
                     logConditions[i]._isClear = true; // logConditions[i] 조건 달성!
@@ -103,8 +103,8 @@ public class QuestBox : MonoBehaviour
                         player.transform.position = mapTransform.position;
                     break;
                 case 1:
-                    if (quest_image != null)
-                        theQuestManager.ChangeItem(quest_item, quest_image);
+                    if(quest_item != null&& quest_image != null)
+                    theQuestManager.ChangeItem(quest_item, quest_image);
                     break;
                 case 2:
                     fade.SetActive(true);

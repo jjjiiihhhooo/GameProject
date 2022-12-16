@@ -13,6 +13,7 @@ public class End_H2_Event : MonoBehaviour
     [SerializeField] GameObject hairPin;
     [SerializeField] GameObject end;
     [SerializeField] GameObject room;
+    [SerializeField] Blink blink;
 
     void Start()
     {
@@ -52,6 +53,15 @@ public class End_H2_Event : MonoBehaviour
 
         yield return new WaitForSeconds(5.0f);
 
+        blink.StartBlink("close", 0.5f);
+        yield return new WaitForSeconds(0.3f);
+        while(blink.isOpen) yield return null;
+
         end.SetActive(true);
+
+        //blink.StartBlink("open", 0.5f);
+        //yield return new WaitForSeconds(0.3f);
+        //while (!blink.isOpen) yield return null;
+
     }
 }
