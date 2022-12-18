@@ -11,6 +11,7 @@ public class chap4_JY_playground : MonoBehaviour
     [SerializeField] GameObject player;
     SceneTransfer sceneTransfer;
     SceneChanger sceneChanger;
+    SpriteRenderer spr;
 
     chap4_NoteBox NB;
 
@@ -19,10 +20,12 @@ public class chap4_JY_playground : MonoBehaviour
         NB = giveNote.GetComponent<chap4_NoteBox>();
         sceneTransfer = GetComponent<SceneTransfer>();
         sceneChanger = FindObjectOfType<SceneChanger>();
+        spr = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
+        // 쪽지를 다 모았을 때
         if(count == 6)
         {
             count = 0;
@@ -48,7 +51,7 @@ public class chap4_JY_playground : MonoBehaviour
         // chap4에서 정답을 맞추지 못했을 경우
         if(!sceneChanger.chap4JY)
         {
-            this.gameObject.SetActive(false);
+            spr.color = new Color(spr.color.r, spr.color.g, spr.color.b, 0);
         }
 
         yield return new WaitForSeconds(2.0f);
@@ -62,7 +65,7 @@ public class chap4_JY_playground : MonoBehaviour
         // 노말
         else if (sceneChanger.chap3JY && !sceneChanger.chap4JY)
         {
-            sceneTransfer.TransScene("Ending_Hidden2");
+            sceneTransfer.TransScene("Ending_Bad");
         }
         // 히든2
         else if(!sceneChanger.chap3JY && sceneChanger.chap4JY)

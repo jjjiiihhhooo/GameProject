@@ -63,7 +63,7 @@ public class chap4_NoteBox : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "ray")
         {
             isTrigger = true;
         }
@@ -71,7 +71,7 @@ public class chap4_NoteBox : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "ray")
         {
             isTrigger = false;
         }

@@ -14,11 +14,14 @@ public class End_H2_Event : MonoBehaviour
     [SerializeField] GameObject end;
     [SerializeField] GameObject room;
     [SerializeField] Blink blink;
+    AudioSource audioSource;
+    SceneTransfer sceneTransfer;
 
     void Start()
     {
         player = GameObject.Find("Player");
-        
+
+
         cameraManager = FindObjectOfType<CameraManager>();
         cameraManager.isCamera = false;
         cameraManager.Transform(room.transform);
@@ -29,6 +32,9 @@ public class End_H2_Event : MonoBehaviour
         player.GetComponent<PlayerMove>().inEvent = true;
         player.transform.position = this.gameObject.transform.position;
         dialogueBox = jY.GetComponent<DialogueBox>();
+        
+        audioSource = GetComponent<AudioSource>();
+        sceneTransfer = GetComponent<SceneTransfer>();
 
         StartCoroutine(EndEvent());
     }
@@ -50,18 +56,26 @@ public class End_H2_Event : MonoBehaviour
         // 지연 오브젝트 비활성화, 머리핀 활성화
         jY.SetActive(false);
         hairPin.SetActive(true);
+        yield return new WaitForSeconds(1.0f);
 
-        yield return new WaitForSeconds(5.0f);
+        audioSource.Play();
 
-        blink.StartBlink("close", 0.5f);
+        yield return new WaitForSeconds(2.0f);
+        blink.StartBlink("close", 3f);
         yield return new WaitForSeconds(0.3f);
         while(blink.isOpen) yield return null;
 
         end.SetActive(true);
 
-        //blink.StartBlink("open", 0.5f);
-        //yield return new WaitForSeconds(0.3f);
-        //while (!blink.isOpen) yield return null;
-
+        yield return new WaitForSeconds(5.0f);
+        while(true)
+        {
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                sceneTransfer.TransScene("Title");
+                break;
+            }
+            yield return null;
+        }
     }
 }

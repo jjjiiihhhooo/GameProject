@@ -24,6 +24,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Game_4.unity
     guid: f23bd78d92aae9a48939877cbea163c3
   - enabled: 1
+    path: Assets/Scenes/Ending_Bad.unity
+    guid: c8b03361e15e7e246a79060bd373dee7
+  - enabled: 1
+    path: Assets/Scenes/Ending_Hidden1.unity
+    guid: 7596b73f16baa9749a1ce6e211735221
+  - enabled: 1
     path: Assets/Scenes/Ending_Hidden2.unity
     guid: 723d80d95a4c5f345bbbbdfb719587f7
   m_configObjects: {}

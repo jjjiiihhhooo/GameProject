@@ -9,14 +9,18 @@ public class End_H1_Event : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject hanaIllust;
     [SerializeField] GameObject fade;
-    DialogueManager DM;
     Animator ani;
+
+    AudioSource audioSource;
+    SceneTransfer sceneTransfer;
 
     void Start()
     {
         dialogueBox = GetComponent<DialogueBox>();
-        DM = FindObjectOfType<DialogueManager>();
         ani = GetComponent<Animator>();
+
+        audioSource = GetComponent<AudioSource>();
+        sceneTransfer = GetComponent<SceneTransfer>();
 
         ani.SetFloat("DirX", 1);
         ani.SetFloat("DirY", 0);
@@ -24,25 +28,10 @@ public class End_H1_Event : MonoBehaviour
         StartCoroutine(Event());
     }
 
-    void Update()
-    {
-        DM.GetKey = false;
-    }
-
-        IEnumerator Event()
+    IEnumerator Event()
     {
         yield return new WaitForSeconds(3.0f);
         dialogueBox.SetDialogue();
-        yield return new WaitForSeconds(2.0f);
-        DM.StartLog();
-        yield return new WaitForSeconds(2.0f);
-        DM.StartLog();
-        yield return new WaitForSeconds(2.0f);
-        DM.StartLog();
-        yield return new WaitForSeconds(2.0f);
-        DM.StartLog();
-        yield return new WaitForSeconds(2.0f);
-        DM.ExitDialogue();
 
         while (!dialogueBox.noMore)
         {
@@ -54,6 +43,7 @@ public class End_H1_Event : MonoBehaviour
         fade.GetComponent<FadeInOut>().StartFade("out","black",1.5f);
 
         yield return new WaitForSeconds(0.5f);
+        audioSource.Play();
 
         while (!fade.GetComponent<FadeInOut>().isOn)
         {
@@ -62,5 +52,16 @@ public class End_H1_Event : MonoBehaviour
 
         hanaIllust.SetActive(true);
         fade.GetComponent<FadeInOut>().StartFade("in", "black", 1.5f);
+
+        yield return new WaitForSeconds(5.0f);
+        while (true)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                sceneTransfer.TransScene("Title");
+                break;
+            }
+            yield return null;
+        }
     }
 }

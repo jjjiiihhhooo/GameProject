@@ -42,14 +42,14 @@ public class chap4_PlayerMove_Puzzle1 : MonoBehaviour
     bool getKey = true;
     bool singleCall_0 = true;
     //bool singleCall_1 = true;
-    int c = 0;
+
     void Start()
     {
         //player = GameObject.FindWithTag("Player");
         p_ani = player.GetComponent<Animator>();
         mapSpawner = GetComponent<chap4_MapSpawner>();
-        player.GetComponent<PlayerMove>().inEvent = true;
-        player.GetComponent<PlayerMove>().indep = false;
+        //player.GetComponent<PlayerMove>().inEvent = true;
+        //player.GetComponent<PlayerMove>().indep = false;
 
         mapX = mapSpawner.x; 
         mapY = mapSpawner.y;
@@ -73,7 +73,6 @@ public class chap4_PlayerMove_Puzzle1 : MonoBehaviour
 
     IEnumerator BoardMove()
     {
-        c++;
         singleCall_0 = false;
 
         // 입력값에 따른 dirX, dirY 초기화
@@ -132,7 +131,8 @@ public class chap4_PlayerMove_Puzzle1 : MonoBehaviour
                     yield return null;
                     if (Vector2.Distance(vanguard.transform.position, player.transform.position) < 0.001f)
                     {
-                        p_ani.SetBool("Walk", false);
+                        if(Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0) 
+                            p_ani.SetBool("Walk", false);
                         blackMob.SetPos(posX, posY);
                         break;
                     }
@@ -147,6 +147,8 @@ public class chap4_PlayerMove_Puzzle1 : MonoBehaviour
                     alleyScene.SetActive(true);
                 }
             }
+            else p_ani.SetBool("Walk", false);
+
             getKey = true;
         }
         singleCall_0 = true;

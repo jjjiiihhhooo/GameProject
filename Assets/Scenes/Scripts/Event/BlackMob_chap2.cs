@@ -34,7 +34,7 @@ public class BlackMob_chap2 : MonoBehaviour
             animator.SetFloat("DirX", 1);
         else if (pX < mX)
             animator.SetFloat("DirX", -1);
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position - new Vector3(0, 0.925f, 0), moveSpeed * Time.deltaTime);
         //transform.Translate(moveDirection * moveSpeed * Time.deltaTime); // 플레이어 추격
     }
 }

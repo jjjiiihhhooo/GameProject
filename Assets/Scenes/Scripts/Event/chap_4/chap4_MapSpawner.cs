@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class chap4_MapSpawner : MonoBehaviour
 {
-    GameObject player;
+    [SerializeField] GameObject player;
     [SerializeField] Transform O_point; // ÁÂÇ¥ ÁÂÃø »ó´Ü
     [SerializeField] Transform P_point; // ÁÂÇ¥ ¿ìÃø ÇÏ´Ü
 
@@ -197,7 +197,8 @@ public class chap4_MapSpawner : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        //player = GameObject.FindWithTag("Player");
+        getJYin3 = FindObjectOfType<SceneChanger>().chap3JY;
         PM = GetComponent<chap4_PlayerMove_Puzzle1>();
         map = new int[Y, X];
         width = (Mathf.Abs(O_point.position.x - P_point.position.x) / (X - 1));
@@ -222,6 +223,8 @@ public class chap4_MapSpawner : MonoBehaviour
                 mapArray = mapArray1;
                 wait = 1.0f;
             }
+            player.GetComponent<PlayerMove>().inEvent = true;
+            player.GetComponent<PlayerMove>().indep = false;
             StartCoroutine(DrawMap(mapArray[i%mapArray.Length]));
         }
         else if (mapDelete && !getReady)

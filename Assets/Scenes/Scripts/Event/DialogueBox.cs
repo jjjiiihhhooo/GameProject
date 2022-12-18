@@ -61,7 +61,7 @@ public class DialogueBox : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "ray")
         {
             isTrigger = true;
         }
@@ -69,7 +69,7 @@ public class DialogueBox : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "ray")
         {
             isTrigger = false;
         }
@@ -125,6 +125,7 @@ public class DialogueBox : MonoBehaviour
             isTrigger = false;
             isStarted = true;
             dialogueManager.UpdateDialogue(dialogues);
+            Debug.Log(gameObject.name);
             isLog = true;
         }
     }

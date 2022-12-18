@@ -9,13 +9,16 @@ public class SaveCheck : MonoBehaviour
 {
     [SerializeField] private SaveManager saveManager;
     [SerializeField] private GameObject saveChat;
-    [SerializeField] private GameObject fade;
     [SerializeField] private GameObject blackDisplay;
     [SerializeField] private string text;
     [SerializeField] private int checkCount;
     [SerializeField] private int saveSceneCount;
     [SerializeField] private string SceneName;
     //private TestChat testChat;
+
+    [SerializeField] FadeInOut fade;
+    [SerializeField] GameObject player;
+
     DialogueBox dialogueBox;
     SoundManager soundManager;
     private bool isStart;
@@ -65,8 +68,10 @@ public class SaveCheck : MonoBehaviour
         soundManager.PlaySound(0, false, false, 1);
         yield return new WaitForSeconds(1.3f);
         soundManager.PlaySound(1, false, false, 1);
+        fade.StartFade("in", "black", 1.0f);
         yield return new WaitForSeconds(1.3f);
         dialogueBox.isTrigger= false;
+        player.GetComponent<PlayerMove>().inEvent = false;
         dialogueBox.SetDialogue();
     }
 

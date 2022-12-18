@@ -15,12 +15,19 @@ public class End_Bad_BW : MonoBehaviour
     float color_b;
 
     [SerializeField] FadeInOut fade;
+    AudioSource audioSource;
+    SceneTransfer sceneTransfer;
 
     void Start()
     {
         spr= GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
         rigidDB = DB.GetComponent<Rigidbody2D>();
+
+        audioSource = GetComponent<AudioSource>();
+        sceneTransfer = GetComponent<SceneTransfer>();
+
+        audioSource.Play();
         StartCoroutine(GetBright());
     }
 
@@ -53,5 +60,16 @@ public class End_Bad_BW : MonoBehaviour
         hang.SetActive(true);
 
         fade.StartFade("in", "black", 1);
+
+        yield return new WaitForSeconds(5.0f);
+        while (true)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                sceneTransfer.TransScene("Title");
+                break;
+            }
+            yield return null;
+        }
     }
 }

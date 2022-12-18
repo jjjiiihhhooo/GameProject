@@ -58,6 +58,8 @@ public class chap4_NoteManager : MonoBehaviour
 
     //====================================================================================================
 
+    AudioSource audioSource;
+
     void Start()
     {
         for(int i = 0; i < givenNum.Length; i++)
@@ -68,6 +70,7 @@ public class chap4_NoteManager : MonoBehaviour
         isNote = new List<bool>();
         
         dialogueManager = FindObjectOfType<DialogueManager>();
+        audioSource = GetComponent<AudioSource>();
 
         aniLeft = dialogueManager.aniLeft;
         aniRight = dialogueManager.aniRight;
@@ -126,6 +129,7 @@ public class chap4_NoteManager : MonoBehaviour
                 GetKey = false;
                 Noting = false;
                 aniNotes.SetBool("isAppear", false);
+                audioSource.Play();
 
                 text.text = "";
 

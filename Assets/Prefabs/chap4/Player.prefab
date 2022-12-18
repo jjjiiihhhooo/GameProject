@@ -82,7 +82,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: 1569776033, guid: 79409d02a241c6c4984f968fe06baa23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkCheck: 1
-  speed: 8
+  speed: 6
   vector: {x: 0, y: 0}
   animator: {fileID: 1211307343770711417}
   vertical: 0
@@ -116,7 +116,9 @@ MonoBehaviour:
   NM: {fileID: 0}
   isMove: 1
   bed: {fileID: 0}
+  dialogueManager: {fileID: 0}
   inEvent: 0
+  indep: 1
 --- !u!50 &1211307343770711414
 Rigidbody2D:
   serializedVersion: 4

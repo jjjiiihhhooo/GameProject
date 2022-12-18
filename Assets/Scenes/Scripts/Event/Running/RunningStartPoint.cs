@@ -11,6 +11,8 @@ public class RunningStartPoint : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject mainCamera;
 
+    GameObject canvas;
+
     void Start()
     {
         if(fade == null)
@@ -25,14 +27,18 @@ public class RunningStartPoint : MonoBehaviour
             sceneChanger = FindObjectOfType<SceneChanger>();
         //chaseScene = FindObjectOfType<ChaseScene>();
         if(player == null)
-            player = GameObject.FindWithTag("Player");
+            player = GameObject.Find("Player");
 
         mainCamera = GameObject.FindWithTag("MainCamera");
+        canvas = GameObject.FindWithTag("Canvas");
+        //canvas.GetComponent<Canvas>().worldCamera = mainCamera.GetComponent<Camera>();
 
         if (startPoint == sceneChanger.currentScene)
         {
             player.transform.position = new Vector3(-1, -1.5f, 0);
             mainCamera.transform.position = this.transform.position + new Vector3(6, 2, -1);
+            //mainCamera.GetComponent<CameraManager>().DontDestroy = false;
+            mainCamera.GetComponent<CameraManager>().target_obj = player;
         }
     }
 }

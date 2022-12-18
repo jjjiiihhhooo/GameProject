@@ -11,14 +11,17 @@ public class QuestBox : MonoBehaviour
     [SerializeField] private Transform mapTransform;
     [SerializeField] private Sprite quest_image;
     [SerializeField] private string quest_item;
-    [SerializeField] private GameObject fade;
+    [SerializeField] FadeInOut fade;
+    [SerializeField] Act2 act2;
     [SerializeField] private Transform mapTransform2;
     [SerializeField] private CameraManager main_camera;
 
     DialogueBox[] dialogueBoxes;
-
+    AudioSource audioSource;
     chap4_NoteLog noteLog;
 
+    [SerializeField] bool Get;
+    
     // 아래의 LogCondition 중, LogCondition[ConNum]이 일치하면 Action(ActNum) 실행
     [Serializable]
     public struct ActionCondition
@@ -44,9 +47,11 @@ public class QuestBox : MonoBehaviour
 
     private void OnEnable()
     {
+        audioSource = GetComponent<AudioSource>();
         dialogueBoxes = GetComponents<DialogueBox>();
         if (theQuestManager == null)
             theQuestManager = GameObject.FindWithTag("QuestManager").GetComponent<QuestManager>();
+        if (Get) Action(1);
     }
 
     private void Update()
@@ -58,6 +63,7 @@ public class QuestBox : MonoBehaviour
     // LogCondition 검사
     void CheckLC()
     {
+        if(logConditions.Length>0)
         // 각 logConditions[i] 조건 검사
         for (int i = 0; i < logConditions.Length; i++)
         {
@@ -104,14 +110,11 @@ public class QuestBox : MonoBehaviour
                     break;
                 case 1:
                     if(quest_item != null&& quest_image != null)
+                    if(audioSource) audioSource.Play();
                     theQuestManager.ChangeItem(quest_item, quest_image);
                     break;
                 case 2:
-                    fade.SetActive(true);
-                    player.transform.position = mapTransform2.position;
-                    main_camera.Bool();
-                    theQuestManager.questcount = -1;
-                    theQuestManager.chap2_questText();
+                    act2.StartAct2();
                     break;
                 case 4:
                     if (quest_image != null)

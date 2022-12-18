@@ -14,6 +14,8 @@ public class PushPlayer : MonoBehaviour
     [SerializeField] private PlayerMove playerMove;
     [SerializeField] private Animator playerAnimator;
 
+    [SerializeField] Blink blink;
+
     void Start()
     {
         mobAnimator = blackMob.GetComponent<Animator>();
@@ -61,6 +63,7 @@ public class PushPlayer : MonoBehaviour
         soundManager.PlaySound(0, false, true, 1.8f); // �߼Ҹ� ���, ����
         blackMob.SetActive(true);
         mobAnimator.SetFloat("DirX", 1);
+        blink.StartBlink("close", 3);
         while (Vector2.Distance(blackMob.transform.position, player.transform.position) > 4)
         {
             blackMob.transform.Translate(mobSpeed * Time.deltaTime, 0, 0);

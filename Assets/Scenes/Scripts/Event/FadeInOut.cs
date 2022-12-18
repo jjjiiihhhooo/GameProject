@@ -10,6 +10,7 @@ public class FadeInOut : MonoBehaviour
     void Start()
     {
         spr= GetComponent<SpriteRenderer>();
+        spr.color = new Color(spr.color.r, spr.color.g, spr.color.b, 0);
     }
     
     public void StartFade(string _InOrOut, string _BlackOrWhite, float time)

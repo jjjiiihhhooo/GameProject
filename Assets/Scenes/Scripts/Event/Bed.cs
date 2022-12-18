@@ -15,6 +15,7 @@ public class Bed : MonoBehaviour
 
     private void Start()
     {
+        PM = player.GetComponent<PlayerMove>();
         dialogueBox = GetComponent<DialogueBox>();
         //player = GameObject.FindWithTag("Player");
         isActive = true;
@@ -31,7 +32,7 @@ public class Bed : MonoBehaviour
             if(check == 1)
             {
                 isBed = false;
-                PM.isMove = true;
+                PM.inEvent = false;
                 player.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0.0f));
             }
         }
@@ -40,14 +41,14 @@ public class Bed : MonoBehaviour
 
     public void BedTransform()
     {
-        PM = player.GetComponent<PlayerMove>();
 
         if (isActive)
         {
+            PM = player.GetComponent<PlayerMove>();
             isBed = true;
             player.transform.position = room_transform.position;
             player.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
-            PM.isMove = false;
+            PM.inEvent = true;
             isActive = false;
         }
     }

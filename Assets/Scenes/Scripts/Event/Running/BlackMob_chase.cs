@@ -44,18 +44,18 @@ public class BlackMob_chase : MonoBehaviour
                 //StartCoroutine(GetGrow());
 
             animator.SetFloat("DirX", 1);
-            StartCoroutine(MobPattern(1, 4, 1, true));
-            StartCoroutine(MobPattern(2, 4, -1, true));
-            StartCoroutine(MobPattern(3, 2, -1, true));
-            StartCoroutine(MobPattern(4, 4, 1, true));
-            StartCoroutine(MobPattern(5, 0, -1, false));
-            StartCoroutine(MobPattern(6, 2, -1, true));
-            //StartCoroutine(MobPattern(1, 0, -1, false));
-            //StartCoroutine(MobPattern(2, 0, -1, false));
-            //StartCoroutine(MobPattern(3, 0, -1, false));
-            //StartCoroutine(MobPattern(4, 0, -1, false));
+            //StartCoroutine(MobPattern(1, 4, 1, true));
+            //StartCoroutine(MobPattern(2, 4, -1, true));
+            //StartCoroutine(MobPattern(3, 2, -1, true));
+            //StartCoroutine(MobPattern(4, 4, 1, true));
             //StartCoroutine(MobPattern(5, 0, -1, false));
-            //StartCoroutine(MobPattern(6, 3, -1, false));
+            //StartCoroutine(MobPattern(6, 2, -1, true));
+            StartCoroutine(MobPattern(1, 0, -1, false));
+            StartCoroutine(MobPattern(2, 0, -1, false));
+            StartCoroutine(MobPattern(3, 0, -1, false));
+            StartCoroutine(MobPattern(4, 0, -1, false));
+            StartCoroutine(MobPattern(5, 0, -1, false));
+            StartCoroutine(MobPattern(6, 3, -1, false));
 
             if (phase == 7)
                 chaseScene.EndChase = true;

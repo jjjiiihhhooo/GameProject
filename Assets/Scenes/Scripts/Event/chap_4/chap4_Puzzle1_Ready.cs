@@ -46,11 +46,6 @@ public class chap4_Puzzle1_Ready : MonoBehaviour
         height = (Mathf.Abs(O_point.position.y - P_point.position.y) / (11));
     }
 
-    void Update()
-    {
-        
-    }
-
     IEnumerator AppearBlackShape(float _waitTime)
     {
         yield return new WaitForSeconds(1.0f);

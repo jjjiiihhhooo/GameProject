@@ -77,6 +77,7 @@ public class chap4_BlackMob : MonoBehaviour
         while (true)
         {
             blackMob.transform.localScale += sizeSpeed * Time.deltaTime;
+            blackMob.GetComponent<BoxCollider2D>().size = blackMob.GetComponent<BoxCollider2D>().size + new Vector2(basicSpeed - 0.001f, basicSpeed - 0.001f);
             yield return null;
             if (blackMob.transform.localScale.x > _goal)
                 break;

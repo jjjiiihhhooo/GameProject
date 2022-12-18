@@ -18,6 +18,10 @@ TagManager:
   - GameOver_Chase
   - c4_p1
   - QI
+  - chap1_table
+  - chap1_wall
+  - sound
+  - ray
   layers:
   - Default
   - TransparentFX
@@ -26,7 +30,7 @@ TagManager:
   - Water
   - UI
   - Wall
-  - 
+  - Object
   - 
   - 
   - 

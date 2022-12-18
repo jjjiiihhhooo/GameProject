@@ -19,6 +19,8 @@ public class PlayerMove : MoveManager
     public bool indep = true;
 
     Rigidbody2D rigid;
+    GameObject scanned;
+    public Vector2 moveVector = new Vector2(-1, 0);
 
     private void Awake()
     {
@@ -64,7 +66,6 @@ public class PlayerMove : MoveManager
                 animator.SetBool("Walk", true);
                 vertical = Input.GetAxisRaw("Vertical");
                 horizontal = Input.GetAxisRaw("Horizontal");
-                Vector2 moveVector;
                 moveVector.x = horizontal;
                 moveVector.y = vertical;
                 vector = moveVector; // (1, 0)
@@ -75,7 +76,6 @@ public class PlayerMove : MoveManager
                 animator.SetFloat("DirX", vector.x);
                 animator.SetFloat("DirY", vector.y);
                 rigid.velocity = vector * speed;
-
             }
             else
             {
@@ -85,11 +85,20 @@ public class PlayerMove : MoveManager
         }
         else
         {
-            if(indep)
+            if (indep)
             {
                 rigid.velocity = Vector2.zero;
                 animator.SetBool("Walk", false);
             }
+        }
+
+        // ray
+        Debug.DrawRay(rigid.position, vector * 1.2f, new Color(0,1,0));
+        RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, vector * 1.2f, LayerMask.GetMask("Object"));
+
+        if(rayHit.collider != null)
+        {
+
         }
     }
     private IEnumerator MoveCoroutine()
