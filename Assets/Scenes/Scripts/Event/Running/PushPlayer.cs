@@ -63,8 +63,8 @@ public class PushPlayer : MonoBehaviour
         soundManager.PlaySound(0, false, true, 1.8f); // �߼Ҹ� ���, ����
         blackMob.SetActive(true);
         mobAnimator.SetFloat("DirX", 1);
-        blink.StartBlink("close", 3);
-        while (Vector2.Distance(blackMob.transform.position, player.transform.position) > 4)
+        blink.StartBlink("close", 3.5f);
+        while (Vector2.Distance(blackMob.transform.position, player.transform.position) > 3)
         {
             blackMob.GetComponent<Rigidbody2D>().velocity = new Vector2(mobSpeed, 0);
             yield return new WaitForSeconds(Time.deltaTime);
