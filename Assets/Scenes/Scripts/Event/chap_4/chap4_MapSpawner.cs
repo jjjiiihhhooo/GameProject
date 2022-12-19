@@ -42,7 +42,7 @@ public class chap4_MapSpawner : MonoBehaviour
 
     // 챕터 3의 선택에 따라 달라짐 ( 같이 나갈 경우 true )
     [SerializeField] bool getJYin3;
-    float wait = 2.0f;
+    float wait = 2.5f;
     int[] mapArray;
 
     List<GameObject> mapInstance = new List<GameObject>();
@@ -216,7 +216,7 @@ public class chap4_MapSpawner : MonoBehaviour
             if (getJYin3)
             {
                 mapArray = mapArray0;
-                wait = 2.0f;
+                wait = 2.5f;
             }
             else
             {

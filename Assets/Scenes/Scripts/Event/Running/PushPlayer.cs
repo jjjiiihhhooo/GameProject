@@ -9,7 +9,7 @@ public class PushPlayer : MonoBehaviour
     [SerializeField] GameObject blackMob;
     private Animator mobAnimator;
     private SoundManager soundManager;
-    private float mobSpeed = 5.0f;
+    private float mobSpeed = 5.5f;
     [SerializeField] private GameObject player;
     [SerializeField] private PlayerMove playerMove;
     [SerializeField] private Animator playerAnimator;
@@ -66,8 +66,8 @@ public class PushPlayer : MonoBehaviour
         blink.StartBlink("close", 3);
         while (Vector2.Distance(blackMob.transform.position, player.transform.position) > 4)
         {
-            blackMob.transform.Translate(mobSpeed * Time.deltaTime, 0, 0);
-            yield return null;
+            blackMob.GetComponent<Rigidbody2D>().velocity = new Vector2(mobSpeed, 0);
+            yield return new WaitForSeconds(Time.deltaTime);
         }
         mobAnimator.SetBool("isWalk", false);
         soundManager.StopSound(0);

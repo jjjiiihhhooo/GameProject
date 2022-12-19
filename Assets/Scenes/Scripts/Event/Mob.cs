@@ -28,6 +28,7 @@ public class Mob : MonoBehaviour
     bool spaceDown;
     bool mobReady = false;
     int spaceCount;
+    bool bool1 = true;
     bool bool0 = true;
     bool isX;
 
@@ -75,8 +76,9 @@ public class Mob : MonoBehaviour
 
     private void Update()
     {
-        if (!isStart && count > 3 && player.transform.position.x > -48f && player.transform.position.x < -42f && player.transform.position.y > 12f && player.transform.position.x < 16f) // 모든 대화를 마치고 일정 영역 내에 있을 때
+        if (!isStart && count > 3 && player.transform.position.x > -48f && player.transform.position.x < -42f && player.transform.position.y > 12f && player.transform.position.x < 16f && bool1) // 모든 대화를 마치고 일정 영역 내에 있을 때
         {
+            bool1 = false;
             player.GetComponent<PlayerMove>().inEvent = true;
             StartCoroutine(Bool());
         }

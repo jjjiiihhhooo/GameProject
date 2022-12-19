@@ -102,17 +102,17 @@ public class chap4_PlayerMove_Puzzle1 : MonoBehaviour
             int iY = dirY == 1 ? -1 : (dirY == -1 ? 1 : 0);
 
             // 맵 범위를 벗어나지 않거나 목적지인 경우
-            if (!(posX + iX < 0 || posX + iX >= mapX 
-                || posY + iY < 0 || posY + iY >= mapY)
-                || (posX + iX == 8 && posY + iY == -1))
+            if (!(posX + 2*iX < 0 || posX + 2 * iX >= mapX 
+                || posY + 2*iY < 0 || posY + 2 * iY >= mapY)
+                || (posX + 2*iX == 8 && posY + 2 * iY == -2))
             {
                 // 플레이어 위치 초기화
                 // 목적지 도달시 각각 X = 8, Y = -2
-                posX += iX;
-                posY += iY;
+                posX += 2*iX;
+                posY += 2*iY;
 
                 // 목적지 위치 초기화
-                vanguard.transform.Translate(new Vector3(dirX * width, dirY * height, 0));
+                vanguard.transform.Translate(new Vector3(2*dirX * width, 2*dirY * height, 0));
                 yield return null;
 
                 // 애니메이션 출력
@@ -138,7 +138,7 @@ public class chap4_PlayerMove_Puzzle1 : MonoBehaviour
                     }
                 }
                 // 목적지인 경우 방 탈출. 퍼즐 종료
-                if (posX == 8 && posY == -1)
+                if (posX == 8 && posY == -2)
                 {
                     player.GetComponent<PlayerMove>().inEvent = false;
                     yield return new WaitForSeconds(0.2f);

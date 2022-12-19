@@ -68,11 +68,12 @@ public class SaveCheck : MonoBehaviour
         soundManager.PlaySound(0, false, false, 1);
         yield return new WaitForSeconds(1.3f);
         soundManager.PlaySound(1, false, false, 1);
-        fade.StartFade("in", "black", 1.0f);
         yield return new WaitForSeconds(1.3f);
         dialogueBox.isTrigger= false;
         player.GetComponent<PlayerMove>().inEvent = false;
         dialogueBox.SetDialogue();
+        while(!dialogueBox.noMore) yield return null;
+        fade.StartFade("in", "black", 1.0f);
     }
 
     private void DisplayFalse()

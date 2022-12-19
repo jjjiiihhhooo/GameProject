@@ -19,7 +19,6 @@ public class PlayerMove : MoveManager
     public bool indep = true;
 
     Rigidbody2D rigid;
-    GameObject scanned;
     public Vector2 moveVector = new Vector2(-1, 0);
 
     private void Awake()

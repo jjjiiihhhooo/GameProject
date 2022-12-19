@@ -30,7 +30,8 @@ public class PushScene : MonoBehaviour
         //    mainCamera = GameObject.FindWithTag("MainCamera");
 
         animator = player.GetComponent<Animator>();
-
+        animator.SetBool("Walk", true);
+        player.GetComponent<PlayerMove>().indep = false;
         currentSpeed = moveSpeed;
     }
 
@@ -50,7 +51,7 @@ public class PushScene : MonoBehaviour
         {
             player.GetComponent<Rigidbody2D>().velocity = Vector2.right * currentSpeed;
             //player.transform.Translate(currentSpeed * Time.deltaTime, 0, 0);
-            yield return null;
+            yield return new WaitForSeconds(Time.deltaTime);
             currentSpeed -= speedDecrease;
             if (audioSource.volume > 0)
                 audioSource.volume -= 0.01f;
@@ -64,5 +65,6 @@ public class PushScene : MonoBehaviour
         }
         animator.SetBool("Walk", false);
         player.GetComponent<PlayerMove>().inEvent = false;
+        player.GetComponent<PlayerMove>().indep = true;
     }
 }

@@ -53,6 +53,7 @@ public class chap4_pgIntro : MonoBehaviour
         player.GetComponent<PlayerMove>().inEvent = false;
         player.GetComponent<PlayerMove>().indep = true;
 
+        JY.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         RanBox.SetActive(true);
     }
 }
