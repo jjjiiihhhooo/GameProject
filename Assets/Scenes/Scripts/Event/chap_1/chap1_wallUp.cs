@@ -15,8 +15,9 @@ public class chap1_wallUp : MonoBehaviour
     {
         if (other.tag == "chap1_table")
         {
-            rigid.mass = 1;
-            rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
+            gameObject.SetActive(false);
+            //rigid.mass = 1;
+            //rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
 

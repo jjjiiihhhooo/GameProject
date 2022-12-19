@@ -6922,7 +6922,7 @@ MonoBehaviour:
     sentences: "\uD558\uB098: \uC65C \uAC00\uB9CC\uD788 \uC788\uC5C8\uB358 \uAC70\uC57C?"
     choice: 0
     answers_0: 
-    answers_1: log[3]
+    answers_1: 
   - charSprites: {fileID: -1502730524, guid: 04c8bc5c8610eff4089efeb19bac7fa3, type: 3}
     charNum: 1
     sentences: "\uC9C0\uC5F0: \uBB50\uAC00."

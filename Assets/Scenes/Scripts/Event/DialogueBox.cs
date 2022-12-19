@@ -13,25 +13,25 @@ public class DialogueBox : MonoBehaviour
 
     //---------------------------------------------------------------------------------확인용
 
-    //[HideInInspector] public bool isTrigger = false; // 플레이어가 닿았는지
-    //[HideInInspector] public bool turnOn = true; // 복수의 DialogueBox 컴포넌트가 존재할 경우 게임 오브젝트에서 제어
+    [HideInInspector] public bool isTrigger = false; // 플레이어가 닿았는지
+    [HideInInspector] public bool turnOn = true; // 복수의 DialogueBox 컴포넌트가 존재할 경우 게임 오브젝트에서 제어
 
-    //// 각각 대화 현재 진행 여부, 시작, 종료 상태를 나타냄.
-    //[HideInInspector] public bool isLog;
-    //[HideInInspector] public bool isStarted; // 한 번이라도 대화가 호출되면 계속 true
-    //[HideInInspector] public bool isEnd; // 한 번이라도 대화가 호출된 이후 종료된 적이 있으면 계속 true
-    //[HideInInspector] public bool noMore;
+    // 각각 대화 현재 진행 여부, 시작, 종료 상태를 나타냄.
+    [HideInInspector] public bool isLog;
+    [HideInInspector] public bool isStarted; // 한 번이라도 대화가 호출되면 계속 true
+    [HideInInspector] public bool isEnd; // 한 번이라도 대화가 호출된 이후 종료된 적이 있으면 계속 true
+    [HideInInspector] public bool noMore;
 
     //---------------------------------------------------------------------------------확인용
 
-    public bool isTrigger = false; // 플레이어가 닿았는지
-    public bool turnOn = true; // 복수의 DialogueBox 컴포넌트가 존재할 경우 게임 오브젝트에서 제어
+    //public bool isTrigger = false; // 플레이어가 닿았는지
+    //public bool turnOn = true; // 복수의 DialogueBox 컴포넌트가 존재할 경우 게임 오브젝트에서 제어
 
-    // 각각 대화 현재 진행 여부, 시작, 종료 상태를 나타냄.
-    public bool isLog;
-    public bool isStarted; // 한 번이라도 대화가 호출되면 계속 true
-    public bool isEnd; // 한 번이라도 대화가 호출된 이후 종료된 적이 있으면 계속 true
-    public bool noMore;
+    //// 각각 대화 현재 진행 여부, 시작, 종료 상태를 나타냄.
+    //public bool isLog;
+    //public bool isStarted; // 한 번이라도 대화가 호출되면 계속 true
+    //public bool isEnd; // 한 번이라도 대화가 호출된 이후 종료된 적이 있으면 계속 true
+    //public bool noMore;
 
     //---------------------------------------------------------------------------------
 

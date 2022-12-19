@@ -101,14 +101,14 @@ public class BlackMob_chase : MonoBehaviour
 
             if (isAttack)
             {
-                //tanimator.SetTrigger("isAttack");
+                animator.SetTrigger("isAttack");
                 yield return new WaitForSeconds(0.3f);
                 tongue.isAttack = true;
                 yield return new WaitForSeconds(0.2f);
                 soundManager.PlaySound(0, true, false, 0.8f); // 포효소리 출력
                 yield return new WaitForSeconds(0.2f);
                 tongue.isAttack = false;
-                yield return new WaitForSeconds(0.8f); // 공격모션 출력 시간
+                yield return new WaitForSeconds(1.2f); // 공격모션 출력 시간
             }
             phase++;
             isAction = true;
