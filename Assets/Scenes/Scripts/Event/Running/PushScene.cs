@@ -52,7 +52,7 @@ public class PushScene : MonoBehaviour
             player.GetComponent<Rigidbody2D>().velocity = Vector2.right * currentSpeed;
             //player.transform.Translate(currentSpeed * Time.deltaTime, 0, 0);
             yield return new WaitForSeconds(Time.deltaTime);
-            currentSpeed -= Time.deltaTime*4;
+            currentSpeed -= Time.deltaTime*8;
             if (audioSource.volume > 0)
                 audioSource.volume -= 0.01f;
             if (currentSpeed < moveSpeed / 4)

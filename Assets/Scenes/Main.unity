@@ -1053,7 +1053,7 @@ MonoBehaviour:
   dialogues:
   - charSprites: {fileID: -1502730524, guid: 04c8bc5c8610eff4089efeb19bac7fa3, type: 3}
     charNum: -1
-    sentences: "OO\uC544 \uB0B4\uB824\uC640"
+    sentences: "OO\uC544 \uB0B4\uB824\uC640."
     choice: 0
     answers_0: 
     answers_1: 
@@ -6656,7 +6656,7 @@ MonoBehaviour:
     answers_1: 
   - charSprites: {fileID: -2051136904, guid: de4c2f4d38977e54ab03f2b41751b28e, type: 3}
     charNum: -1
-    sentences: "\uADF8\uB798"
+    sentences: "\uADF8\uB798."
     choice: 0
     answers_0: 
     answers_1: 
@@ -10251,7 +10251,7 @@ MonoBehaviour:
     answers_1: 
   - charSprites: {fileID: 2074006910, guid: 04c8bc5c8610eff4089efeb19bac7fa3, type: 3}
     charNum: 1
-    sentences: "\uC9C0\uC5F0: \uD558\uB098\uC57C \uB098\uC57C \uC9C0\uC5F0\uC774"
+    sentences: "\uC9C0\uC5F0: \uB098\uC57C, \uC9C0\uC5F0\uC774."
     choice: 0
     answers_0: 
     answers_1: 
@@ -10270,19 +10270,19 @@ MonoBehaviour:
     answers_1: 
   - charSprites: {fileID: 1807479544, guid: de4c2f4d38977e54ab03f2b41751b28e, type: 3}
     charNum: 0
-    sentences: "\uD558\uB098: ...."
+    sentences: "\uD558\uB098: ..."
     choice: 0
     answers_0: 
     answers_1: 
   - charSprites: {fileID: 2074006910, guid: 04c8bc5c8610eff4089efeb19bac7fa3, type: 3}
     charNum: 1
-    sentences: "\uC9C0\uC5F0: \uB098\uB791 \uAC19\uC774\uAC00\uC790"
+    sentences: "\uC9C0\uC5F0: \uB098\uB791 \uAC19\uC774 \uAC00\uC790."
     choice: 0
     answers_0: 
     answers_1: 
   - charSprites: {fileID: -1870597651, guid: de4c2f4d38977e54ab03f2b41751b28e, type: 3}
     charNum: 0
-    sentences: "\uD558\uB098: \uB09C \uBABB\uAC00"
+    sentences: "\uD558\uB098: \uB09C \uBABB\uAC00."
     choice: 0
     answers_0: 
     answers_1: 
@@ -10294,13 +10294,13 @@ MonoBehaviour:
     answers_1: 
   - charSprites: {fileID: -1870597651, guid: de4c2f4d38977e54ab03f2b41751b28e, type: 3}
     charNum: 0
-    sentences: "\uD558\uB098: \uC65C\uB0D0\uB2C8"
+    sentences: "\uD558\uB098: \uC65C\uB0D0\uB2C8."
     choice: 0
     answers_0: 
     answers_1: 
   - charSprites: {fileID: 2074006910, guid: 04c8bc5c8610eff4089efeb19bac7fa3, type: 3}
     charNum: 1
-    sentences: "\uC9C0\uC5F0: \uAD1C\uCC2E\uC744 \uAC70\uC57C \uB0B4\uAC00 \uB3C4\uC640\uC904\uAC8C"
+    sentences: "\uC9C0\uC5F0: \uAD1C\uCC2E\uC744 \uAC70\uC57C \uB0B4\uAC00 \uB3C4\uC640\uC904\uAC8C."
     choice: 0
     answers_0: 
     answers_1: 
@@ -10312,7 +10312,7 @@ MonoBehaviour:
     answers_1: 
   - charSprites: {fileID: 2074006910, guid: 04c8bc5c8610eff4089efeb19bac7fa3, type: 3}
     charNum: 1
-    sentences: "\uC9C0\uC5F0: \uAC70\uAE30 \uADF8\uB300\uB85C \uC788\uC5B4\uBD10"
+    sentences: "\uC9C0\uC5F0: \uAC70\uAE30 \uADF8\uB300\uB85C \uC788\uC5B4\uBD10."
     choice: 0
     answers_0: 
     answers_1: 
@@ -13295,7 +13295,7 @@ MonoBehaviour:
   - charSprites: {fileID: 1807479544, guid: de4c2f4d38977e54ab03f2b41751b28e, type: 3}
     charNum: 0
     sentences: "\uD558\uB098: \uBD84\uBA85 \uB204\uAD70\uAC00 \uC788\uC5C8\uB358
-      \uAC83 \uAC19\uC740\uB370"
+      \uAC83 \uAC19\uC740\uB370..."
     choice: 0
     answers_0: 
     answers_1: 
@@ -16946,7 +16946,7 @@ MonoBehaviour:
   dialogues:
   - charSprites: {fileID: -1502730524, guid: 04c8bc5c8610eff4089efeb19bac7fa3, type: 3}
     charNum: -1
-    sentences: "OO\uC544.. \uC774\uAC70 \uBC1B\uC544"
+    sentences: "OO\uC544.. \uC774\uAC70 \uBC1B\uC544."
     choice: 0
     answers_0: 
     answers_1: 
@@ -16958,7 +16958,7 @@ MonoBehaviour:
     answers_1: 
   - charSprites: {fileID: 2074006910, guid: 04c8bc5c8610eff4089efeb19bac7fa3, type: 3}
     charNum: -1
-    sentences: "\uBA38\uB9AC\uD540\uC774\uC57C"
+    sentences: "\uBA38\uB9AC\uD540\uC774\uC57C."
     choice: 0
     answers_0: 
     answers_1: 
@@ -22638,7 +22638,7 @@ MonoBehaviour:
   dialogues:
   - charSprites: {fileID: -1502730524, guid: 04c8bc5c8610eff4089efeb19bac7fa3, type: 3}
     charNum: -1
-    sentences: "OO\uC544 \uB0B4\uAC00 \uBC00\uC5B4\uC904\uAC8C"
+    sentences: "OO\uC544 \uB0B4\uAC00 \uBC00\uC5B4\uC904\uAC8C."
     choice: 0
     answers_0: 
     answers_1: 

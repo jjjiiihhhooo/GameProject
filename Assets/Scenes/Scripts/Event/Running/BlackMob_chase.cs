@@ -101,7 +101,7 @@ public class BlackMob_chase : MonoBehaviour
 
             if (isAttack)
             {
-                tanimator.SetTrigger("isAttack");
+                //tanimator.SetTrigger("isAttack");
                 yield return new WaitForSeconds(0.3f);
                 tongue.isAttack = true;
                 yield return new WaitForSeconds(0.2f);

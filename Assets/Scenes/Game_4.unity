@@ -4065,9 +4065,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalSize: 0.21
-  time: 15
-  time1: 8
-  time2: 10
+  time: 10
+  time1: 6
+  time2: 15.5
   blackMob: {fileID: 579875726}
   loc0: {fileID: 562162652}
   loc1: {fileID: 1765258929}
@@ -5657,7 +5657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac128473be95db54aa7912edf8ef0476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 5
+  count: 0
   ranbox: {fileID: 501582141}
   giveNote: {fileID: 872812501}
   player: {fileID: 1407185459}
@@ -5688,7 +5688,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -1.51}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5699,7 +5699,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.13, y: 8.471133}
+  m_Size: {x: 4.13, y: 5.32}
   m_EdgeRadius: 0
 --- !u!114 &1524539691
 MonoBehaviour:
