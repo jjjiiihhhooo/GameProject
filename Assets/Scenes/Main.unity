@@ -15866,7 +15866,7 @@ MonoBehaviour:
   saveManager: {fileID: 2118372824}
   saveChat: {fileID: 1724731010}
   blackDisplay: {fileID: 779215290}
-  text: "\uC138\uC774\uBE0C \uB418\uC5C8\uC2B5\uB2C8\uB2E4."
+  text: 
   checkCount: 1
   saveSceneCount: 1
   SceneName: Main
@@ -17548,7 +17548,7 @@ MonoBehaviour:
   saveManager: {fileID: 2118372824}
   saveChat: {fileID: 1724731010}
   blackDisplay: {fileID: 0}
-  text: "\uC138\uC774\uBE0C \uB85C\uB4DC\uD558\uC2DC\uB824\uBA74 [F11]\uC744 \uB20C\uB7EC\uC8FC\uC138\uC694"
+  text: 
   checkCount: 0
   saveSceneCount: 0
   SceneName: 
