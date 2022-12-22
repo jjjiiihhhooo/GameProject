@@ -4064,10 +4064,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fccb770337462442abe88f1380de336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goalSize: 0.21
-  time: 10
+  goalSize: 0.18
+  time: 12
   time1: 6
-  time2: 15.5
+  time2: 19
   blackMob: {fileID: 579875726}
   loc0: {fileID: 562162652}
   loc1: {fileID: 1765258929}
